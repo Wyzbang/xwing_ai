@@ -1,0 +1,60 @@
+body
+{
+	background: black;
+	background-image: url('img/starry-night.jpg');
+	color: white;
+}
+
+table
+{
+	border: 1px;
+	padding-left: 100px;
+}
+
+tr
+{
+	text-align: center;
+	width: 100px;
+	height: 100px;
+}
+
+#header
+{
+    display: table;
+	padding-left: 100px;
+}
+
+.company_logo
+{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+}
+.game_logo
+{
+	display: inline-block;
+	width: auto;
+	height: 100px;
+}
+
+#main
+{
+	display: table;
+}
+
+#diagram
+{
+	display: table-cell;
+}
+
+#results
+{
+	display: table-cell;
+	padding-left: 50px;
+	font-size: x-large;
+	font-weight: bold;
+}
+
+#footer
+{
+}

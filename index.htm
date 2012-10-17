@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html manifest="game.appcache">
+<head>
+<title>X-Wing Miniatures AI</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="src/ai.js">
+</script>
+</head>
+<body>
+<div id="header">
+	<div id="logos">
+		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
+		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-wing Minitures"> 
+	</div>
+</div>
+<div>
+<!-- chose ship for AI (currently TieFighter only)
+<!--
+<form action="demo_form.asp" method="get">
+Ship: 
+<input list="ships" name="ship" value="Tie Fighter">
+<datalist id="ships">
+  <option value="Tie Fighter">
+  <option value="Tie Advanced">
+</datalist>
+</form>
+-->
+</div>
+
+<div id="main">
+<div id="diagram">
+<table>
+	<tr>
+		<td>
+			<input type="image" onclick="movement(DIR_315, AWAY)" src="img/button_up_left.png" />
+			<br>
+			<input type="image" onclick="movement(DIR_315, CLOSING)" src="img/button_down_right.png" />			
+		</td>
+		<td text-align=center>
+			<input type="image" onclick="movement(DIR_000, AWAY)" src="img/button_up.png" />
+			<br>
+			<input type="image" onclick="movement(DIR_000, CLOSING)" src="img/button_down.png" />			
+		</td>
+		<td>
+			<input type="image" onclick="movement(DIR_045, AWAY)" src="img/button_up_right.png" />
+			<br>
+			<input type="image" onclick="movement(DIR_045, CLOSING)" src="img/button_down_left.png" />			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="image" onclick="movement(DIR_270, AWAY)" src="img/button_left.png" />
+			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />			
+		</td>
+		<td>
+			<img src="img/tie.png">
+		</td>
+		<td>
+			<input type="image" onclick="movement(DIR_090, CLOSING)" src="img/button_left.png" />			
+			<input type="image" onclick="movement(DIR_090, AWAY)" src="img/button_right.png" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="image" onclick="movement(DIR_225, CLOSING)" src="img/button_up_right.png" />			
+			<br>
+			<input type="image" onclick="movement(DIR_225, AWAY)" src="img/button_down_left.png" />
+		</td>
+		<td text-align=center>
+			<input type="image" onclick="movement(DIR_180, CLOSING)" src="img/button_up.png" />
+			<br>
+			<input type="image" onclick="movement(DIR_180, AWAY)" src="img/button_down.png" />
+		</td>
+		<td>
+			<input type="image" onclick="movement(DIR_135, CLOSING)" src="img/button_up_left.png" />			
+			<br>
+			<input type="image" onclick="movement(DIR_135, AWAY)" src="img/button_down_right.png" />
+		</td>
+	</tr>
+</table>			
+
+
+</div>
+
+<div id="results">
+	<div>
+		<div id="selection"><p>Press a direction and heading</p></div>
+	</div>
+	<div>
+		<div id="output"><p>Press a direction and heading</p></div>
+	</div>
+</div>	
+</div>
+
+<div id="footer">
+<br>
+Select button that best represents enemy (X-Wing) location and orientation<br>
+<br><br><br><hr>
+References:<br>
+<a href="http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174">Fantasy Flight Games</a><br>
+<a href="http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter">Tie Fighter AI Design</a><br>
+<a href="http://boardgamegeek.com/filepage/83269/x-wing-solo-system-part-2-tie-advanced">Tie Advanced AI Design</a><br>
+</div>
+</body>
+</html>
