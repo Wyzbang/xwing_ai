@@ -1,0 +1,21 @@
+CACHE MANIFEST
+
+CACHE:
+index.htm
+style.css
+img/button_down.png
+img/button_down_left.png
+img/button_down_right.png
+img/button_left.png
+img/button_right.png
+img/button_up.png
+img/button_up_left.png
+img/button_up_right.png
+img/ffglogoLQ.png
+img/game_logo.png
+img/starry-night.jpg
+img/tie.png
+img/TieAdvanced.png
+img/xwing.png
+img/ywing.png
+src/xwing_ai.js

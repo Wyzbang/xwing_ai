@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html manifest="game.appcache">
+<html manifest="src/xwing_ai.appcache">
 <head>
 <title>X-Wing Miniatures AI</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script src="src/ai.js">
+<script src="src/xwing_ai.js">
 </script>
 </head>
 <body>
@@ -13,21 +13,25 @@
 		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-wing Minitures"> 
 	</div>
 </div>
-<div>
-<!-- chose ship for AI (currently TieFighter only)
-<!--
-<form action="demo_form.asp" method="get">
-Ship: 
-<input list="ships" name="ship" value="Tie Fighter">
-<datalist id="ships">
-  <option value="Tie Fighter">
-  <option value="Tie Advanced">
-</datalist>
-</form>
--->
-</div>
 
 <div id="main">
+
+<div id="ships">
+<form action="demo_form.asp" name="ship_radio">
+<input type="radio" name="ship_selection" id="tie" value=SHIP_TIE onclick="set_ship(SHIP_TIE)" checked="checked"/>
+<label for="tie">Tie Fighter</label>
+<br>
+<input type="radio" name="ship_selection" id="tieAdvanced" value=SHIP_TIE_ADVACED onclick="set_ship(SHIP_TIE_ADVACED)" />
+<label for="tie">Tie Advanced</label>
+<br>
+<input type="radio" name="ship_selection" id="xwing" value=SHIP_XWING onclick="set_ship(SHIP_XWING)" />
+<label for="xwing">X-Wing</label>
+<br>
+<input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="set_ship(SHIP_YWING)" />
+<label for="xwing">Y-Wing (NOT SUPPORTED)</label>
+</form>
+</div>
+
 <div id="diagram">
 <table>
 	<tr>
@@ -53,7 +57,7 @@ Ship:
 			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />			
 		</td>
 		<td>
-			<img src="img/tie.png">
+			<img id="ship_image" src="img/tie.png">
 		</td>
 		<td>
 			<input type="image" onclick="movement(DIR_090, CLOSING)" src="img/button_left.png" />			

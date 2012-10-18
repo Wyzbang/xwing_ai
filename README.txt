@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.00
+                  v1.1
 =========================================
 
 -------------------
@@ -42,12 +42,18 @@ For each game round:
 
 
 --------------
+Change History
+--------------
+10/17/2012	Added Multiple ship support and AI for Tie Advanced and X-Wing
+
+
+--------------
 Known Problems
 --------------
 
 Does not support Internet Explorer
 
-Only support the standard Tie Fighter as an AI ship
+Y-Wing AI is not available
 
 -------
 Contact
