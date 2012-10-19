@@ -27,8 +27,8 @@
 <input type="radio" name="ship_selection" id="xwing" value=SHIP_XWING onclick="set_ship(SHIP_XWING)" />
 <label for="xwing">X-Wing</label>
 <br>
-<input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="set_ship(SHIP_YWING)" />
-<label for="xwing">Y-Wing (NOT SUPPORTED)</label>
+<input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="set_ship(SHIP_YWING)" disabled="disabled" />
+<label for="xwing" style=color:gray>Y-Wing</label>
 </form>
 </div>
 
@@ -88,9 +88,11 @@
 
 <div id="results">
 	<div>
+		<div id="selection-label">Enemy</div>
 		<div id="selection"><p>Press a direction and heading</p></div>
 	</div>
 	<div>
+		<div id="output-label">Tie Fighter</div>
 		<div id="output"><p>Press a direction and heading</p></div>
 	</div>
 </div>	

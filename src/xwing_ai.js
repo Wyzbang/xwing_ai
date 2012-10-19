@@ -184,6 +184,9 @@ function set_ship( ship )
 {
 	SHIP = ships[ ship ]; 
 	document.getElementById('ship_image').src = ships[ ship ].image;
+	document.getElementById('output-label').innerHTML = ships[ ship ].name;
+	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
+	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
 }
 	
 function pick()
@@ -194,18 +197,18 @@ function pick()
 
 function format_manuver( ship, manuver )
 {
-	var formatted = "<p><span style=color:blue>" + ship.name + ": </span><br>";
+	var formatted = "<p>"; // = "<span style=color:blue>" + ship.name + ": </span><br>";
 	if( ship.simple.indexOf( manuver ) > -1 )
 	{
 		formatted += "<span style=color:green>" + manuver + "</span>";
 	}
 	else if( ship.difficult.indexOf( manuver ) > -1 )
 	{
-		formatted += "<span style=color:red>" + manuver + "</span></p>";
+		formatted += "<span style=color:red>" + manuver + "</span>";
 	}
 	else
 	{
-		formatted += "<span>" + manuver + "</span></p>";
+		formatted += "<span>" + manuver + "</span>";
 	}
 	formatted += "</p>";
 	
@@ -219,8 +222,8 @@ function movement( direction, heading )
 {
 	// direction: n=0, ne=1, e=2, se=3, s=4, sw=5, w=6,nw=7
 	// heading: away, closing
-	var selection = "<span style=color:blue>Enemy: </span><br>";
-	selection += heading + " at " + DIRECTION[direction] + " o'clock";
+	var selection = "<p>"; // = "<span style=color:blue>Enemy: </span><br>";
+	selection += heading + " at " + DIRECTION[direction] + " o'clock</p>";
 	
 	var choice = pick();
 		

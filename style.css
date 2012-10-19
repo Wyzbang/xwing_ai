@@ -8,7 +8,7 @@ body
 table
 {
 	border: 1px;
-	padding-left: 100px;
+	/*padding-left: 100px;*/
 }
 
 tr
@@ -55,7 +55,7 @@ tr
 #diagram
 {
 	display: table-cell;
-	width: 500px;
+	padding-left: 50px;
 }
 
 #results
@@ -64,6 +64,16 @@ tr
 	padding-left: 50px;
 	font-size: x-large;
 	font-weight: bold;
+}
+
+#selection-label
+{
+	color: blue;
+}
+
+#output-label
+{
+	color: blue;
 }
 
 #footer
