@@ -21,8 +21,13 @@ tr
 #header
 {
     display: table;
-	padding-left: 100px;
+	margin: auto;
 }
+
+#logos
+{
+}
+
 
 .company_logo
 {
@@ -42,9 +47,15 @@ tr
 	display: table;
 }
 
+#ships
+{
+	display: table-cell;
+}
+
 #diagram
 {
 	display: table-cell;
+	width: 500px;
 }
 
 #results
@@ -57,4 +68,5 @@ tr
 
 #footer
 {
+	text-align: center;
 }

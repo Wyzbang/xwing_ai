@@ -22,8 +22,8 @@ var DIR_315 = 7;
 var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 
 // HEADING
-var AWAY = "heading away";
-var CLOSING = "closing";
+var AWAY = "Heading away";
+var CLOSING = "Closing";
 
 // ****************************************************************************
 // Tie Fighter
@@ -194,7 +194,7 @@ function pick()
 
 function format_manuver( ship, manuver )
 {
-	var formatted = "<p>" + ship.name + ": ";
+	var formatted = "<p><span style=color:blue>" + ship.name + ": </span><br>";
 	if( ship.simple.indexOf( manuver ) > -1 )
 	{
 		formatted += "<span style=color:green>" + manuver + "</span>";
@@ -219,7 +219,9 @@ function movement( direction, heading )
 {
 	// direction: n=0, ne=1, e=2, se=3, s=4, sw=5, w=6,nw=7
 	// heading: away, closing
-	var selection = "Enemy is " + heading + " at " + DIRECTION[direction] + " o'clock";
+	var selection = "<span style=color:blue>Enemy: </span><br>";
+	selection += heading + " at " + DIRECTION[direction] + " o'clock";
+	
 	var choice = pick();
 		
 	// Set the Action
