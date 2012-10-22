@@ -21,13 +21,20 @@ tr
 #header
 {
     display: table;
-	margin: auto;
+	width: 100%;
 }
 
 #logos
 {
+	display: table-cell;
+	text-align: center;
 }
 
+#links
+{
+	display: table-cell;
+	text-align: right;
+}
 
 .company_logo
 {

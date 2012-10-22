@@ -2,6 +2,7 @@
 <html manifest="src/xwing_ai.appcache">
 <head>
 <title>X-Wing Miniatures AI</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script src="src/xwing_ai.js">
 </script>
@@ -12,6 +13,10 @@
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
 		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-wing Minitures"> 
 	</div>
+	<div id="links">
+		<a href="help.htm"><img class=help_icon src="img/help.png" alt="Fantasy Flight Games"></a>
+		<a href="info.htm"><img class=info_icon src="img/info.png" alt="StarWars: X-wing Minitures"></a>
+	</div>
 </div>
 
 <div id="main">
@@ -20,15 +25,16 @@
 <form action="demo_form.asp" name="ship_radio">
 <input type="radio" name="ship_selection" id="tie" value=SHIP_TIE onclick="set_ship(SHIP_TIE)" checked="checked"/>
 <label for="tie">Tie Fighter</label>
-<br>
+<br><br>
 <input type="radio" name="ship_selection" id="tieAdvanced" value=SHIP_TIE_ADVACED onclick="set_ship(SHIP_TIE_ADVACED)" />
 <label for="tie">Tie Advanced</label>
-<br>
+<br><br>
 <input type="radio" name="ship_selection" id="xwing" value=SHIP_XWING onclick="set_ship(SHIP_XWING)" />
 <label for="xwing">X-Wing</label>
-<br>
+<br><br>
 <input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="set_ship(SHIP_YWING)" disabled="disabled" />
 <label for="xwing" style=color:gray>Y-Wing</label>
+<br><br>
 </form>
 </div>
 
@@ -101,11 +107,9 @@
 <div id="footer">
 <br>
 Select button that best represents enemy ship's location and orientation<br>
-<br><br><br><hr>
-References:<br>
-<a href="http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174">Fantasy Flight Games</a><br>
-<a href="http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter">Tie Fighter AI Design</a><br>
-<a href="http://boardgamegeek.com/filepage/83269/x-wing-solo-system-part-2-tie-advanced">Tie Advanced AI Design</a><br>
+<br><br><hr>
+Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved.<br>
+Fantasy Flight Games and the FFG logo are trademarks of Fantasy Flight Publishing, Inc.<br>
 </div>
 </body>
 </html>
