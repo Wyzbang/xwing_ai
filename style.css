@@ -57,6 +57,7 @@ tr
 #ships
 {
 	display: table-cell;
+	vertical-align: top;
 }
 
 #diagram

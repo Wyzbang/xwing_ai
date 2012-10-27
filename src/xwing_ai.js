@@ -146,20 +146,139 @@ ywing.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
 ywing.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
 
 // ****************************************************************************
+// Tie Interceptor
+
+var tieInterceptor = new Object();
+tieInterceptor.name = "Tie Interceptor";
+tieInterceptor.image = "img/tieInterceptor.png";
+tieInterceptor.simple = new Array();
+tieInterceptor.difficult = new Array();   
+
+// AI choices
+tieInterceptor.closing = new Array();
+tieInterceptor.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+tieInterceptor.away = new Array();
+tieInterceptor.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+// ****************************************************************************
+// A-Wing
+
+var awing = new Object();
+awing.name = "A-Wing";
+awing.image = "img/awing.png";
+awing.simple = new Array();
+awing.difficult = new Array();   
+
+// AI choices
+awing.closing = new Array();
+awing.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+awing.away = new Array();
+awing.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+// ****************************************************************************
+// Slave 1
+
+var slave1 = new Object();
+slave1.name = "Slave 1";
+slave1.image = "img/slave1.png";
+slave1.simple = new Array();
+slave1.difficult = new Array();   
+
+// AI choices
+slave1.closing = new Array();
+slave1.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+slave1.away = new Array();
+slave1.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+// ****************************************************************************
+// Millenium Falcon
+
+var falcon = new Object();
+falcon.name = "Millenium Falcon";
+falcon.image = "img/falcon.png";
+falcon.simple = new Array();
+falcon.difficult = new Array();   
+
+// AI choices
+falcon.closing = new Array();
+falcon.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+falcon.away = new Array();
+falcon.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+
+// ****************************************************************************
 // Ships
 
 var SHIP_TIE = 0;
-var SHIP_TIE_ADVACED = 1;
+var SHIP_TIE_ADVANCED = 1;
 var SHIP_XWING = 2;
 var SHIP_YWING = 3;
-/*
+
 var SHIP_TIE_INTERCEPTOR = 4;
 var SHIP_AWING = 5;
 var SHIP_SLAVE1 = 6;
 var SHIP_FALCON = 7;
-*/
 
-var ships = new Array( tie, tieAdvanced, xwing, ywing );
+var ships = new Array( tie, tieAdvanced, xwing, ywing, tieInterceptor, awing, slave1, falcon );
 var SHIP = tie;
 
 // ****************************************************************************
