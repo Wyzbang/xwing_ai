@@ -88,3 +88,22 @@ tr
 {
 	text-align: center;
 }
+
+#actions
+{
+	display: table;
+}
+
+#action_image
+{
+	display: table-cell;
+	height: 100px;
+}
+
+#action_text
+{
+	display: table-cell;
+	height: 100px;
+	padding-left: 25px;
+	vertical-align: top;
+}

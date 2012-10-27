@@ -19,9 +19,9 @@ Overview
 
 Simple web based for AI control of ships in the "Star Wars x-Wing Minitures game".
 
-------------
-Installation
-------------
+--------------------
+Installation / Usage
+--------------------
 
 Extract zip file to any location
 Open "index.html" in a browser

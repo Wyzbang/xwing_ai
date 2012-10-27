@@ -22,7 +22,7 @@
 Provide a AI control of one or more ships for the X-Wing Miniture Game
 
 <h2>Setup:</h2>
-Setup game per standard rules, choosing any squadrons
+Setup game per standard rules, choosing any squadrons and or missions.
 
 <h2>Usage:</h2>
 
@@ -42,37 +42,65 @@ For each AI controlled ship:
 </ol>
 	
 <h2>Picking Target:</h2>
-How with multiple targets?<br>
+There are multiple options for picking targets<br>
+<ol>
+<li>Always pick the nearest possible target</li>
+<li>Randomize tarhry by rolling a 6-sided die:</li>
+<ul>
+	<li>1-2: take on the closest one</li>
+	<li>3-4: tako on the most damaged one</li>
+	<li>5-6: take on the highest skilled pilot.</li>
+</ul>
+</ol>
 
 <h2>Choosing action:</h2>
 
 <h3>Tie Fighter</h3>
-Barrel-Roll<br>
-Focus<br>
-Evade<br>
-<br>
+<div id=actions>
+<div id=action_image><img class=info_icon src="img/tie.png" alt="Tie Fighter"></div>
+<div id=action_text>
+If this will put the Tie Figher into or out of firing position choose <b>Barrel-Roll</b><br> 
+Else if already in a firing position choose <b>Focus</b><br>
+Else choose <b>Evade</b><br>
+</div>
+</div>
 
 <h3>Tie Advanced</h3>
-Target-Lock<br>
-Barrel-Roll<br>
-Focus<br>
-Evade<br>
-<br>
+<div id=actions>
+	<div id=action_image><img class=info_icon src="img/tieAdvanced.png" alt="Tie Advanced"></div>
+	<div id=action_text>
+		Treat <b>Target-Lock</b> as a free action, target same ship as chosen for manuver.  Clear Target lock at end of turn.<br>
+		If this will put the Tie Figher into or out of firing position choose <b>Barrel-Roll</b><br> 
+		Else if already in a firing position choose <b>Focus</b><br>
+		Else choose <b>Evade</b><br>
+	</div>
+</div>
 
 <h3>X-Wing</h3>
-Target-Lock<br>
-Focus<br>
-<br>
+<div id=actions>
+	<div id=action_image><img class=info_icon src="img/xwing.png" alt="X-Wing"></div>
+	<div id=action_text>
+		Treat <b>Target-Lock</b> as a free action, target same ship as chosen for manuver.  Clear Target lock at end of turn.<br>
+		Always use Focus<br>
+	</div>
+</div>
 
 <h3>Y-Wing</h3>
-Target-Lock<br>
-Focus<br>
+<div id=actions>
+	<div id=action_image><img class=info_icon src="img/ywing.png" alt="Y-Wing"></div>
+	<div id=action_text>
+		Treat <b>Target-Lock</b> as a free action, target same ship as chosen for manuver.  Clear Target lock at end of turn.<br>
+		Always use Focus<br>
+	</div>
+</div>
 
 <h2>NOTES:</h2>
 <ul>
 <li>Always choose the human control ship(s) manuvers, before chosing AI manuvers</li>
 <li>AI ships never get stress token, but do not perform any actions after a <span style="color:red">RED</span> manuver.</li>
+<li>For secondary weapons or optional pilot skills, always use them when applicable</li>
 </ul>
 </div>
+
 </body>
 </html>
