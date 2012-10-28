@@ -58,6 +58,26 @@ tr
 {
 	display: table-cell;
 	vertical-align: top;
+	text-align: center;
+}
+
+.ship_button
+{
+	width: 50px;
+	height: 50px;
+}
+
+label
+{
+	display: table-cell;
+	cursor: pointer;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+}
+
+label:hover {
+    background:#006699;   
 }
 
 #diagram
