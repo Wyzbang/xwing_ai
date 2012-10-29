@@ -11,7 +11,8 @@
 <div id="header">
 	<div id="logos">
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
-		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-wing Minitures"> 
+		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-Wing Minitures"> 
+		<img class=applet_logo src="img/applet_logo.png" alt="Ship AI"> 
 	</div>
 	<div id="links">
 		<a href="help.htm"><img class=help_icon src="img/help.png" alt="Fantasy Flight Games"></a>
@@ -22,7 +23,7 @@
 <div id="main">
 
 <div id="ships">
-<b>Select Ship:</b><br><br>
+<b>AI Ship:</b><br><br>
 <form action="demo_form.asp" name="ship_radio">
 
 <label>
@@ -55,13 +56,14 @@
 <img class=ship_button src="img/xwing.png">
 </label>
 
-<!--
 <label>
 <input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="set_ship(SHIP_YWING)" hidden=true />
 <img class=ship_button src="img/ywing.png">
 </label>
 
 <br>
+
+<!--
 
 <label>
 <input type="radio" name="ship_selection" id="awing" value=SHIP_AWING onclick="set_ship(SHIP_AWING)" hidden=true />
@@ -79,6 +81,7 @@
 </div>
 
 <div id="diagram">
+<b>Enemy ship's location and orientation:</b><br><br>
 <table>
 	<tr>
 		<td>
@@ -129,7 +132,6 @@
 	</tr>
 </table>			
 
-
 </div>
 
 <div id="results">
@@ -145,9 +147,7 @@
 </div>
 
 <div id="footer">
-<br>
-Select button that best represents enemy ship's location and orientation<br>
-<br><br><hr>
+<br><br><br><hr>
 Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved.<br>
 Fantasy Flight Games and the FFG logo are trademarks of Fantasy Flight Publishing, Inc.<br>
 </div>

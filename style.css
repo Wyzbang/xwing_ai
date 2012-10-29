@@ -49,6 +49,11 @@ tr
 	height: 100px;
 }
 
+.applet_logo
+{
+	display: inline-block;
+}
+
 #main
 {
 	display: table;
@@ -84,6 +89,7 @@ label:hover {
 {
 	display: table-cell;
 	padding-left: 50px;
+	text-align: center;
 }
 
 #results
@@ -92,6 +98,7 @@ label:hover {
 	padding-left: 50px;
 	font-size: x-large;
 	font-weight: bold;
+	vertical-align: middle;
 }
 
 #selection-label

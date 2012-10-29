@@ -126,24 +126,24 @@ ywing.difficult = new Array( "3 Turn Left", "3 Turn Right", "4 Forward", "4 Koio
 
 // AI choices
 ywing.closing = new Array();
-ywing.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+ywing.closing[0] = new Array( "1 Forward",  "1 Forward",  "2 Forward",  "2 Forward",  "1 Bank Left",  "1 Bank Right" );
+ywing.closing[1] = new Array( "1 Forward",  "1 Bank Right",  "2 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right" );
+ywing.closing[2] = new Array( "1 Bank Right",  "1 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right" );
+ywing.closing[3] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right" );
+ywing.closing[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
+ywing.closing[5] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Left",  "1 Bank Left" );
+ywing.closing[6] = new Array( "1 Bank Left",  "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left" );
+ywing.closing[7] = new Array( "1 Forward",  "1 Bank Left",  "2 Bank Left",  "2 Bank Left",  "2 Turn Left",  "2 Turn Left" );
 	
 ywing.away = new Array();
-ywing.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-ywing.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+ywing.away[0] = new Array( "3 Forward",  "3 Forward",  "2 Forward",  "2 Forward",  "2 Forward",  "1 Forward" );
+ywing.away[1] = new Array( "3 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right" );
+ywing.away[2] = new Array( "1 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right" );
+ywing.away[3] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Right",  "3 Turn Right",  "2 Turn Right",  "2 Turn Right" );
+ywing.away[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
+ywing.away[5] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Left",  "3 Turn Left",  "2 Turn Left",  "2 Turn Left" );
+ywing.away[6] = new Array( "1 Bank Left",  "2 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left",  "3 Turn Left" );
+ywing.away[7] = new Array( "3 Bank Left",  "2 Bank Left",  "2 Turn Right",  "2 Turn Right",  "2 Turn Left",  "3 Turn Left" );
 
 // ****************************************************************************
 // Tie Interceptor
