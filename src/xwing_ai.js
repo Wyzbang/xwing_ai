@@ -5,6 +5,7 @@
 // 10/15/2012	Adding Tie Advanced Object
 // 10/17/2012	Added multiple ship support
 //				Added X-Wing and Y-Wing object (no AI for Y-Wing)
+// 10/28/2012	Added Y-Wing AI choices
 
 // ****************************************************************************
 // Constants

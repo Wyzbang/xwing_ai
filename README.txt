@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.2
+                  v1.3
 =========================================
 
 -------------------
@@ -32,14 +32,13 @@ Change History
 
 10/17/2012	Added Multiple ship support and AI for Tie Advanced and X-Wing
 10/27/2012	Converted several images to smaller files, Added infrastucture for Wave-2 ships
+10/29/2012	Added Y-Wing AI, Converted from radio to image buttons for ships
 
 --------------
 Known Problems
 --------------
 
 Does not support Internet Explorer
-
-Y-Wing AI is not available
 
 -------
 Contact
