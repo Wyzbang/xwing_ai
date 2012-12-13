@@ -6,6 +6,8 @@
 // 10/17/2012	Added multiple ship support
 //				Added X-Wing and Y-Wing object (no AI for Y-Wing)
 // 10/28/2012	Added Y-Wing AI choices
+// 12/12/2012	Convert movement string to function calls
+//				Added Tie-Interceptor, A-Wing, YT-1300 (Falcon), Firspare(Slave 1)
 
 // ****************************************************************************
 // Constants
@@ -27,34 +29,74 @@ var AWAY = "Heading away";
 var CLOSING = "Closing";
 
 // ****************************************************************************
+// Moves
+
+function F( distance )
+{
+	var move = distance + " Forward";
+	return move
+} 
+
+function BL( distance )
+{
+	var move = distance + " Bank Left";
+	return move
+} 
+
+function BR( distance )
+{
+	var move = distance + " Bank Right";
+	return move
+} 
+
+function TL( distance )
+{
+	var move = distance + " Turn Left";
+	return move
+} 
+
+function TR( distance )
+{
+	var move = distance + " Turn Right";
+	return move
+} 
+
+function K( distance )
+{
+	var move = distance + " Koiogran";
+	return move
+} 
+
+
+// ****************************************************************************
 // Tie Fighter
 
 var	tie = new Object();
 tie.name = "Tie Fighter";
 tie.image = "img/tie.png"
-tie.simple = new Array( "2 Forward", "2 Bank Left", "2 Bank Right", "3 Forward" );
-tie.difficult = new Array( "3 Koiogran", "4 Koiogran" );                                               
+tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
+tie.difficult = new Array( K(3), K(4) );                                               
 
 // AI choices
 tie.closing = new Array();
-tie.closing[0] = new Array( "2 Bank Left", "2 Bank Right", "2 Forward", "2 Forward", "4 Koiogran", "4 Koiogran" );
-tie.closing[1] = new Array( "2 Forward",  "3 Bank Right",  "2 Bank Right",  "2 Bank Right",  "2 Turn Right",  "1  Turn Right"  );
-tie.closing[2] = new Array( "1  Turn Right",  "1  Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Koiogran", "4 Koiogran" );
-tie.closing[3] = new Array( "4 Koiogran", "4 Koiogran", "3 Koiogran", "2 Turn Right",  "1  Turn Right",  "1  Turn Right"  );
-tie.closing[4] = new Array( "4 Koiogran", "3 Koiogran", "3 Koiogran", "3 Turn Left", "3 Turn Right",  "5 Forward"  );
-tie.closing[5] = new Array( "1  Turn Left", "1  Turn Left", "2 Turn Left", "3 Koiogran", "4 Koiogran", "4 Koiogran" );
-tie.closing[6] = new Array( "4 Koiogran", "3 Koiogran", "2 Turn Left", "2 Turn Left", "1  Turn Left", "1  Turn Left" );
-tie.closing[7] = new Array( "2 Forward",  "3 Bank Left", "2 Bank Left", "2 Bank Left", "2 Turn Left", "1  Turn Left" );
+tie.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(4),  K(4) );
+tie.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(2), TR(1)  );
+tie.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(4) );
+tie.closing[3] = new Array( K(4),  K(4),  K(3),  TR(2), TR(1), TR(1)  );
+tie.closing[4] = new Array( K(4),  K(3),  K(3),  TL(3), TR(3), F(5)  );
+tie.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(4),  K(4) );
+tie.closing[6] = new Array( K(4),  K(3),  TL(2), TL(2), TL(1), TL(1) );
+tie.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
 	
 tie.away = new Array();
-tie.away[0] = new Array( "5 Forward",  "4 Forward",  "4 Forward",  "3 Forward",  "3 Forward",  "2 Forward" );
-tie.away[1] = new Array( "5 Forward",  "4 Forward",  "3 Bank Right",  "3 Bank Right",  "2 Bank Right",  "2 Bank Right" );
-tie.away[2] = new Array( "3 Bank Right",  "3 Turn Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "1  Turn Right" );
-tie.away[3] = new Array( "4 Koiogran", "3 Koiogran", "3 Koiogran", "2 Turn Right",  "2 Turn Right",  "1  Turn Right" );
-tie.away[4] = new Array( "3 Koiogran", "3 Koiogran", "3 Koiogran", "3 Koiogran", "1  Turn Left", "1  Turn Right" );
-tie.away[5] = new Array( "1  Turn Left", "2 Turn Left", "2 Turn Left", "3 Koiogran", "3 Koiogran", "4 Koiogran" );
-tie.away[6] = new Array( "3 Bank Left", "3 Turn Left", "2 Bank Left", "2 Turn Left", "2 Turn Left", "1  Turn Left" );
-tie.away[7] = new Array( "2 Bank Left", "2 Bank Left", "3 Bank Left", "3 Bank Left", "4 Forward",  "5 Forward" );
+tie.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
+tie.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
+tie.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), TR(1) );
+tie.away[3] = new Array( K(4),  K(3),  K(3),  TR(2), TR(2), TR(1) );
+tie.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
+tie.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(4) );
+tie.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
+tie.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
 // ****************************************************************************
 // Tie Advanced
@@ -62,29 +104,29 @@ tie.away[7] = new Array( "2 Bank Left", "2 Bank Left", "3 Bank Left", "3 Bank Le
 var tieAdvanced = new Object();
 tieAdvanced.name = "Tie Advanced";
 tieAdvanced.image = "img/TieAdvanced.png";
-tieAdvanced.simple = new Array( "1 Bank Left", "1 Bank Right", "2 Forward", "3 Forward" );
-tieAdvanced.difficult = new Array( "4 Koiogran" );
+tieAdvanced.simple = new Array( BL(1), BR(1), F(2), F(3) );
+tieAdvanced.difficult = new Array( K(4) );
 
 // AI choices
 tieAdvanced.closing = new Array();
-tieAdvanced.closing[0] = new Array( "2 Bank Left",  "2 Bank Right",   "2 Forward",  "2 Forward",  "4 Koiogran",  "4 Koiogran" );
-tieAdvanced.closing[1] = new Array( "2 Forward",  "3 Bank Right",  "2 Bank Right",  "2 Bank Right",  "3 Turn Right",  "2 Turn Right" );
-tieAdvanced.closing[2] = new Array( "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right",  "4 Koiogran",  "4 Koiogran" );
-tieAdvanced.closing[3] = new Array( "4 Koiogran",  "4 Koiogran",  "5 Forward",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right" );
-tieAdvanced.closing[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "3 Turn Left",  "3 Turn Right",  "4 Forward" );
-tieAdvanced.closing[5] = new Array( "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "5 Forward",  "4 Koiogran",  "4 Koiogran" );
-tieAdvanced.closing[6] = new Array( "4 Koiogran",  "4 Koiogran",  "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left" );
-tieAdvanced.closing[7] = new Array( "2 Forward",  "3 Bank Left",  "2 Bank Left",  "2 Bank Left",  "3 Turn Left",  "2 Turn Left" );
+tieAdvanced.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(4),  K(4) );
+tieAdvanced.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(3), TR(2) );
+tieAdvanced.closing[2] = new Array( TR(2), TR(2), TR(2), BR(1), K(4),  K(4) );
+tieAdvanced.closing[3] = new Array( K(4),  K(4),  F(5),  TR(2), TR(2), BR(1) );
+tieAdvanced.closing[4] = new Array( K(4),  K(4),  K(4),  TL(3), TR(3), F(4) );
+tieAdvanced.closing[5] = new Array( BL(1), TL(2), TL(2), F(5),  K(4),  K(4) );
+tieAdvanced.closing[6] = new Array( K(4),  K(4),  BL(1), TL(2), TL(2), TL(2) );
+tieAdvanced.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2),   TL(3), TL(2) );
 
 tieAdvanced.away = new Array();
-tieAdvanced.away[0] = new Array( "5 Forward",  "4 Forward",  "4 Forward",  "3 Forward",  "3 Forward",  "2 Forward" );
-tieAdvanced.away[1] = new Array( "4 Forward",  "3 Forward",  "3 Bank Right",  "3 Bank Right",  "2 Bank Right",  "2 Bank Right" );
-tieAdvanced.away[2] = new Array( "3 Bank Right",  "3 Turn Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right" );
-tieAdvanced.away[3] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right" );
-tieAdvanced.away[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
-tieAdvanced.away[5] = new Array( "2 Turn Left",  "2 Turn Left", "2 Turn Left",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran" );
-tieAdvanced.away[6] = new Array( "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Bank Left",  "3 Turn Left",  "3 Turn Left" );
-tieAdvanced.away[7] = new Array( "4 Forward",  "3 Forward",  "3 Bank Right",  "3 Bank Right",  "2 Bank Left",  "2 Bank Left" );
+tieAdvanced.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
+tieAdvanced.away[1] = new Array( F(4),  F(3),  BR(3), BR(3), BR(2), BR(2) );
+tieAdvanced.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), BR(1) );
+tieAdvanced.away[3] = new Array( K(4),  K(4),  K(4),  TR(2), TR(2), TR(2) );
+tieAdvanced.away[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
+tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), K(4),  K(4),  K(4) );
+tieAdvanced.away[6] = new Array( BL(1), TL(2), TL(2), BL(2), TL(3), TL(3) );
+tieAdvanced.away[7] = new Array( F(4),  F(3),  BR(3), BR(3), BL(2), BL(2) );
 
 // ****************************************************************************
 // X-Wing
@@ -92,29 +134,29 @@ tieAdvanced.away[7] = new Array( "4 Forward",  "3 Forward",  "3 Bank Right",  "3
 var	xwing = new Object();
 xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
-xwing.simple = new Array( "1 Forward", "1 Bank Left", "1 Bank Right", "2 Forward" );
-xwing.difficult = new Array( "4 Koiogran" );                                               
+xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
+xwing.difficult = new Array( K(4) );                                               
 
 // AI choices
 xwing.closing = new Array();
-xwing.closing[0] = new Array( "1 Forward",  "1 Forward",  "2 Forward",  "2 Forward",  "1 Bank Left",  "1 Bank Right" );
-xwing.closing[1] = new Array( "1 Forward",  "1 Bank Right",  "2 Bank Right",  "2 Bank Right",  "2 Turn Right",  "3 Turn Right" );
-xwing.closing[2] = new Array( "1 Bank Right",  "1 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right" );
-xwing.closing[3] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right" );
-xwing.closing[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "3 Turn Left",  "3 Turn Right" );
-xwing.closing[5] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Left",  "1 Bank Left" );
-xwing.closing[6] = new Array( "1 Bank Left",  "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left",  "3 Turn Left" );
-xwing.closing[7] = new Array( "1 Forward",  "1 Bank Left",  "2 Bank Left",  "2 Bank Left",  "2 Turn Left",  "3 Turn Left" );
+xwing.closing[0] = new Array( F(1),  F(1),  F(2),  F(2),  BL(1), BR(1) );
+xwing.closing[1] = new Array( F(1),  BR(1), BR(2), BR(2), TR(2), TR(3) );
+xwing.closing[2] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(3) );
+xwing.closing[3] = new Array( K(4),  K(4),  K(4),  TR(2), TR(2), BR(1) );
+xwing.closing[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(3), TR(3) );
+xwing.closing[5] = new Array( K(4),  K(4),  K(4),  TL(2), TL(2), BL(1) );
+xwing.closing[6] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(3) );
+xwing.closing[7] = new Array( F(1),  BL(1), BL(2), BL(2), TL(2), TL(3) );
 	
 xwing.away = new Array();
-xwing.away[0] = new Array( "4 Forward",  "3 Forward",  "3 Forward",  "2 Forward",  "2 Forward",  "1 Forward" );
-xwing.away[1] = new Array( "3 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right",  "3 Turn Right" );
-xwing.away[2] = new Array( "1 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right",  "3 Turn Right" );
-xwing.away[3] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Right",  "3 Turn Right",  "2 Turn Right",  "2 Turn Right" );
-xwing.away[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
-xwing.away[5] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Left",  "3 Turn Left",  "2 Turn Left",  "2 Turn Left" );
-xwing.away[6] = new Array( "1 Bank Left",  "2 Bank Left",  "2 Turn Left",  "2 Turn Left",  "3 Turn Left",  "3 Turn Left" );
-xwing.away[7] = new Array( "3 Bank Left",  "2 Bank Left",  "2 Turn Right",  "2 Turn Right",  "3 Turn Left",  "3 Turn Left" );
+xwing.away[0] = new Array( F(4),  F(3),  F(3),  F(2),  F(2),  F(1) );
+xwing.away[1] = new Array( BR(3), BR(2), TR(2), TR(2), TR(3), TR(3) );
+xwing.away[2] = new Array( BR(1), BR(2), TR(2), TR(2), TR(3), TR(3) );
+xwing.away[3] = new Array( K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
+xwing.away[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
+xwing.away[5] = new Array( K(4),  K(4),  TL(3), TL(3), TL(2), TL(2) );
+xwing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(3), TL(3) );
+xwing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(3), TL(3) );
 
 // ****************************************************************************
 // Y-Wing
@@ -122,29 +164,29 @@ xwing.away[7] = new Array( "3 Bank Left",  "2 Bank Left",  "2 Turn Right",  "2 T
 var	ywing = new Object();
 ywing.name = "Y-Wing";
 ywing.image = "img/ywing.png";
-ywing.simple = new Array( "1 Forward", "2 Forward" );
-ywing.difficult = new Array( "3 Turn Left", "3 Turn Right", "4 Forward", "4 Koiogran" );                                              
+ywing.simple = new Array( F(1), F(2) );
+ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );                                              
 
 // AI choices
 ywing.closing = new Array();
-ywing.closing[0] = new Array( "1 Forward",  "1 Forward",  "2 Forward",  "2 Forward",  "1 Bank Left",  "1 Bank Right" );
-ywing.closing[1] = new Array( "1 Forward",  "1 Bank Right",  "2 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right" );
-ywing.closing[2] = new Array( "1 Bank Right",  "1 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right" );
-ywing.closing[3] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Right",  "2 Turn Right",  "1 Bank Right" );
-ywing.closing[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
-ywing.closing[5] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Left",  "1 Bank Left" );
-ywing.closing[6] = new Array( "1 Bank Left",  "1 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left" );
-ywing.closing[7] = new Array( "1 Forward",  "1 Bank Left",  "2 Bank Left",  "2 Bank Left",  "2 Turn Left",  "2 Turn Left" );
+ywing.closing[0] = new Array( F(1),  F(1),  F(2),  F(2),  BL(1), BR(1) );
+ywing.closing[1] = new Array( F(1),  BR(1), BR(2), BR(2), TR(2), TR(2) );
+ywing.closing[2] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2) );
+ywing.closing[3] = new Array( K(4),  K(4),  K(4),  TR(2), TR(2), BR(1) );
+ywing.closing[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
+ywing.closing[5] = new Array( K(4),  K(4),  K(4),  TL(2), TL(2), BL(1) );
+ywing.closing[6] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(2) );
+ywing.closing[7] = new Array( F(1),  BL(1), BL(2), BL(2), TL(2), TL(2) );
 	
 ywing.away = new Array();
-ywing.away[0] = new Array( "3 Forward",  "3 Forward",  "2 Forward",  "2 Forward",  "2 Forward",  "1 Forward" );
-ywing.away[1] = new Array( "3 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right" );
-ywing.away[2] = new Array( "1 Bank Right",  "2 Bank Right",  "2 Turn Right",  "2 Turn Right",  "2 Turn Right",  "3 Turn Right" );
-ywing.away[3] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Right",  "3 Turn Right",  "2 Turn Right",  "2 Turn Right" );
-ywing.away[4] = new Array( "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "4 Koiogran",  "2 Turn Left",  "2 Turn Right" );
-ywing.away[5] = new Array( "4 Koiogran",  "4 Koiogran",  "3 Turn Left",  "3 Turn Left",  "2 Turn Left",  "2 Turn Left" );
-ywing.away[6] = new Array( "1 Bank Left",  "2 Bank Left",  "2 Turn Left",  "2 Turn Left",  "2 Turn Left",  "3 Turn Left" );
-ywing.away[7] = new Array( "3 Bank Left",  "2 Bank Left",  "2 Turn Right",  "2 Turn Right",  "2 Turn Left",  "3 Turn Left" );
+ywing.away[0] = new Array( F(3),  F(3),  F(2),  F(2),  F(2),  F(1) );
+ywing.away[1] = new Array( BR(3), BR(2), TR(2), TR(2), TR(2), TR(3) );
+ywing.away[2] = new Array( BR(1), BR(2), TR(2), TR(2), TR(2), TR(3) );
+ywing.away[3] = new Array( K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
+ywing.away[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
+ywing.away[5] = new Array( K(4),  K(4),  TL(3), TL(3), TL(2), TL(2) );
+ywing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(2), TL(3) );
+ywing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(2), TL(3) );
 
 // ****************************************************************************
 // Tie Interceptor
@@ -152,8 +194,8 @@ ywing.away[7] = new Array( "3 Bank Left",  "2 Bank Left",  "2 Turn Right",  "2 T
 var tieInterceptor = new Object();
 tieInterceptor.name = "Tie Interceptor";
 tieInterceptor.image = "img/tieInterceptor.png";
-tieInterceptor.simple = new Array();
-tieInterceptor.difficult = new Array();   
+tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
+tieInterceptor.difficult = new Array( K(3), K(5) );   
 
 // AI choices
 tieInterceptor.closing = new Array();
@@ -182,8 +224,8 @@ tieInterceptor.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
 var awing = new Object();
 awing.name = "A-Wing";
 awing.image = "img/awing.png";
-awing.simple = new Array();
-awing.difficult = new Array();   
+awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2));
+awing.difficult = new Array( K(3), K(5) );   
 
 // AI choices
 awing.closing = new Array();
@@ -210,10 +252,10 @@ awing.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
 // Slave 1
 
 var slave1 = new Object();
-slave1.name = "Slave 1";
+slave1.name = "Firespray-31";
 slave1.image = "img/slave1.png";
-slave1.simple = new Array();
-slave1.difficult = new Array();   
+slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
+slave1.difficult = new Array( K(3), K(4) );   
 
 // AI choices
 slave1.closing = new Array();
@@ -240,10 +282,10 @@ slave1.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
 // Millenium Falcon
 
 var falcon = new Object();
-falcon.name = "Millenium Falcon";
+falcon.name = "YT-1300";
 falcon.image = "img/falcon.png";
-falcon.simple = new Array();
-falcon.difficult = new Array();   
+falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
+falcon.difficult = new Array( K(3), K(4) );   
 
 // AI choices
 falcon.closing = new Array();
