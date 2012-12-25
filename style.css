@@ -11,7 +11,7 @@ table
 	/*padding-left: 100px;*/
 }
 
-tr
+#direction_buttons
 {
 	text-align: center;
 	width: 100px;
@@ -133,4 +133,11 @@ label:hover {
 	height: 100px;
 	padding-left: 25px;
 	vertical-align: top;
+}
+
+#ship_display, #ship_cell
+{
+	border-collapse: collapse;
+	border: 1px solid white;
+	padding: 5px;
 }

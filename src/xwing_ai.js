@@ -327,6 +327,40 @@ var SHIP = tie;
 // ****************************************************************************
 // Helper Functions
 
+function display_ship( ship )
+{
+	var data;
+	// image
+	data = '<img src="' + ship.image + '" alt="' + ship.name + '">';
+
+	// name
+	data += ship.name + "<br>";
+	
+	// Tables (closing, away)
+	data += '<table id="ship_display">';
+	for( var dir=0; dir < ship.closing.length; dir++ )
+	{
+		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + CLOSING + "</td>";
+		for( var item=0; item < ship.closing[dir].length; item++ )
+		{
+			data += "<td id=\"ship_cell\">" + ship.closing[dir][item] + "</td>";
+		}
+		data += "</tr>";
+	
+		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + AWAY + "</td>";
+		for( var item=0; item < ship.away[dir].length; item++ )
+		{
+			data += "<td id=\"ship_cell\">" + ship.away[dir][item] + "</td>";
+		}
+		data += "</tr>";
+	}
+	data += "</table>";
+	
+	data += "<hr>";
+	
+	document.getElementById( ship.name ).innerHTML = data;
+}
+
 function get_ship()
 {
 	var selection = 0;
@@ -408,6 +442,14 @@ function movement( direction, heading )
 	// Update HTML with selection and action
 	document.getElementById('selection').innerHTML = selection;
 	document.getElementById('output').innerHTML = formatted;
+}
+
+function display_ships()
+{
+	for( var ship=0; ship < ships.length; ship++ )
+	{
+		display_ship( ships[ship] );
+	}
 }
 
 -->

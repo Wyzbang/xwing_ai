@@ -15,8 +15,8 @@
 		<img class=applet_logo src="img/applet_logo.png" alt="AI"> 
 	</div>
 	<div id="links">
-		<a href="help.htm"><img class=help_icon src="img/help.png" alt="Fantasy Flight Games"></a>
-		<a href="info.htm"><img class=info_icon src="img/info.png" alt="StarWars: X-wing Minitures"></a>
+		<a href="help.htm"><img class=help_icon src="img/help.png" alt="help"></a>
+		<a href="info.htm"><img class=info_icon src="img/info.png" alt="info"></a>
 	</div>
 </div>
 
@@ -78,8 +78,8 @@
 
 <div id="diagram">
 <b>Enemy ship's location and orientation:</b><br><br>
-<table>
-	<tr>
+<table id="direction_grid">
+	<tr id="direction_row">
 		<td>
 			<input type="image" onclick="movement(DIR_315, AWAY)" src="img/button_up_left.png" />
 			<br>
@@ -96,7 +96,7 @@
 			<input type="image" onclick="movement(DIR_045, CLOSING)" src="img/button_down_left.png" />			
 		</td>
 	</tr>
-	<tr>
+	<tr id="direction_row">
 		<td>
 			<input type="image" onclick="movement(DIR_270, AWAY)" src="img/button_left.png" />
 			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />			
@@ -109,7 +109,7 @@
 			<input type="image" onclick="movement(DIR_090, AWAY)" src="img/button_right.png" />
 		</td>
 	</tr>
-	<tr>
+	<tr id="direction_row">
 		<td>
 			<input type="image" onclick="movement(DIR_225, CLOSING)" src="img/button_up_right.png" />			
 			<br>
