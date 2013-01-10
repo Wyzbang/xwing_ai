@@ -259,24 +259,24 @@ slave1.difficult = new Array( K(3), K(4) );
 
 // AI choices
 slave1.closing = new Array();
-slave1.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.closing[0] = new Array( BL(3), BR(3), F(2),  F(2),  K(3),  K(4) );
+slave1.closing[1] = new Array( F(1),  BR(3), BR(3), BR(3), TR(3), TR(2) );
+slave1.closing[2] = new Array( TR(2), TR(2), TR(3), TR(3), K(3),  K(4) );
+slave1.closing[3] = new Array( TR(2), TR(2), TR(3), K(3),  K(4),  K(4) );
+slave1.closing[4] = new Array( F(4),  TL(3), TR(3), K(3),  K(4),  K(4) );
+slave1.closing[5] = new Array( TL(2), TL(2), TL(3), K(3),  K(4),  K(4) );
+slave1.closing[6] = new Array( TL(2), TL(2), TL(3), TL(3), K(3),  K(3) );
+slave1.closing[7] = new Array( F(1),  BL(3), BL(3), BL(3), TL(3), TL(2) );
 
 slave1.away = new Array();
-slave1.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-slave1.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+slave1.away[0] = new Array( F(4),  F(4),  F(3),  F(3),  F(2),  F(2) );
+slave1.away[1] = new Array( BR(3), BR(3), BR(3), BR(3), F(3),  F(4) );
+slave1.away[2] = new Array( TR(2), TR(2), BR(2), BR(3), TR(3), TR(3) );
+slave1.away[3] = new Array( TR(3), TR(3), TR(3), K(3),  K(3),  K(4) );
+slave1.away[4] = new Array( TL(2), TR(2), K(3),  K(3),  K(3),  K(3) );
+slave1.away[5] = new Array( TL(2), TL(3), TL(3), K(3),  K(3),  K(4) );
+slave1.away[6] = new Array( TL(2), TL(2), BL(2), BL(3), TL(3), TL(3) );
+slave1.away[7] = new Array( BL(3), BL(3), BL(3), BL(3), F(3),  F(4) );
 
 // ****************************************************************************
 // Millenium Falcon
@@ -289,24 +289,24 @@ falcon.difficult = new Array( K(3), K(4) );
 
 // AI choices
 falcon.closing = new Array();
-falcon.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(3),  K(4) );
+falcon.closing[1] = new Array( F(1),  BR(3), BR(2), BR(2), TR(2), TR(1) );
+falcon.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(4) );
+falcon.closing[3] = new Array( TR(1), TR(1), TR(2), K(3),  K(4),  K(4) );
+falcon.closing[4] = new Array( F(4),  TL(2), TR(2), K(3),  K(4),  K(4) );
+falcon.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(4),  K(4) );
+falcon.closing[6] = new Array( TL(1), TL(1), TL(2), TL(2), K(3),  K(3) );
+falcon.closing[7] = new Array( F(1),  BL(3), BL(2), BL(2), TL(2), TL(1) );
 
 falcon.away = new Array();
-falcon.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-falcon.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+falcon.away[0] = new Array( F(4),  F(4),  F(3),  F(3),  F(2),  F(2) );
+falcon.away[1] = new Array( BR(2), BR(2), BR(3), BR(3), F(3),  F(4) );
+falcon.away[2] = new Array( TR(1), TR(1), BR(1), BR(2), TR(2), TR(2) );
+falcon.away[3] = new Array( TR(2), TR(2), TR(2), K(3),  K(3),  K(4) );
+falcon.away[4] = new Array( TL(1), TR(1), K(3),  K(3),  K(3),  K(3) );
+falcon.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(4) );
+falcon.away[6] = new Array( TL(1), TL(1), BL(1), BL(2), TL(2), TL(2) );
+falcon.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(3),  F(4) );
 
 // ****************************************************************************
 // Ships
