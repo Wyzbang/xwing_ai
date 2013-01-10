@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.3
+                  v1.4 Beta 1
 =========================================
 
 -------------------
@@ -30,9 +30,11 @@ Open "index.html" in a browser
 Change History
 --------------
 
-10/17/2012	Added Multiple ship support and AI for Tie Advanced and X-Wing
-10/27/2012	Converted several images to smaller files, Added infrastucture for Wave-2 ships
-10/29/2012	Added Y-Wing AI, Converted from radio to image buttons for ships
+10/17/2012	1.1 	Added Multiple ship support and AI for Tie Advanced and X-Wing
+10/27/2012	1.2 	Converted several images to smaller files, Added infrastucture for Wave-2 ships
+10/29/2012	1.3 	Added Y-Wing AI, Converted from radio to image buttons for ships
+01/09/2012	1.4B1	Added AI for YT-1300 and Firespray-31
+					FIX: TieInteceptor image name case-sensitivity problem
 
 --------------
 Known Problems
