@@ -28,6 +28,20 @@ var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 var AWAY = "Heading away";
 var CLOSING = "Closing";
 
+// ACTIONS  (note: each action should be a list item)
+TARGET_LOCK =  "<li>Obtain <b>Target-Lock</b> on targeted ship as a free action.</li>";
+TARGET_LOCK += "Clear Target Lock at end of turn.<br>";
+
+BARREL_ROLL =  "<li>If this will put the AI ship out of firing enemy ship firing arc choose <b>Barrel-Roll</b></li>";
+BARREL_ROLL += "<li>If this will target into AI ship's firing arc choose <b>Barrel-Roll</b></li>";
+
+BOOST =  "<li>BOOST - TBD";
+
+FOCUS1 = "<li>If target is in a firing arc choose <b>Focus</b></li>";
+FOCUS2 = "<li>Always use Focus</li>";
+
+EVADE  = "<li>Choose <b>Evade</b></li>";
+
 // ****************************************************************************
 // Moves
 
@@ -73,9 +87,10 @@ function K( distance )
 
 var	tie = new Object();
 tie.name = "Tie Fighter";
-tie.image = "img/tie.png"
+tie.image = "img/tie.png";
 tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
-tie.difficult = new Array( K(3), K(4) );                                               
+tie.difficult = new Array( K(3), K(4) );  
+tie.actions = BARREL_ROLL + FOCUS1 + EVADE;
 
 // AI choices
 tie.closing = new Array();
@@ -87,7 +102,7 @@ tie.closing[4] = new Array( K(4),  K(3),  K(3),  TL(3), TR(3), F(5)  );
 tie.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(4),  K(4) );
 tie.closing[6] = new Array( K(4),  K(3),  TL(2), TL(2), TL(1), TL(1) );
 tie.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
-	
+
 tie.away = new Array();
 tie.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
 tie.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
@@ -106,6 +121,7 @@ tieAdvanced.name = "Tie Advanced";
 tieAdvanced.image = "img/TieAdvanced.png";
 tieAdvanced.simple = new Array( BL(1), BR(1), F(2), F(3) );
 tieAdvanced.difficult = new Array( K(4) );
+tieAdvanced.actions = TARGET_LOCK + BARREL_ROLL + FOCUS1 + EVADE;
 
 // AI choices
 tieAdvanced.closing = new Array();
@@ -136,6 +152,7 @@ xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
 xwing.difficult = new Array( K(4) );                                               
+xwing.actions = TARGET_LOCK + FOCUS2;
 
 // AI choices
 xwing.closing = new Array();
@@ -147,7 +164,7 @@ xwing.closing[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(3), TR(3) );
 xwing.closing[5] = new Array( K(4),  K(4),  K(4),  TL(2), TL(2), BL(1) );
 xwing.closing[6] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(3) );
 xwing.closing[7] = new Array( F(1),  BL(1), BL(2), BL(2), TL(2), TL(3) );
-	
+
 xwing.away = new Array();
 xwing.away[0] = new Array( F(4),  F(3),  F(3),  F(2),  F(2),  F(1) );
 xwing.away[1] = new Array( BR(3), BR(2), TR(2), TR(2), TR(3), TR(3) );
@@ -165,7 +182,8 @@ var	ywing = new Object();
 ywing.name = "Y-Wing";
 ywing.image = "img/ywing.png";
 ywing.simple = new Array( F(1), F(2) );
-ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );                                              
+ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );
+ywing.actions = TARGET_LOCK + FOCUS2;
 
 // AI choices
 ywing.closing = new Array();
@@ -177,7 +195,7 @@ ywing.closing[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
 ywing.closing[5] = new Array( K(4),  K(4),  K(4),  TL(2), TL(2), BL(1) );
 ywing.closing[6] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(2) );
 ywing.closing[7] = new Array( F(1),  BL(1), BL(2), BL(2), TL(2), TL(2) );
-	
+
 ywing.away = new Array();
 ywing.away[0] = new Array( F(3),  F(3),  F(2),  F(2),  F(2),  F(1) );
 ywing.away[1] = new Array( BR(3), BR(2), TR(2), TR(2), TR(2), TR(3) );
@@ -196,27 +214,28 @@ tieInterceptor.name = "Tie Interceptor";
 tieInterceptor.image = "img/tieInterceptor.png";
 tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
 tieInterceptor.difficult = new Array( K(3), K(5) );   
+tieInterceptor.actions = BARREL_ROLL + BOOST + FOCUS1 + EVADE;
 
 // AI choices
 tieInterceptor.closing = new Array();
-tieInterceptor.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(5),  K(5) );
+tieInterceptor.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(2), TR(1)  );
+tieInterceptor.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(5) );
+tieInterceptor.closing[3] = new Array( K(5),  K(5),  K(3),  TR(2), TR(1), TR(1)  );
+tieInterceptor.closing[4] = new Array( K(5),  K(3),  K(3),  TL(3), TR(3), F(5)  );
+tieInterceptor.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(5),  K(5) );
+tieInterceptor.closing[6] = new Array( K(5),  K(3),  TL(2), TL(2), TL(1), TL(1) );
+tieInterceptor.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
 
 tieInterceptor.away = new Array();
-tieInterceptor.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-tieInterceptor.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+tieInterceptor.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
+tieInterceptor.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
+tieInterceptor.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), TR(1) );
+tieInterceptor.away[3] = new Array( K(5),  K(3),  K(3),  TR(2), TR(2), TR(1) );
+tieInterceptor.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
+tieInterceptor.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
+tieInterceptor.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
+tieInterceptor.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
 // ****************************************************************************
 // A-Wing
@@ -226,27 +245,28 @@ awing.name = "A-Wing";
 awing.image = "img/awing.png";
 awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2));
 awing.difficult = new Array( K(3), K(5) );   
+awing.actions = TARGET_LOCK + BOOST + FOCUS1 + EVADE;
 
 // AI choices
 awing.closing = new Array();
-awing.closing[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.closing[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(5),  K(5) );
+awing.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(2), TR(1)  );
+awing.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(5) );
+awing.closing[3] = new Array( K(5),  K(5),  K(3),  TR(2), TR(1), TR(1)  );
+awing.closing[4] = new Array( K(5),  K(3),  K(3),  TL(3), TR(3), F(5)  );
+awing.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(5),  K(5) );
+awing.closing[6] = new Array( K(5),  K(3),  TL(2), TL(2), TL(1), TL(1) );
+awing.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
 
 awing.away = new Array();
-awing.away[0] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[1] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[2] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[3] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[4] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[5] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[6] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
-awing.away[7] = new Array( "NA", "NA", "NA", "NA", "NA", "NA" );
+awing.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
+awing.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
+awing.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), TR(1) );
+awing.away[3] = new Array( K(5),  K(3),  K(3),  TR(2), TR(2), TR(1) );
+awing.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
+awing.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
+awing.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
+awing.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
 // ****************************************************************************
 // Slave 1
@@ -256,6 +276,8 @@ slave1.name = "Firespray-31";
 slave1.image = "img/slave1.png";
 slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
 slave1.difficult = new Array( K(3), K(4) );   
+
+slave1.actions = TARGET_LOCK + FOCUS1 + EVADE;
 
 // AI choices
 slave1.closing = new Array();
@@ -286,6 +308,8 @@ falcon.name = "YT-1300";
 falcon.image = "img/falcon.png";
 falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
 falcon.difficult = new Array( K(3), K(4) );   
+
+falcon.actions = TARGET_LOCK + FOCUS2;
 
 // AI choices
 falcon.closing = new Array();
@@ -331,10 +355,11 @@ function display_ship( ship )
 {
 	var data;
 	// image
-	data = '<img src="' + ship.image + '" alt="' + ship.name + '">';
-
+	data = '<div style="font-size: x-large; font-weight: bold"><img src="' + ship.image + '" alt="' + ship.name + '">';
+	
 	// name
-	data += ship.name + "<br>";
+	data += ship.name + "</div>";
+	data += "<ol>" + ship.actions + "</ol>";
 	
 	// Tables (closing, away)
 	data += '<table id="ship_display">';
@@ -378,13 +403,13 @@ function get_ship()
 
 function set_ship( ship )
 {
-	SHIP = ships[ ship ]; 
 	document.getElementById('ship_image').src = ships[ ship ].image;
 	document.getElementById('output-label').innerHTML = ships[ ship ].name;
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
+	document.getElementById('actions-text').innerHTML = "<ol>" + ships[ ship ].actions + "</ol>";
 }
-	
+
 function pick()
 {
 	var pick=Math.floor(Math.random()*6);
@@ -438,13 +463,13 @@ function movement( direction, heading )
 	}
 	
 	var formatted = format_manuver( SHIP, action );
-
+	
 	// Update HTML with selection and action
 	document.getElementById('selection').innerHTML = selection;
 	document.getElementById('output').innerHTML = formatted;
 }
 
-function display_ships()
+function display_ship_tables()
 {
 	for( var ship=0; ship < ships.length; ship++ )
 	{

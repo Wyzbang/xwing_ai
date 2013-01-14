@@ -7,7 +7,7 @@
 <script src="src/xwing_ai.js">
 </script>
 </head>
-<body>
+<body onload=set_ship(SHIP_TIE)>
 <div id="header">
 	<div id="logos">
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
@@ -83,35 +83,35 @@
 		<td>
 			<input type="image" onclick="movement(DIR_315, AWAY)" src="img/button_up_left.png" />
 			<br>
-			<input type="image" onclick="movement(DIR_315, CLOSING)" src="img/button_down_right.png" />			
+			<input type="image" onclick="movement(DIR_315, CLOSING)" src="img/button_down_right.png" />
 		</td>
 		<td text-align=center>
 			<input type="image" onclick="movement(DIR_000, AWAY)" src="img/button_up.png" />
 			<br>
-			<input type="image" onclick="movement(DIR_000, CLOSING)" src="img/button_down.png" />			
+			<input type="image" onclick="movement(DIR_000, CLOSING)" src="img/button_down.png" />
 		</td>
 		<td>
 			<input type="image" onclick="movement(DIR_045, AWAY)" src="img/button_up_right.png" />
 			<br>
-			<input type="image" onclick="movement(DIR_045, CLOSING)" src="img/button_down_left.png" />			
+			<input type="image" onclick="movement(DIR_045, CLOSING)" src="img/button_down_left.png" />
 		</td>
 	</tr>
 	<tr id="direction_row">
 		<td>
 			<input type="image" onclick="movement(DIR_270, AWAY)" src="img/button_left.png" />
-			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />			
+			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />
 		</td>
 		<td>
 			<img id="ship_image" src="img/tie.png">
 		</td>
 		<td>
-			<input type="image" onclick="movement(DIR_090, CLOSING)" src="img/button_left.png" />			
+			<input type="image" onclick="movement(DIR_090, CLOSING)" src="img/button_left.png" />
 			<input type="image" onclick="movement(DIR_090, AWAY)" src="img/button_right.png" />
 		</td>
 	</tr>
 	<tr id="direction_row">
 		<td>
-			<input type="image" onclick="movement(DIR_225, CLOSING)" src="img/button_up_right.png" />			
+			<input type="image" onclick="movement(DIR_225, CLOSING)" src="img/button_up_right.png" />
 			<br>
 			<input type="image" onclick="movement(DIR_225, AWAY)" src="img/button_down_left.png" />
 		</td>
@@ -121,12 +121,12 @@
 			<input type="image" onclick="movement(DIR_180, AWAY)" src="img/button_down.png" />
 		</td>
 		<td>
-			<input type="image" onclick="movement(DIR_135, CLOSING)" src="img/button_up_left.png" />			
+			<input type="image" onclick="movement(DIR_135, CLOSING)" src="img/button_up_left.png" />
 			<br>
 			<input type="image" onclick="movement(DIR_135, AWAY)" src="img/button_down_right.png" />
 		</td>
 	</tr>
-</table>			
+</table>
 
 </div>
 
@@ -139,7 +139,11 @@
 		<div id="output-label">Tie Fighter</div>
 		<div id="output"><p>Press a direction and heading</p></div>
 	</div>
-</div>	
+	<div>
+		<div id="actions-label">Actions</div>
+		<div id="actions-text"></div>
+	</div>
+</div>
 </div>
 
 <br><br><br>

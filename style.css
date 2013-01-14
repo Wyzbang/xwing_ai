@@ -64,6 +64,7 @@ table
 	display: table-cell;
 	vertical-align: top;
 	text-align: center;
+	width: 100px;
 }
 
 .ship_button
@@ -90,6 +91,7 @@ label:hover {
 	display: table-cell;
 	padding-left: 50px;
 	text-align: center;
+	width: 350px;
 }
 
 #results
@@ -109,6 +111,16 @@ label:hover {
 #output-label
 {
 	color: blue;
+}
+
+#actions-label
+{
+	color: blue;
+}
+
+#actions-text
+{
+	font-size: large;
 }
 
 #footer
