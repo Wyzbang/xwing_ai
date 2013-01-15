@@ -8,6 +8,10 @@
 // 10/28/2012	Added Y-Wing AI choices
 // 12/12/2012	Convert movement string to function calls
 //				Added Tie-Interceptor, A-Wing, YT-1300 (Falcon), Firspare(Slave 1)
+// 01/09/2012	Added 
+// 01/14/2012	Added A-Wing and Tie Interceptor AI manuevers
+//				Updated actions for Wave 2 ships
+//				Added code to set actions text on main page
 
 // ****************************************************************************
 // Constants
@@ -28,19 +32,27 @@ var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 var AWAY = "Heading away";
 var CLOSING = "Closing";
 
-// ACTIONS  (note: each action should be a list item)
-TARGET_LOCK =  "<li>Obtain <b>Target-Lock</b> on targeted ship as a free action.</li>";
-TARGET_LOCK += "Clear Target Lock at end of turn.<br>";
+// ACTIONS
+var TARGET_LOCK = 0x1;
+var BARREL_ROLL = 0x2;
+var BOOST       = 0x4;
+var FOCUS       = 0x8;
+var EVADE       = 0x10;
 
-BARREL_ROLL =  "<li>If this will put the AI ship out of firing enemy ship firing arc choose <b>Barrel-Roll</b></li>";
-BARREL_ROLL += "<li>If this will target into AI ship's firing arc choose <b>Barrel-Roll</b></li>";
+// ACTIONS TEXT
+var TARGET_LOCK_TEXT =  "Obtain <b>Target-Lock</b> on targeted ship as a free action.<br>";
+TARGET_LOCK_TEXT += "Clear Target Lock at end of turn.";
 
-BOOST =  "<li>BOOST - TBD";
+var BARREL_ROLL_TEXT1 = "If this will target into AI ship's firing arc choose <b>Barrel-Roll</b>";
+var BARREL_ROLL_TEXT2 = "If this will put the AI ship out of firing enemy ship firing arc choose <b>Barrel-Roll</b>";
 
-FOCUS1 = "<li>If target is in a firing arc choose <b>Focus</b></li>";
-FOCUS2 = "<li>Always use Focus</li>";
+var BOOST_TEXT1 = "If this will target into AI ship's firing arc choose <b>Boost</b>";
+var BOOST_TEXT2 = "If this will put the AI ship out of firing enemy ship firing arc choose <b>Boost</b>";
 
-EVADE  = "<li>Choose <b>Evade</b></li>";
+var FOCUS_TEXT1 = "If target is in a firing arc choose <b>Focus</b>";
+var FOCUS_TEXT2 = "Always use Focus";
+
+var EVADE_TEXT = "Else Choose <b>Evade</b>";
 
 // ****************************************************************************
 // Moves
@@ -90,7 +102,7 @@ tie.name = "Tie Fighter";
 tie.image = "img/tie.png";
 tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
 tie.difficult = new Array( K(3), K(4) );  
-tie.actions = BARREL_ROLL + FOCUS1 + EVADE;
+tie.actions = ( BARREL_ROLL + FOCUS + EVADE );
 
 // AI choices
 tie.closing = new Array();
@@ -121,7 +133,7 @@ tieAdvanced.name = "Tie Advanced";
 tieAdvanced.image = "img/TieAdvanced.png";
 tieAdvanced.simple = new Array( BL(1), BR(1), F(2), F(3) );
 tieAdvanced.difficult = new Array( K(4) );
-tieAdvanced.actions = TARGET_LOCK + BARREL_ROLL + FOCUS1 + EVADE;
+tieAdvanced.actions = ( TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE );
 
 // AI choices
 tieAdvanced.closing = new Array();
@@ -152,7 +164,7 @@ xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
 xwing.difficult = new Array( K(4) );                                               
-xwing.actions = TARGET_LOCK + FOCUS2;
+xwing.actions = ( TARGET_LOCK + FOCUS );
 
 // AI choices
 xwing.closing = new Array();
@@ -183,7 +195,7 @@ ywing.name = "Y-Wing";
 ywing.image = "img/ywing.png";
 ywing.simple = new Array( F(1), F(2) );
 ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );
-ywing.actions = TARGET_LOCK + FOCUS2;
+ywing.actions = ( TARGET_LOCK + FOCUS );
 
 // AI choices
 ywing.closing = new Array();
@@ -214,7 +226,7 @@ tieInterceptor.name = "Tie Interceptor";
 tieInterceptor.image = "img/tieInterceptor.png";
 tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
 tieInterceptor.difficult = new Array( K(3), K(5) );   
-tieInterceptor.actions = BARREL_ROLL + BOOST + FOCUS1 + EVADE;
+tieInterceptor.actions = ( BARREL_ROLL + BOOST + FOCUS + EVADE );
 
 // AI choices
 tieInterceptor.closing = new Array();
@@ -244,8 +256,8 @@ var awing = new Object();
 awing.name = "A-Wing";
 awing.image = "img/awing.png";
 awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2));
-awing.difficult = new Array( K(3), K(5) );   
-awing.actions = TARGET_LOCK + BOOST + FOCUS1 + EVADE;
+awing.difficult = new Array( K(3), K(5) );
+awing.actions = ( TARGET_LOCK + BOOST + FOCUS + EVADE );
 
 // AI choices
 awing.closing = new Array();
@@ -276,8 +288,7 @@ slave1.name = "Firespray-31";
 slave1.image = "img/slave1.png";
 slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
 slave1.difficult = new Array( K(3), K(4) );   
-
-slave1.actions = TARGET_LOCK + FOCUS1 + EVADE;
+slave1.actions = ( TARGET_LOCK + FOCUS + EVADE );
 
 // AI choices
 slave1.closing = new Array();
@@ -308,8 +319,7 @@ falcon.name = "YT-1300";
 falcon.image = "img/falcon.png";
 falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
 falcon.difficult = new Array( K(3), K(4) );   
-
-falcon.actions = TARGET_LOCK + FOCUS2;
+falcon.actions = ( TARGET_LOCK + FOCUS );
 
 // AI choices
 falcon.closing = new Array();
@@ -359,7 +369,7 @@ function display_ship( ship )
 	
 	// name
 	data += ship.name + "</div>";
-	data += "<ol>" + ship.actions + "</ol>";
+	data += format_actions( ship );
 	
 	// Tables (closing, away)
 	data += '<table id="ship_display">';
@@ -407,7 +417,7 @@ function set_ship( ship )
 	document.getElementById('output-label').innerHTML = ships[ ship ].name;
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
-	document.getElementById('actions-text').innerHTML = "<ol>" + ships[ ship ].actions + "</ol>";
+	document.getElementById('actions-text').innerHTML = format_actions( ships[ ship ] );
 }
 
 function pick()
@@ -434,6 +444,48 @@ function format_manuver( ship, manuver )
 	formatted += "</p>";
 	
 	return formatted;
+}
+
+function format_actions( ship )
+{
+	var actions = "<ol>";
+	
+	if( ship.actions & TARGET_LOCK )
+	{
+		actions += "<li>" + TARGET_LOCK_TEXT + "</li>";
+	}
+	
+	if( ship.actions & BARREL_ROLL )
+	{
+		actions += "<li>" + BARREL_ROLL_TEXT1 + "</li>";
+		actions += "<li>" + BARREL_ROLL_TEXT2 + "</li>";
+	}
+	
+	if( ship.actions & BOOST )
+	{
+		actions += "<li>" + BOOST_TEXT1 + "</li>";
+		actions += "<li>" + BOOST_TEXT2 + "</li>";
+	}
+	
+	if( ship.actions & FOCUS )
+	{
+		if( ship.actions & EVADE )
+		{
+			actions += "<li>" + FOCUS_TEXT1 + "</li>";
+		}
+		else
+		{
+			actions += "<li>" + FOCUS_TEXT2 + "</li>";
+		}
+	}
+	
+	if( ship.actions & EVADE )
+	{
+		actions += "<li>" + EVADE_TEXT + "</li>";
+	}
+	actions += "</ol>";
+	
+	return actions;
 }
 
 // ****************************************************************************
