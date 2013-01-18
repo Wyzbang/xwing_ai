@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.4 Beta 2
+                  v1.4.1
 =========================================
 
 -------------------
@@ -35,8 +35,9 @@ Change History
 10/29/2012	1.3 	Added Y-Wing AI, Converted from radio to image buttons for ships
 01/09/2013	1.4B1	Added AI for YT-1300 and Firespray-31
 					FIX: TieInteceptor image name case-sensitivity problem
-01/12/2013	1.4B2	Added AU fir A-Wing and Tie Interceptor
+01/12/2013	1.4		Added AU fir A-Wing and Tie Interceptor
 					Added actions section to main page
+01/17/2013	1.4.1	Fixed ship selection bug, was always selecting TieFighter table
 
 --------------
 Known Problems

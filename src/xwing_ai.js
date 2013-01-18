@@ -413,11 +413,15 @@ function get_ship()
 
 function set_ship( ship )
 {
+	// Update index html elements for the selected ship
 	document.getElementById('ship_image').src = ships[ ship ].image;
 	document.getElementById('output-label').innerHTML = ships[ ship ].name;
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('actions-text').innerHTML = format_actions( ships[ ship ] );
+	
+	// Set the global to the selected ship
+	SHIP = ships[ ship ];
 }
 
 function pick()
