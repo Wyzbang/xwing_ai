@@ -144,7 +144,7 @@ tieAdvanced.closing[3] = new Array( K(4),  K(4),  F(5),  TR(2), TR(2), BR(1) );
 tieAdvanced.closing[4] = new Array( K(4),  K(4),  K(4),  TL(3), TR(3), F(4) );
 tieAdvanced.closing[5] = new Array( BL(1), TL(2), TL(2), F(5),  K(4),  K(4) );
 tieAdvanced.closing[6] = new Array( K(4),  K(4),  BL(1), TL(2), TL(2), TL(2) );
-tieAdvanced.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2),   TL(3), TL(2) );
+tieAdvanced.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(3), TL(2) );
 
 tieAdvanced.away = new Array();
 tieAdvanced.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
@@ -361,39 +361,45 @@ var SHIP = tie;
 // ****************************************************************************
 // Helper Functions
 
-function display_ship( ship )
+function display_ship( ship_id )
 {
+	// Set the global to the selected ship
+	SHIP = ships[ ship_id ];
+	
 	var data;
+	data = '<div style="font-size: x-large; font-weight: bold">'
+	data += '<a name="' + SHIP.name + '"></a>'
+	
 	// image
-	data = '<div style="font-size: x-large; font-weight: bold"><img src="' + ship.image + '" alt="' + ship.name + '">';
+	data += '<img src="' + SHIP.image + '" alt="' + SHIP.name + '">';
 	
 	// name
-	data += ship.name + "</div>";
-	data += format_actions( ship );
+	data += SHIP.name + "</div>";
+	data += format_actions( SHIP );
 	
 	// Tables (closing, away)
 	data += '<table id="ship_display">';
-	for( var dir=0; dir < ship.closing.length; dir++ )
+	for( var dir=0; dir < SHIP.closing.length; dir++ )
 	{
 		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + CLOSING + "</td>";
-		for( var item=0; item < ship.closing[dir].length; item++ )
+		for( var item=0; item < SHIP.closing[dir].length; item++ )
 		{
-			data += "<td id=\"ship_cell\">" + ship.closing[dir][item] + "</td>";
+			manuever = format_manuver( SHIP, SHIP.closing[dir][item] );
+			data += "<td id=\"ship_cell\">" + manuever + "</td>";
 		}
 		data += "</tr>";
 	
 		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + AWAY + "</td>";
-		for( var item=0; item < ship.away[dir].length; item++ )
+		for( var item=0; item < SHIP.away[dir].length; item++ )
 		{
-			data += "<td id=\"ship_cell\">" + ship.away[dir][item] + "</td>";
+			manuever = format_manuver( SHIP, SHIP.away[dir][item] );
+			data += "<td id=\"ship_cell\">" + manuever + "</td>";
 		}
 		data += "</tr>";
 	}
 	data += "</table>";
 	
-	data += "<hr>";
-	
-	document.getElementById( ship.name ).innerHTML = data;
+	document.getElementById( "table" ).innerHTML = data;
 }
 
 function get_ship()
@@ -411,28 +417,29 @@ function get_ship()
 	return ships[ selection ];
 }
 
-function set_ship( ship )
+function set_ship( ship_id )
 {
+	// Set the global to the selected ship
+	SHIP = ships[ ship_id ];
+	
 	// Update index html elements for the selected ship
-	document.getElementById('ship_image').src = ships[ ship ].image;
-	document.getElementById('output-label').innerHTML = ships[ ship ].name;
+	document.getElementById('ship_image').src = SHIP.image;
+	document.getElementById('output-label').innerHTML = SHIP.name;
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
-	document.getElementById('actions-text').innerHTML = format_actions( ships[ ship ] );
-	
-	// Set the global to the selected ship
-	SHIP = ships[ ship ];
+	document.getElementById('actions-text').innerHTML = format_actions( SHIP );
 }
 
-function pick()
+function pick( options )
 {
-	var pick=Math.floor(Math.random()*6);
-	return pick;
+	var size=options.length;
+	var choice=Math.floor(Math.random()*size);
+	return options[choice];
 }
 
 function format_manuver( ship, manuver )
 {
-	var formatted = "<p>"; // = "<span style=color:blue>" + ship.name + ": </span><br>";
+	var formatted = "";
 	if( ship.simple.indexOf( manuver ) > -1 )
 	{
 		formatted += "<span style=color:green>" + manuver + "</span>";
@@ -445,7 +452,6 @@ function format_manuver( ship, manuver )
 	{
 		formatted += "<span>" + manuver + "</span>";
 	}
-	formatted += "</p>";
 	
 	return formatted;
 }
@@ -499,38 +505,28 @@ function movement( direction, heading )
 {
 	// direction: n=0, ne=1, e=2, se=3, s=4, sw=5, w=6,nw=7
 	// heading: away, closing
-	var selection = "<p>"; // = "<span style=color:blue>Enemy: </span><br>";
+	var selection = "<p>";
 	selection += heading + " at " + DIRECTION[direction] + " o'clock</p>";
 	
-	var choice = pick();
-		
-	// Set the Action
-	var action;
+	// Select the manuever randonly from appropriate ship table
+	var manuever;
 	switch( heading )
 	{
 	case AWAY:
-		action = SHIP.away[direction][choice];
+		manuever = pick( SHIP.away[direction] );
 		break;
 	case CLOSING:
-		action = SHIP.closing[direction][choice];
+		manuever = pick( SHIP.closing[direction] );
 		break;
 	default:
-		action = "invalid";
+		manuever = "invalid";
 	}
 	
-	var formatted = format_manuver( SHIP, action );
+	var formatted = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
 	
-	// Update HTML with selection and action
+	// Update HTML with selection and manuever
 	document.getElementById('selection').innerHTML = selection;
 	document.getElementById('output').innerHTML = formatted;
-}
-
-function display_ship_tables()
-{
-	for( var ship=0; ship < ships.length; ship++ )
-	{
-		display_ship( ships[ship] );
-	}
 }
 
 -->

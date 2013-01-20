@@ -30,14 +30,15 @@ Open "index.html" in a browser
 Change History
 --------------
 
-10/17/2012	1.1 	Added Multiple ship support and AI for Tie Advanced and X-Wing
-10/27/2012	1.2 	Converted several images to smaller files, Added infrastucture for Wave-2 ships
-10/29/2012	1.3 	Added Y-Wing AI, Converted from radio to image buttons for ships
+10/17/2012	1.1.0	Added Multiple ship support and AI for Tie Advanced and X-Wing
+10/27/2012	1.2.0	Converted several images to smaller files, Added infrastucture for Wave-2 ships
+10/29/2012	1.3.0	Added Y-Wing AI, Converted from radio to image buttons for ships
 01/09/2013	1.4B1	Added AI for YT-1300 and Firespray-31
 					FIX: TieInteceptor image name case-sensitivity problem
-01/12/2013	1.4		Added AU fir A-Wing and Tie Interceptor
+01/12/2013	1.4.0	Added AU fir A-Wing and Tie Interceptor
 					Added actions section to main page
 01/17/2013	1.4.1	Fixed ship selection bug, was always selecting TieFighter table
+01/19/2013	1.5.0	Added Ships page, Minor reforatting
 
 --------------
 Known Problems

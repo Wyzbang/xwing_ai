@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html manifest="src/xwing_ai.appcache">
 <head>
-<title>X-Wing Miniatures AI</title>
+<title>X-Wing Miniatures AI - Ship Info</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script src="src/xwing_ai.js">
 </script>
 </head>
 
-<body onload="display_ship_tables()">
+<body onload=display_ship(SHIP_TIE)>
 <div id="header">
 	<div id="logos">
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
@@ -16,18 +16,79 @@
 		<img class=applet_logo src="img/applet_logo.png" alt="AI"> 
 	</div>
 	<div id="links">
-		<a href="index.htm"><img class=help_icon src="img/star.png" alt="index"></a>
+		<a href="index.htm"><img class=index_icon src="img/star.png" alt="index"></a>
 		<a href="help.htm"><img class=help_icon src="img/help.png" alt="help"></a>
 		<a href="info.htm"><img class=info_icon src="img/info.png" alt="info"></a>
 	</div>
 </div>
-<div id="Tie Fighter"></div>
-<div id="Tie Advanced"></div>
-<div id="Tie Interceptor"></div>
-<div id="Firespray-31"></div>
-<div id="X-Wing"></div>
-<div id="Y-Wing"></div>
-<div id="A-Wing"></div>
-<div id="YT-1300"></div>
+
+<div id="main">
+
+<div id="ships">
+<b>AI Ship:</b><br><br>
+<form action="demo_form.asp" name="ship_radio">
+
+<label>
+<input type="radio" name="ship_selection" id="tie" value=SHIP_TIE onclick="display_ship(SHIP_TIE)" checked="checked" hidden=true />
+<img class=ship_button src="img/tie.png">
+</label>
+
+<label>
+<input type="radio" name="ship_selection" id="tieAdvanced" value=SHIP_TIE_ADVACED onclick="display_ship(SHIP_TIE_ADVANCED)" hidden=true />
+<img class=ship_button src="img/TieAdvanced.png">
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="ship_selection" id="tieInterceptor" value=SHIP_TIE_INTERCEPTOR onclick="display_ship(SHIP_TIE_INTERCEPTOR)" hidden=true />
+<img class=ship_button src="img/tieInterceptor.png">
+</label>
+
+<label>
+<input type="radio" name="ship_selection" id="slave1" value=SHIP_SLAVE1 onclick="display_ship(SHIP_SLAVE1)" hidden=true />
+<img class=ship_button src="img/slave1.png">
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="ship_selection" id="xwing" value=SHIP_XWING onclick="display_ship(SHIP_XWING)" hidden=true />
+<img class=ship_button src="img/xwing.png">
+</label>
+
+<label>
+<input type="radio" name="ship_selection" id="ywing" value=SHIP_YWING onclick="display_ship(SHIP_YWING)" hidden=true />
+<img class=ship_button src="img/ywing.png">
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="ship_selection" id="awing" value=SHIP_AWING onclick="display_ship(SHIP_AWING)" hidden=true />
+<img class=ship_button src="img/awing.png">
+</label>
+
+<label>
+<input type="radio" name="ship_selection" id="falcon" value=SHIP_FALCON onclick="display_ship(SHIP_FALCON)" hidden=true />
+<img class=ship_button src="img/falcon.png">
+</label>
+<br>
+
+</form>
+</div>
+
+<div id="table">
+</div>
+
+</div>
+
+<div id=footer>
+<br><br><br>
+<hr>
+Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved.<br>
+Fantasy Flight Games, the FFG logo and X-Wing Miniatures Game are trademarks of Fantasy Flight Publishing, Inc.<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">X-Wing Miniatures AI</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="mailto:rberrett4@gmail.com" property="cc:attributionName" rel="cc:attributionURL">Ralph Berrett</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</div>
 </body>
 </html>

@@ -98,14 +98,26 @@ label:hover {
 {
 	display: table-cell;
 	padding-left: 50px;
-	font-size: x-large;
+	font-size: large;
 	font-weight: bold;
 	vertical-align: middle;
+}
+
+#table
+{
+	display: table-cell;
+	padding-left: 50px;
+	text-align: left;
 }
 
 #selection-label
 {
 	color: blue;
+}
+
+#output
+{
+	font-size: x-large;
 }
 
 #output-label
