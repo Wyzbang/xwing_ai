@@ -110,24 +110,23 @@ label:hover {
 	text-align: left;
 }
 
-#selection-label
+.label
 {
-	color: blue;
+	color: teal;
 }
 
-#output
+.output
 {
+	display: table-cell;
 	font-size: x-large;
+	width: 150px;
 }
 
-#output-label
+.seperator
 {
-	color: blue;
-}
-
-#actions-label
-{
-	color: blue;
+	display: table-cell;
+	font-size: x-large;
+	width: 50px;
 }
 
 #actions-text
@@ -159,7 +158,7 @@ label:hover {
 	vertical-align: top;
 }
 
-#ship_display, #ship_cell
+table.ship_table, td.ship_cell
 {
 	border-collapse: collapse;
 	border: 1px solid white;

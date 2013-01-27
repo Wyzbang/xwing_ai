@@ -31,6 +31,7 @@ var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 // HEADING
 var AWAY = "Heading away";
 var CLOSING = "Closing";
+var FAR = "Out of Range";
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -125,6 +126,16 @@ tie.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(4) );
 tie.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
 tie.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
+tie.far = new Array();
+tie.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
+tie.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
+tie.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1)  );
+tie.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
+tie.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
+tie.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
+tie.far[6] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
+tie.far[7] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
+
 // ****************************************************************************
 // Tie Advanced
 
@@ -155,6 +166,16 @@ tieAdvanced.away[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
 tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), K(4),  K(4),  K(4) );
 tieAdvanced.away[6] = new Array( BL(1), TL(2), TL(2), BL(2), TL(3), TL(3) );
 tieAdvanced.away[7] = new Array( F(4),  F(3),  BR(3), BR(3), BL(2), BL(2) );
+
+tieAdvanced.far = new Array();
+tieAdvanced.far[0] = new Array( "" );
+tieAdvanced.far[1] = new Array( "" );
+tieAdvanced.far[2] = new Array( "" );
+tieAdvanced.far[3] = new Array( "" );
+tieAdvanced.far[4] = new Array( "" );
+tieAdvanced.far[5] = new Array( "" );
+tieAdvanced.far[6] = new Array( "" );
+tieAdvanced.far[7] = new Array( "" );
 
 // ****************************************************************************
 // X-Wing
@@ -187,6 +208,16 @@ xwing.away[5] = new Array( K(4),  K(4),  TL(3), TL(3), TL(2), TL(2) );
 xwing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(3), TL(3) );
 xwing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(3), TL(3) );
 
+xwing.far = new Array();
+xwing.far[0] = new Array( "" );
+xwing.far[1] = new Array( "" );
+xwing.far[2] = new Array( "" );
+xwing.far[3] = new Array( "" );
+xwing.far[4] = new Array( "" );
+xwing.far[5] = new Array( "" );
+xwing.far[6] = new Array( "" );
+xwing.far[7] = new Array( "" );
+
 // ****************************************************************************
 // Y-Wing
 
@@ -217,6 +248,16 @@ ywing.away[4] = new Array( K(4),  K(4),  K(4),  K(4),  TL(2), TR(2) );
 ywing.away[5] = new Array( K(4),  K(4),  TL(3), TL(3), TL(2), TL(2) );
 ywing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(2), TL(3) );
 ywing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(2), TL(3) );
+
+ywing.far = new Array();
+ywing.far[0] = new Array( "" );
+ywing.far[1] = new Array( "" );
+ywing.far[2] = new Array( "" );
+ywing.far[3] = new Array( "" );
+ywing.far[4] = new Array( "" );
+ywing.far[5] = new Array( "" );
+ywing.far[6] = new Array( "" );
+ywing.far[7] = new Array( "" );
 
 // ****************************************************************************
 // Tie Interceptor
@@ -249,6 +290,16 @@ tieInterceptor.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
 tieInterceptor.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
 tieInterceptor.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
+tieInterceptor.far = new Array();
+tieInterceptor.far[0] = new Array( "" );
+tieInterceptor.far[1] = new Array( "" );
+tieInterceptor.far[2] = new Array( "" );
+tieInterceptor.far[3] = new Array( "" );
+tieInterceptor.far[4] = new Array( "" );
+tieInterceptor.far[5] = new Array( "" );
+tieInterceptor.far[6] = new Array( "" );
+tieInterceptor.far[7] = new Array( "" );
+
 // ****************************************************************************
 // A-Wing
 
@@ -279,6 +330,16 @@ awing.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
 awing.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
 awing.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
 awing.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
+
+awing.far = new Array();
+awing.far[0] = new Array( "" );
+awing.far[1] = new Array( "" );
+awing.far[2] = new Array( "" );
+awing.far[3] = new Array( "" );
+awing.far[4] = new Array( "" );
+awing.far[5] = new Array( "" );
+awing.far[6] = new Array( "" );
+awing.far[7] = new Array( "" );
 
 // ****************************************************************************
 // Slave 1
@@ -311,6 +372,16 @@ slave1.away[5] = new Array( TL(2), TL(3), TL(3), K(3),  K(3),  K(4) );
 slave1.away[6] = new Array( TL(2), TL(2), BL(2), BL(3), TL(3), TL(3) );
 slave1.away[7] = new Array( BL(3), BL(3), BL(3), BL(3), F(3),  F(4) );
 
+slave1.far = new Array();
+slave1.far[0] = new Array( "" );
+slave1.far[1] = new Array( "" );
+slave1.far[2] = new Array( "" );
+slave1.far[3] = new Array( "" );
+slave1.far[4] = new Array( "" );
+slave1.far[5] = new Array( "" );
+slave1.far[6] = new Array( "" );
+slave1.far[7] = new Array( "" );
+
 // ****************************************************************************
 // Millenium Falcon
 
@@ -341,6 +412,16 @@ falcon.away[4] = new Array( TL(1), TR(1), K(3),  K(3),  K(3),  K(3) );
 falcon.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(4) );
 falcon.away[6] = new Array( TL(1), TL(1), BL(1), BL(2), TL(2), TL(2) );
 falcon.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(3),  F(4) );
+
+falcon.far = new Array();
+falcon.far[0] = new Array( "" );
+falcon.far[1] = new Array( "" );
+falcon.far[2] = new Array( "" );
+falcon.far[3] = new Array( "" );
+falcon.far[4] = new Array( "" );
+falcon.far[5] = new Array( "" );
+falcon.far[6] = new Array( "" );
+falcon.far[7] = new Array( "" );
 
 // ****************************************************************************
 // Ships
@@ -378,22 +459,43 @@ function display_ship( ship_id )
 	data += format_actions( SHIP );
 	
 	// Tables (closing, away)
-	data += '<table id="ship_display">';
+	data += "<p>" + CLOSING + "</p>"
+	data += '<table class="ship_table">';
 	for( var dir=0; dir < SHIP.closing.length; dir++ )
 	{
-		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + CLOSING + "</td>";
+		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.closing[dir].length; item++ )
 		{
 			manuever = format_manuver( SHIP, SHIP.closing[dir][item] );
-			data += "<td id=\"ship_cell\">" + manuever + "</td>";
+			data += "<td class=\"ship_cell\">" + manuever + "</td>";
 		}
 		data += "</tr>";
+	}
+	data += "</table><br>";
 	
-		data += "<tr><td id=\"ship_cell\">" + DIRECTION[dir] + "</td><td id=\"ship_cell\">" + AWAY + "</td>";
+	data += "<p>" + AWAY + "</p>"
+	data += '<table class="ship_table">';
+	for( var dir=0; dir < SHIP.closing.length; dir++ )
+	{
+		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.away[dir].length; item++ )
 		{
 			manuever = format_manuver( SHIP, SHIP.away[dir][item] );
-			data += "<td id=\"ship_cell\">" + manuever + "</td>";
+			data += "<td class=\"ship_cell\">" + manuever + "</td>";
+		}
+		data += "</tr>";
+	}
+	data += "</table><br>";
+	
+	data += "<p>" + FAR + "</p>"
+	data += '<table class="ship_table">';
+	for( var dir=0; dir < SHIP.closing.length; dir++ )
+	{
+		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
+		for( var item=0; item < SHIP.far[dir].length; item++ )
+		{
+			manuever = format_manuver( SHIP, SHIP.far[dir][item] );
+			data += "<td class=\"ship_cell\">" + manuever + "</td>";
 		}
 		data += "</tr>";
 	}
@@ -424,9 +526,10 @@ function set_ship( ship_id )
 	
 	// Update index html elements for the selected ship
 	document.getElementById('ship_image').src = SHIP.image;
-	document.getElementById('output-label').innerHTML = SHIP.name;
+	document.getElementById('output-label').innerHTML = SHIP.name + " Manuever (near/far)";
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
-	document.getElementById('output').innerHTML = "<p>Press a direction and heading</p>";
+	document.getElementById('near').innerHTML = "<p>NA</p>";
+	document.getElementById('far').innerHTML = "<p></p>";
 	document.getElementById('actions-text').innerHTML = format_actions( SHIP );
 }
 
@@ -522,11 +625,15 @@ function movement( direction, heading )
 		manuever = "invalid";
 	}
 	
-	var formatted = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
+	var near = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
+	
+	manuever = pick( SHIP.far[direction] );
+	var far  = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
 	
 	// Update HTML with selection and manuever
 	document.getElementById('selection').innerHTML = selection;
-	document.getElementById('output').innerHTML = formatted;
+	document.getElementById('near').innerHTML = near;
+	document.getElementById('far').innerHTML = far;
 }
 
 -->
