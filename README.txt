@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.4.1
+                  v1.5.0 Beta 1
 =========================================
 
 -------------------
@@ -38,7 +38,8 @@ Change History
 01/12/2013	1.4.0	Added AU fir A-Wing and Tie Interceptor
 					Added actions section to main page
 01/17/2013	1.4.1	Fixed ship selection bug, was always selecting TieFighter table
-01/19/2013	1.5.0	Added Ships page, Minor reforatting
+01/27/2013	1.5.0	Added "far" meneuvers for use when AI ship is outside target range
+					Added Ships details page, Minor reforatting
 
 --------------
 Known Problems

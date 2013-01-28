@@ -530,7 +530,7 @@ function set_ship( ship_id )
 	document.getElementById('output-label').innerHTML = SHIP.name + " Manuever (near/far)";
 	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
 	document.getElementById('near').innerHTML = "<p>NA</p>";
-	document.getElementById('far').innerHTML = "<p></p>";
+	document.getElementById('far').innerHTML = "<p>NA</p>";
 	document.getElementById('actions-text').innerHTML = format_actions( SHIP );
 }
 
