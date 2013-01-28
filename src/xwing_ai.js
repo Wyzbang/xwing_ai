@@ -9,7 +9,7 @@
 // 12/12/2012	Convert movement string to function calls
 //				Added Tie-Interceptor, A-Wing, YT-1300 (Falcon), Firspare(Slave 1)
 // 01/09/2012	Added 
-// 01/14/2012	Added A-Wing and Tie Interceptor AI manuevers
+// 01/14/2012	Added A-Wing and Tie Interceptor AI maneuvers
 //				Updated actions for Wave 2 ships
 //				Added code to set actions text on main page
 
@@ -129,7 +129,7 @@ tie.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 tie.far = new Array();
 tie.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
 tie.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tie.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1)  );
+tie.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
 tie.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
 tie.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
 tie.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
@@ -168,14 +168,14 @@ tieAdvanced.away[6] = new Array( BL(1), TL(2), TL(2), BL(2), TL(3), TL(3) );
 tieAdvanced.away[7] = new Array( F(4),  F(3),  BR(3), BR(3), BL(2), BL(2) );
 
 tieAdvanced.far = new Array();
-tieAdvanced.far[0] = new Array( "" );
-tieAdvanced.far[1] = new Array( "" );
-tieAdvanced.far[2] = new Array( "" );
-tieAdvanced.far[3] = new Array( "" );
-tieAdvanced.far[4] = new Array( "" );
-tieAdvanced.far[5] = new Array( "" );
-tieAdvanced.far[6] = new Array( "" );
-tieAdvanced.far[7] = new Array( "" );
+tieAdvanced.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
+tieAdvanced.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+tieAdvanced.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+tieAdvanced.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+tieAdvanced.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
+tieAdvanced.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+tieAdvanced.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+tieAdvanced.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
 
 // ****************************************************************************
 // X-Wing
@@ -209,14 +209,14 @@ xwing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(3), TL(3) );
 xwing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(3), TL(3) );
 
 xwing.far = new Array();
-xwing.far[0] = new Array( "" );
-xwing.far[1] = new Array( "" );
-xwing.far[2] = new Array( "" );
-xwing.far[3] = new Array( "" );
-xwing.far[4] = new Array( "" );
-xwing.far[5] = new Array( "" );
-xwing.far[6] = new Array( "" );
-xwing.far[7] = new Array( "" );
+xwing.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
+xwing.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+xwing.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+xwing.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+xwing.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
+xwing.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+xwing.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+xwing.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
 
 // ****************************************************************************
 // Y-Wing
@@ -250,14 +250,14 @@ ywing.away[6] = new Array( BL(1), BL(2), TL(2), TL(2), TL(2), TL(3) );
 ywing.away[7] = new Array( BL(3), BL(2), TR(2), TR(2), TL(2), TL(3) );
 
 ywing.far = new Array();
-ywing.far[0] = new Array( "" );
-ywing.far[1] = new Array( "" );
-ywing.far[2] = new Array( "" );
-ywing.far[3] = new Array( "" );
-ywing.far[4] = new Array( "" );
-ywing.far[5] = new Array( "" );
-ywing.far[6] = new Array( "" );
-ywing.far[7] = new Array( "" );
+ywing.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
+ywing.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+ywing.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+ywing.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+ywing.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
+ywing.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+ywing.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+ywing.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
 
 // ****************************************************************************
 // Tie Interceptor
@@ -291,14 +291,14 @@ tieInterceptor.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
 tieInterceptor.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
 tieInterceptor.far = new Array();
-tieInterceptor.far[0] = new Array( "" );
-tieInterceptor.far[1] = new Array( "" );
-tieInterceptor.far[2] = new Array( "" );
-tieInterceptor.far[3] = new Array( "" );
-tieInterceptor.far[4] = new Array( "" );
-tieInterceptor.far[5] = new Array( "" );
-tieInterceptor.far[6] = new Array( "" );
-tieInterceptor.far[7] = new Array( "" );
+tieInterceptor.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
+tieInterceptor.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
+tieInterceptor.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
+tieInterceptor.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
+tieInterceptor.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
+tieInterceptor.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
+tieInterceptor.far[6] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
+tieInterceptor.far[7] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
 
 // ****************************************************************************
 // A-Wing
@@ -332,14 +332,14 @@ awing.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
 awing.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
 
 awing.far = new Array();
-awing.far[0] = new Array( "" );
-awing.far[1] = new Array( "" );
-awing.far[2] = new Array( "" );
-awing.far[3] = new Array( "" );
-awing.far[4] = new Array( "" );
-awing.far[5] = new Array( "" );
-awing.far[6] = new Array( "" );
-awing.far[7] = new Array( "" );
+awing.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
+awing.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
+awing.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
+awing.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
+awing.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
+awing.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
+awing.far[6] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
+awing.far[7] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
 
 // ****************************************************************************
 // Slave 1
@@ -373,14 +373,15 @@ slave1.away[6] = new Array( TL(2), TL(2), BL(2), BL(3), TL(3), TL(3) );
 slave1.away[7] = new Array( BL(3), BL(3), BL(3), BL(3), F(3),  F(4) );
 
 slave1.far = new Array();
-slave1.far[0] = new Array( "" );
-slave1.far[1] = new Array( "" );
-slave1.far[2] = new Array( "" );
-slave1.far[3] = new Array( "" );
-slave1.far[4] = new Array( "" );
-slave1.far[5] = new Array( "" );
-slave1.far[6] = new Array( "" );
-slave1.far[7] = new Array( "" );
+slave1.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
+slave1.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+slave1.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
+slave1.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+slave1.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(3),  K(3),  TR(3), TR(3), TR(2), TR(2) );
+slave1.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+slave1.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+slave1.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+
 
 // ****************************************************************************
 // Millenium Falcon
@@ -414,14 +415,14 @@ falcon.away[6] = new Array( TL(1), TL(1), BL(1), BL(2), TL(2), TL(2) );
 falcon.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(3),  F(4) );
 
 falcon.far = new Array();
-falcon.far[0] = new Array( "" );
-falcon.far[1] = new Array( "" );
-falcon.far[2] = new Array( "" );
-falcon.far[3] = new Array( "" );
-falcon.far[4] = new Array( "" );
-falcon.far[5] = new Array( "" );
-falcon.far[6] = new Array( "" );
-falcon.far[7] = new Array( "" );
+falcon.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
+falcon.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1) );
+falcon.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1) );
+falcon.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1), TR(1), TR(1) );
+falcon.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(3),  K(3),  TR(3), TR(3), TR(2), TR(2) );
+falcon.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1), TL(1), TL(1) );
+falcon.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1) );
+falcon.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1) );
 
 // ****************************************************************************
 // Ships
@@ -466,8 +467,8 @@ function display_ship( ship_id )
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.closing[dir].length; item++ )
 		{
-			manuever = format_manuver( SHIP, SHIP.closing[dir][item] );
-			data += "<td class=\"ship_cell\">" + manuever + "</td>";
+			maneuver = format_manuver( SHIP, SHIP.closing[dir][item] );
+			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
 		}
 		data += "</tr>";
 	}
@@ -480,8 +481,8 @@ function display_ship( ship_id )
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.away[dir].length; item++ )
 		{
-			manuever = format_manuver( SHIP, SHIP.away[dir][item] );
-			data += "<td class=\"ship_cell\">" + manuever + "</td>";
+			maneuver = format_manuver( SHIP, SHIP.away[dir][item] );
+			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
 		}
 		data += "</tr>";
 	}
@@ -494,8 +495,8 @@ function display_ship( ship_id )
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.far[dir].length; item++ )
 		{
-			manuever = format_manuver( SHIP, SHIP.far[dir][item] );
-			data += "<td class=\"ship_cell\">" + manuever + "</td>";
+			maneuver = format_manuver( SHIP, SHIP.far[dir][item] );
+			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
 		}
 		data += "</tr>";
 	}
@@ -611,26 +612,26 @@ function movement( direction, heading )
 	var selection = "<p>";
 	selection += heading + " at " + DIRECTION[direction] + " o'clock</p>";
 	
-	// Select the manuever randonly from appropriate ship table
-	var manuever;
+	// Select the maneuver randonly from appropriate ship table
+	var maneuver;
 	switch( heading )
 	{
 	case AWAY:
-		manuever = pick( SHIP.away[direction] );
+		maneuver = pick( SHIP.away[direction] );
 		break;
 	case CLOSING:
-		manuever = pick( SHIP.closing[direction] );
+		maneuver = pick( SHIP.closing[direction] );
 		break;
 	default:
-		manuever = "invalid";
+		maneuver = "invalid";
 	}
 	
-	var near = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
+	var near = "<p>" + format_manuver( SHIP, maneuver ) + "</p>";
 	
-	manuever = pick( SHIP.far[direction] );
-	var far  = "<p>" + format_manuver( SHIP, manuever ) + "</p>";
+	maneuver = pick( SHIP.far[direction] );
+	var far  = "<p>" + format_manuver( SHIP, maneuver ) + "</p>";
 	
-	// Update HTML with selection and manuever
+	// Update HTML with selection and maneuver
 	document.getElementById('selection').innerHTML = selection;
 	document.getElementById('near').innerHTML = near;
 	document.getElementById('far').innerHTML = far;
