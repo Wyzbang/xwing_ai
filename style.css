@@ -126,6 +126,7 @@ label:hover {
 {
 	display: table-cell;
 	font-size: x-large;
+	text-align: center;
 	width: 50px;
 }
 
