@@ -8,15 +8,18 @@
 // 10/28/2012	Added Y-Wing AI choices
 // 12/12/2012	Convert movement string to function calls
 //				Added Tie-Interceptor, A-Wing, YT-1300 (Falcon), Firspare(Slave 1)
-// 01/09/2012	Added 
-// 01/14/2012	Added A-Wing and Tie Interceptor AI maneuvers
+// 01/09/2013	Added 
+// 01/14/2013	Added A-Wing and Tie Interceptor AI maneuvers
 //				Updated actions for Wave 2 ships
 //				Added code to set actions text on main page
+// 01/30/2013	Added Far table to each ship, set near and far maneuvers
+// 02/06/2013	Adjust TieFighter maneuver percentages
+// 02/09/2013	Convert maneuver display to have Icons instead of text
 
 // ****************************************************************************
 // Constants
 
-// DIRECTIONS
+// ENEMY SHIP DIRECTIONS
 var DIR_000 = 0;
 var DIR_045 = 1;
 var DIR_090 = 2;
@@ -32,6 +35,17 @@ var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 var AWAY = "Heading away";
 var CLOSING = "Closing";
 var FAR = "Out of Range";
+
+// MANEUVER DIRECTIONS
+var TURN_LEFT = 0;
+var BANK_LEFT = 1;
+var FORWARD = 2;
+var BANK_RIGHT = 3;
+var TURN_RIGHT = 4;
+var KOIOGRAN = 5;
+
+var MANEUVER = new Array( "turn-left", "bank-left", "forward", 
+						  "bank-right", "turn-right", "koiogran");
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -60,37 +74,49 @@ var EVADE_TEXT = "Else Choose <b>Evade</b>";
 
 function F( distance )
 {
-	var move = distance + " Forward";
+	var move = new Object();
+	move.num = distance;
+	move.dir = FORWARD;
 	return move
 } 
 
 function BL( distance )
 {
-	var move = distance + " Bank Left";
+	var move = new Object();
+	move.num = distance;
+	move.dir = BANK_LEFT;
 	return move
 } 
 
 function BR( distance )
 {
-	var move = distance + " Bank Right";
+	var move = new Object();
+	move.num = distance;
+	move.dir = BANK_RIGHT;
 	return move
 } 
 
 function TL( distance )
 {
-	var move = distance + " Turn Left";
+	var move = new Object();
+	move.num = distance;
+	move.dir = TURN_LEFT;
 	return move
 } 
 
 function TR( distance )
 {
-	var move = distance + " Turn Right";
+	var move = new Object();
+	move.num = distance;
+	move.dir = TURN_RIGHT;
 	return move
 } 
 
 function K( distance )
 {
-	var move = distance + " Koiogran";
+	var move = new Object();
+	move.num = distance;
+	move.dir = KOIOGRAN;
 	return move
 } 
 
@@ -121,7 +147,7 @@ tie.away[0] = new Array( F(5),  F(5),  F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  
 tie.away[1] = new Array( F(5),  F(4),  F(4),  BR(3), BR(3), BR(3), BR(2), BR(2) );
 tie.away[2] = new Array( BR(3), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
 tie.away[3] = new Array( TR(2), TR(2), TR(2), TR(1), TR(1), K(4),  K(3),  K(3)  );
-tie.away[4] = new Array( TL(1), TR(1), K(4),  K(4),  K(3),  K(3),  K(3),  K(3) );
+tie.away[4] = new Array( TL(1), TR(1), K(4),  K(4),  K(3),  K(3),  K(3),  K(3)  );
 tie.away[5] = new Array( TL(2), TL(2), TL(2), TL(1), TL(1), K(4),  K(3),  K(3)  );
 tie.away[6] = new Array( TL(3), TL(3), TL(2), TL(2), TL(1), TL(1), BL(3), BL(2) );
 tie.away[7] = new Array( BL(3), BL(3), BL(3), BL(2), BL(2), F(5),  F(4),  F(4)  );
@@ -148,34 +174,34 @@ tieAdvanced.actions = ( TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE );
 
 // AI choices
 tieAdvanced.closing = new Array();
-tieAdvanced.closing[0] = new Array( BL(2), F(2),  F(2),  K(4),  K(4),  BR(2) );
+tieAdvanced.closing[0] = new Array( BL(2), F(2),  F(2),  F(2),  F(2),  BR(2), K(4),  K(4)  );
 tieAdvanced.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(3), TR(2) );
-tieAdvanced.closing[2] = new Array( K(4),  K(4),  BR(1), TR(2), TR(2), TR(2) );
-tieAdvanced.closing[3] = new Array( F(5),  K(4),  K(4),  BR(1), TR(2), TR(2) );
-tieAdvanced.closing[4] = new Array( TL(3), F(4),  K(4),  K(4),  K(4),  TR(3) );
+tieAdvanced.closing[2] = new Array( BR(1), TR(2), TR(2), TR(2), K(4),  K(4)  );
+tieAdvanced.closing[3] = new Array( F(5),  BR(1), TR(2), TR(2), K(4),  K(4)  );
+tieAdvanced.closing[4] = new Array( TL(3), TR(3), F(4),  K(4),  K(4),  K(4)  );
 tieAdvanced.closing[5] = new Array( TL(2), TL(2), BL(1), F(5),  K(4),  K(4)  );
 tieAdvanced.closing[6] = new Array( TL(2), TL(2), TL(2), BL(1), K(4),  K(4)  );
 tieAdvanced.closing[7] = new Array( TL(3), TL(2), BL(3), BL(2), BL(2), F(2)  );
 
 tieAdvanced.away = new Array();
-tieAdvanced.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  );
+tieAdvanced.away[0] = new Array( F(5),  F(5),  F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  );
 tieAdvanced.away[1] = new Array( F(4),  F(3),  BR(3), BR(3), BR(2), BR(2) );
 tieAdvanced.away[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(2), TR(2) );
-tieAdvanced.away[3] = new Array( K(4),  K(4),  K(4),  TR(2), TR(2), TR(2) );
-tieAdvanced.away[4] = new Array( TL(2), K(4),  K(4),  K(4),  K(4),  TR(2) );
+tieAdvanced.away[3] = new Array( TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
+tieAdvanced.away[4] = new Array( TL(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
 tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), K(4),  K(4),  K(4)  );
 tieAdvanced.away[6] = new Array( TL(3), TL(3), TL(2), TL(2), BL(1), BL(2) );
 tieAdvanced.away[7] = new Array( BL(3), BL(3), BL(2), BL(2), F(4),  F(3)  );
 
 tieAdvanced.far = new Array();
-tieAdvanced.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
-tieAdvanced.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-tieAdvanced.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-tieAdvanced.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-tieAdvanced.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
-tieAdvanced.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-tieAdvanced.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
-tieAdvanced.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+tieAdvanced.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(3),  BR(3) );
+tieAdvanced.far[1] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2) );
+tieAdvanced.far[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2) );
+tieAdvanced.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2) );
+tieAdvanced.far[4] = new Array( TL(3), TL(2), TL(2), TR(3), TR(2), TR(2), K(4),  K(4)  );
+tieAdvanced.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2) );
+tieAdvanced.far[6] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), BL(3), BL(2), BL(1) );
+tieAdvanced.far[7] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), BL(3), BL(2), BL(1) );
 
 // ****************************************************************************
 // X-Wing
@@ -467,8 +493,11 @@ function display_ship( ship_id )
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.closing[dir].length; item++ )
 		{
-			maneuver = format_manuver( SHIP, SHIP.closing[dir][item] );
-			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
+			maneuver = format_maneuver( SHIP, SHIP.closing[dir][item] );
+			data += "<td class=\"ship_cell\">";
+			data += '<div class="table_num">' + maneuver.num + '</div>'
+			data += '<div class="table_num">' + maneuver.img + '</div>';
+			data += "</td>";
 		}
 		data += "</tr>";
 	}
@@ -476,13 +505,16 @@ function display_ship( ship_id )
 	
 	data += "<p>" + AWAY + "</p>"
 	data += '<table class="ship_table">';
-	for( var dir=0; dir < SHIP.closing.length; dir++ )
+	for( var dir=0; dir < SHIP.away.length; dir++ )
 	{
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.away[dir].length; item++ )
 		{
-			maneuver = format_manuver( SHIP, SHIP.away[dir][item] );
-			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
+			maneuver = format_maneuver( SHIP, SHIP.away[dir][item] );
+			data += "<td class=\"ship_cell\">";
+			data += '<div class="table_num">' + maneuver.num + '</div>'
+			data += '<div class="table_num">' + maneuver.img + '</div>';
+			data += "</td>";
 		}
 		data += "</tr>";
 	}
@@ -490,13 +522,16 @@ function display_ship( ship_id )
 	
 	data += "<p>" + FAR + "</p>"
 	data += '<table class="ship_table">';
-	for( var dir=0; dir < SHIP.closing.length; dir++ )
+	for( var dir=0; dir < SHIP.far.length; dir++ )
 	{
 		data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
 		for( var item=0; item < SHIP.far[dir].length; item++ )
 		{
-			maneuver = format_manuver( SHIP, SHIP.far[dir][item] );
-			data += "<td class=\"ship_cell\">" + maneuver + "</td>";
+			maneuver = format_maneuver( SHIP, SHIP.far[dir][item] );
+			data += "<td class=\"ship_cell\">";
+			data += '<div class="table_num">' + maneuver.num + '</div>'
+			data += '<div class="table_num">' + maneuver.img + '</div>';
+			data += "</td>";
 		}
 		data += "</tr>";
 	}
@@ -527,10 +562,26 @@ function set_ship( ship_id )
 	
 	// Update index html elements for the selected ship
 	document.getElementById('ship_image').src = SHIP.image;
-	document.getElementById('output-label').innerHTML = SHIP.name + " Manuever (near/far)";
-	document.getElementById('selection').innerHTML = "<p>Press a direction and heading</p>";
-	document.getElementById('near').innerHTML = "<p>NA</p>";
-	document.getElementById('far').innerHTML = "<p>NA</p>";
+	
+	// TODO: Temporary difference between ARROW and CIRCLE versions
+	if( document.getElementById( "near_img" ) != null )
+	{
+		document.getElementById('output-label').innerHTML = SHIP.name + " Manuever (near/far)";
+		document.getElementById('near_num').innerHTML = "<p></p>";
+		document.getElementById('near_img').innerHTML = "<p></p>";
+	}
+	else
+	{
+		document.getElementById('closing_num').innerHTML = "<p></p>";
+		document.getElementById('closing_img').innerHTML = "<p></p>";
+		document.getElementById('away_num').innerHTML = "<p></p>";
+		document.getElementById('away_img').innerHTML = "<p></p>";
+	}
+	
+	document.getElementById('far_num').innerHTML = "<p></p>";
+	document.getElementById('far_img').innerHTML = "<p></p>";
+	
+	document.getElementById('selection').innerHTML = "<p>Press a direction</p>";
 	document.getElementById('actions-text').innerHTML = format_actions( SHIP );
 }
 
@@ -541,23 +592,49 @@ function pick( options )
 	return options[choice];
 }
 
-function format_manuver( ship, manuver )
+function maneuverInList( maneuver, list )
 {
-	var formatted = "";
-	if( ship.simple.indexOf( manuver ) > -1 )
+	var found = false;
+	for( var i=0; i < list.length; i++ )
 	{
-		formatted += "<span style=color:green>" + manuver + "</span>";
+		if( ( list[i].num == maneuver.num ) && ( list[i].dir == maneuver.dir ) )
+		{
+			found = true;
+			break;
+		}
 	}
-	else if( ship.difficult.indexOf( manuver ) > -1 )
+	
+	return found;
+}
+
+function format_maneuver( ship, maneuver )
+{
+	var num;
+	var img;
+	
+	// Koiogran is always red
+	if( maneuver.dir == KOIOGRAN )
 	{
-		formatted += "<span style=color:red>" + manuver + "</span>";
+		num = "<span style=color:red>" + maneuver.num + "</span>";
+		img = '<img src="img/koiogran.png">';
+	}
+	else if ( maneuverInList( maneuver, ship.simple ) )
+	{
+		num = "<span style=color:green>" + maneuver.num + "</span>";
+		img = '<img src="img/' + MANEUVER[maneuver.dir] + '-green.png">';
+	}
+	else if ( maneuverInList( maneuver, ship.simple ) )
+	{
+		num = "<span style=color:red>" + maneuver.num + "</span>";
+		img = '<img src="img/' + MANEUVER[maneuver.dir] + '-red.png">';
 	}
 	else
 	{
-		formatted += "<span>" + manuver + "</span>";
+		num = "<span>" + maneuver.num + "</span>";
+		img = '<img src="img/' + MANEUVER[maneuver.dir] + '-white.png">';
 	}
 	
-	return formatted;
+	return {'num': num, 'img': img };
 }
 
 function format_actions( ship )
@@ -626,15 +703,42 @@ function movement( direction, heading )
 		maneuver = "invalid";
 	}
 	
-	var near = "<p>" + format_manuver( SHIP, maneuver ) + "</p>";
+	var near = format_maneuver( SHIP, maneuver );
 	
 	maneuver = pick( SHIP.far[direction] );
-	var far  = "<p>" + format_manuver( SHIP, maneuver ) + "</p>";
+	var far  = format_maneuver( SHIP, maneuver );
 	
 	// Update HTML with selection and maneuver
 	document.getElementById('selection').innerHTML = selection;
-	document.getElementById('near').innerHTML = near;
-	document.getElementById('far').innerHTML = far;
+	document.getElementById('near_num').innerHTML = near.num
+	document.getElementById('near_img').innerHTML = near.img;
+	document.getElementById('far_num').innerHTML = far.num
+	document.getElementById('far_img').innerHTML = far.img;
 }
 
+function movement2( direction )
+{
+	// direction: n=0, ne=1, e=2, se=3, s=4, sw=5, w=6,nw=7
+	// heading: away, closing
+	var maneuver;
+	var selection = "<p>";
+	selection += "at " + DIRECTION[direction] + " o'clock</p>";
+	document.getElementById('selection').innerHTML = selection;
+	
+	// Select the maneuver randonly from appropriate ship table
+	maneuver = pick( SHIP.closing[direction] );
+	formatted = format_maneuver( SHIP, maneuver );
+	document.getElementById( "closing_num" ).innerHTML = formatted.num;
+	document.getElementById( "closing_img" ).innerHTML = formatted.img;
+	
+	maneuver = pick( SHIP.away[direction] );
+	formatted = format_maneuver( SHIP, maneuver );
+	document.getElementById( "away_num" ).innerHTML = formatted.num;
+	document.getElementById( "away_img" ).innerHTML = formatted.img;
+	
+	maneuver = pick( SHIP.far[direction] );
+	formatted = format_maneuver( SHIP, maneuver );
+	document.getElementById( "far_num" ).innerHTML = formatted.num;
+	document.getElementById( "far_img" ).innerHTML = formatted.img;
+}
 -->

@@ -5,22 +5,24 @@ body
 	color: white;
 }
 
-table
+table.direction_grid
 {
-	border: 1px;
-	/*padding-left: 100px;*/
+	padding: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-#direction_buttons
+td.direction_cell
 {
-	text-align: center;
-	width: 100px;
+	padding: 0;
 	height: 100px;
+	width: 100px;
+	display: inline-block;
 }
 
 #header
 {
-    display: table;
+	display: table;
 	width: 100%;
 }
 
@@ -89,15 +91,25 @@ label:hover {
 #diagram
 {
 	display: table-cell;
-	padding-left: 50px;
+	padding-left: 25px;
 	text-align: center;
 	width: 350px;
+}
+
+#maneuvers
+{
+	display: table-cell;
+	/*padding-left: 25px;*/
+	font-size: large;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
 }
 
 #results
 {
 	display: table-cell;
-	padding-left: 50px;
+	padding-left: 25px;
 	font-size: large;
 	font-weight: bold;
 	vertical-align: middle;
@@ -118,8 +130,11 @@ label:hover {
 .output
 {
 	display: table-cell;
-	font-size: x-large;
-	width: 150px;
+	font-size: xx-large;
+	height: 50px;
+	width: 50px;
+	text-align: right;
+	vertical-align: middle;
 }
 
 .seperator
@@ -127,7 +142,7 @@ label:hover {
 	display: table-cell;
 	font-size: x-large;
 	text-align: center;
-	width: 50px;
+	width: 100px;
 }
 
 #actions-text
@@ -140,28 +155,16 @@ label:hover {
 	text-align: center;
 }
 
-#actions
-{
-	display: table;
-}
-
-#action_image
-{
-	display: table-cell;
-	height: 100px;
-}
-
-#action_text
-{
-	display: table-cell;
-	height: 100px;
-	padding-left: 25px;
-	vertical-align: top;
-}
-
 table.ship_table, td.ship_cell
 {
 	border-collapse: collapse;
 	border: 1px solid white;
 	padding: 5px;
+}
+
+.table_num
+{
+	display: table-cell;
+	font-size: xx-large;
+	vertical-align: middle;
 }
