@@ -93,13 +93,13 @@ label:hover {
 	display: table-cell;
 	padding-left: 25px;
 	text-align: center;
-	width: 350px;
+	width: 300px;
 }
 
 #maneuvers
 {
 	display: table-cell;
-	/*padding-left: 25px;*/
+	padding-left: 25px;
 	font-size: large;
 	font-weight: bold;
 	vertical-align: middle;
@@ -125,6 +125,12 @@ label:hover {
 .label
 {
 	color: teal;
+}
+
+.maneuver
+{
+	height: 50px;
+	width: 100px;
 }
 
 .output
@@ -155,16 +161,25 @@ label:hover {
 	text-align: center;
 }
 
-table.ship_table, td.ship_cell
+table.ship_table
 {
 	border-collapse: collapse;
 	border: 1px solid white;
-	padding: 5px;
+}
+
+td.ship_cell
+{
+	border-collapse: collapse;
+	border: 1px solid white;
+	height: 50px;
+	padding-left: 10px;
 }
 
 .table_num
 {
-	display: table-cell;
+	display: inline-block;
 	font-size: xx-large;
 	vertical-align: middle;
+	text-align: right;
+	padding: 0;
 }

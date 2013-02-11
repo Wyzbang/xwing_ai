@@ -76,73 +76,69 @@
 
 </form>
 </div>
-
 <div id="diagram">
-<b>Enemy ship's location and orientation:</b><br><br>
-<table id="direction_grid">
-	<tr id="direction_row">
-		<td>
-			<input type="image" onclick="movement(DIR_315, AWAY)" src="img/button_up_left.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_315, CLOSING)" src="img/button_down_right.png" />
+<b>Enemy ship's location:</b><br><br>
+<table class="direction_grid">
+	<tr class="direction_row">
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_315)" src="img/7.png" />
 		</td>
-		<td text-align=center>
-			<input type="image" onclick="movement(DIR_000, AWAY)" src="img/button_up.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_000, CLOSING)" src="img/button_down.png" />
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_000)" src="img/0.png" />
 		</td>
-		<td>
-			<input type="image" onclick="movement(DIR_045, AWAY)" src="img/button_up_right.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_045, CLOSING)" src="img/button_down_left.png" />
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_045)" src="img/1.png" />
 		</td>
 	</tr>
-	<tr id="direction_row">
-		<td>
-			<input type="image" onclick="movement(DIR_270, AWAY)" src="img/button_left.png" />
-			<input type="image" onclick="movement(DIR_270, CLOSING)" src="img/button_right.png" />
+	<tr class="direction_row">
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_270)" src="img/6.png" />
 		</td>
-		<td>
+		<td class="direction_cell">
 			<img id="ship_image" src="img/tie.png">
 		</td>
-		<td>
-			<input type="image" onclick="movement(DIR_090, CLOSING)" src="img/button_left.png" />
-			<input type="image" onclick="movement(DIR_090, AWAY)" src="img/button_right.png" />
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_090)" src="img/2.png" />
 		</td>
 	</tr>
-	<tr id="direction_row">
-		<td>
-			<input type="image" onclick="movement(DIR_225, CLOSING)" src="img/button_up_right.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_225, AWAY)" src="img/button_down_left.png" />
+	<tr class="direction_row">
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_225)" src="img/5.png" />
 		</td>
-		<td text-align=center>
-			<input type="image" onclick="movement(DIR_180, CLOSING)" src="img/button_up.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_180, AWAY)" src="img/button_down.png" />
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_180)" src="img/4.png" />
 		</td>
-		<td>
-			<input type="image" onclick="movement(DIR_135, CLOSING)" src="img/button_up_left.png" />
-			<br>
-			<input type="image" onclick="movement(DIR_135, AWAY)" src="img/button_down_right.png" />
+		<td class="direction_cell">
+			<input type="image" onclick="movement2(DIR_135)" src="img/3.png" />
 		</td>
 	</tr>
 </table>
-
 </div>
-
+<div id="maneuvers">
+	<div class="label">Manuever</div>
+	<div class="seperator"><p></p></div>
+	<div>Closing</div>
+	<div class="maneuver">
+		<div id="closing_num" class="output"></div>
+		<div id="closing_img" class="output"></div>
+	</div>
+	<div class="seperator"><p></p></div>
+	<div>Retreating</div>
+	<div class="maneuver">
+		<div id="away_num" class="output"></div>
+		<div id="away_img" class="output"></div>
+	</div>
+	<div class="seperator"><p></p></div>
+	<div>Far</div>
+	<div class="maneuver">
+		<div id="far_num" class="output"></div>
+		<div id="far_img" class="output"></div>
+	</div>
+</div>
 <div id="results">
 	<div>
 		<div class="label">Player Ship Location</div>
 		<div id="selection"><p>Press a direction and heading</p></div>
-	</div>
-	<div>
-		<div id="output-label" class="label">AI Ship Menuever</div>
-		<div id="near_num" class="output"><p></p></div>
-		<div id="near_img" class="output"><p></p></div>
-		<div class="seperator"><p>/</p></div>
-		<div id="far_num" class="output"><p></p></div>
-		<div id="far_img" class="output"><p></p></div>
 	</div>
 	<div>
 		<div class="label">Actions</div>
