@@ -100,9 +100,7 @@ label:hover {
 {
 	display: table-cell;
 	padding-left: 25px;
-	font-size: large;
-	font-weight: bold;
-	vertical-align: middle;
+	vertical-align: top;
 	text-align: center;
 }
 
@@ -112,7 +110,7 @@ label:hover {
 	padding-left: 25px;
 	font-size: large;
 	font-weight: bold;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 #table
@@ -125,6 +123,15 @@ label:hover {
 .label
 {
 	color: teal;
+	font-size: large;
+	font-weight: bold;
+}
+
+.maneuver_label
+{
+	color: silver;
+	font-size: medium;
+	font-weight: bold;
 }
 
 .maneuver

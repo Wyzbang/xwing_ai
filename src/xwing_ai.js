@@ -32,9 +32,9 @@ var DIR_315 = 7;
 var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
 
 // HEADING
-var AWAY = "Heading away";
-var CLOSING = "Closing";
-var FAR = "Out of Range";
+var AWAY = "Retreating";			// Heading away
+var CLOSING = "Closing";			// Closing
+var FAR = "Out of Range";			// Far
 
 // MANEUVER DIRECTIONS
 var TURN_LEFT = 0;
@@ -486,7 +486,7 @@ function display_ship( ship_id )
 	data += format_actions( SHIP );
 	
 	// Tables (closing, away)
-	data += "<p>" + CLOSING + "</p>"
+	data += '<div class="label">' + CLOSING + "</div>"
 	data += '<table class="ship_table">';
 	for( var dir=0; dir < SHIP.closing.length; dir++ )
 	{
@@ -503,7 +503,7 @@ function display_ship( ship_id )
 	}
 	data += "</table><br>";
 	
-	data += "<p>" + AWAY + "</p>"
+	data += '<div class="label">' + AWAY + "</div>"
 	data += '<table class="ship_table">';
 	for( var dir=0; dir < SHIP.away.length; dir++ )
 	{
@@ -520,7 +520,7 @@ function display_ship( ship_id )
 	}
 	data += "</table><br>";
 	
-	data += "<p>" + FAR + "</p>"
+	data += '<div class="label">' + FAR + "</div>"
 	data += '<table class="ship_table">';
 	for( var dir=0; dir < SHIP.far.length; dir++ )
 	{
