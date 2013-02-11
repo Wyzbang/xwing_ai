@@ -41,6 +41,7 @@ Change History
 02/09/2013	1.5.0	Added "far" meneuvers for use when AI ship is outside target range
 					Added Ships details page, Minor reforatting
 					Display maneuvers as images instead of text
+					Converted to a simplified selection (ring) method
 
 --------------
 Known Problems
