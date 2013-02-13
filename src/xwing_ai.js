@@ -175,23 +175,23 @@ tieAdvanced.actions = ( TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE );
 // AI choices
 tieAdvanced.closing = new Array();
 tieAdvanced.closing[0] = new Array( BL(2), F(2),  F(2),  F(2),  F(2),  BR(2), K(4),  K(4)  );
-tieAdvanced.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(3), TR(2) );
-tieAdvanced.closing[2] = new Array( BR(1), TR(2), TR(2), TR(2), K(4),  K(4)  );
-tieAdvanced.closing[3] = new Array( F(5),  BR(1), TR(2), TR(2), K(4),  K(4)  );
-tieAdvanced.closing[4] = new Array( TL(3), TR(3), F(4),  K(4),  K(4),  K(4)  );
-tieAdvanced.closing[5] = new Array( TL(2), TL(2), BL(1), F(5),  K(4),  K(4)  );
-tieAdvanced.closing[6] = new Array( TL(2), TL(2), TL(2), BL(1), K(4),  K(4)  );
-tieAdvanced.closing[7] = new Array( TL(3), TL(2), BL(3), BL(2), BL(2), F(2)  );
+tieAdvanced.closing[1] = new Array( F(2),  BR(3), BR(3), BR(2), BR(2), BR(2), TR(3), TR(2) );
+tieAdvanced.closing[2] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), K(4),  K(4)  );
+tieAdvanced.closing[3] = new Array( F(5),  BR(1), TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
+tieAdvanced.closing[4] = new Array( TL(3), TL(2), F(4),  TR(3), TR(2), K(4),  K(4),  K(4)  );
+tieAdvanced.closing[5] = new Array( TL(2), TL(2), TL(2), BL(1), F(5),  K(4),  K(4),  K(4)  );
+tieAdvanced.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), BL(1), BL(1), K(4),  K(4)  );
+tieAdvanced.closing[7] = new Array( TL(3), TL(2), BL(3), BL(3), BL(2), BL(2), BL(2), F(2)  );
 
 tieAdvanced.away = new Array();
 tieAdvanced.away[0] = new Array( F(5),  F(5),  F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  );
-tieAdvanced.away[1] = new Array( F(4),  F(3),  BR(3), BR(3), BR(2), BR(2) );
-tieAdvanced.away[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(2), TR(2) );
-tieAdvanced.away[3] = new Array( TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
-tieAdvanced.away[4] = new Array( TL(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
-tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), K(4),  K(4),  K(4)  );
-tieAdvanced.away[6] = new Array( TL(3), TL(3), TL(2), TL(2), BL(1), BL(2) );
-tieAdvanced.away[7] = new Array( BL(3), BL(3), BL(2), BL(2), F(4),  F(3)  );
+tieAdvanced.away[1] = new Array( F(4),  F(3),  BR(3), BR(3), BR(3), BR(2), BR(2), BR(2) );
+tieAdvanced.away[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(2), TR(2), TR(2) );
+tieAdvanced.away[3] = new Array( TR(2), TR(2), TR(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
+tieAdvanced.away[4] = new Array( TL(2), TL(2), TR(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
+tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), TL(2), K(4),  K(4),  K(4),  K(4)  );
+tieAdvanced.away[6] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), BL(1), BL(2) );
+tieAdvanced.away[7] = new Array( BL(3), BL(3), BL(3), BL(2), BL(2), BL(2), F(4),  F(3)  );
 
 tieAdvanced.far = new Array();
 tieAdvanced.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(3),  BR(3) );
