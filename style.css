@@ -5,20 +5,21 @@ body
 	color: white;
 }
 
-table.direction_grid
+.direction_grid
 {
 	padding: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-td.direction_cell
+.direction_grid td
 {
 	padding: 0;
 	height: 100px;
 	width: 100px;
 	display: inline-block;
 }
+
 
 #header
 {
