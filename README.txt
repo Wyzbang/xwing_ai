@@ -47,7 +47,6 @@ Change History
 Known Problems
 --------------
 
-Does not support Internet Explorer
 
 -------
 Contact
