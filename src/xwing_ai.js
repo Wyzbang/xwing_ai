@@ -15,6 +15,7 @@
 // 01/30/2013	Added Far table to each ship, set near and far maneuvers
 // 02/06/2013	Adjust TieFighter maneuver percentages
 // 02/09/2013	Convert maneuver display to have Icons instead of text
+// 08/25/2013	Added Objects for Wave 3 ships (need to add maneuvers)
 
 // ****************************************************************************
 // Constants
@@ -45,7 +46,7 @@ var TURN_RIGHT = 4;
 var KOIOGRAN = 5;
 
 var MANEUVER = new Array( "turn-left", "bank-left", "forward", 
-						  "bank-right", "turn-right", "koiogran");
+						  "bank-right", "turn-right", "koiogran" );
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -451,6 +452,166 @@ falcon.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1
 falcon.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1) );
 
 // ****************************************************************************
+// TieBomber
+
+var tieBomber = new Object();
+tieBomber.name = "Tie Bomber";
+tieBomber.image = "img/tieBomber.png";
+tieBomber.simple = new Array( F(1), F(2), F(3), BL(2), BR(2) );
+tieBomber.difficult = new Array( TL(2), TR(2), K(5) );   
+tieBomber.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
+
+tieBomber.closing = new Array();
+tieBomber.closing[0] = new Array( F(1) );
+tieBomber.closing[1] = new Array( F(1) );
+tieBomber.closing[2] = new Array( F(1) );
+tieBomber.closing[3] = new Array( F(1) );
+tieBomber.closing[4] = new Array( F(1) );
+tieBomber.closing[5] = new Array( F(1) );
+tieBomber.closing[6] = new Array( F(1) );
+tieBomber.closing[7] = new Array( F(1) );
+
+tieBomber.away = new Array();
+tieBomber.away[0] = new Array( F(1) );
+tieBomber.away[1] = new Array( F(1) );
+tieBomber.away[2] = new Array( F(1) );
+tieBomber.away[3] = new Array( F(1) );
+tieBomber.away[4] = new Array( F(1) );
+tieBomber.away[5] = new Array( F(1) );
+tieBomber.away[6] = new Array( F(1) );
+tieBomber.away[7] = new Array( F(1) );
+
+tieBomber.far = new Array();
+tieBomber.far[0] = new Array( F(1) );
+tieBomber.far[1] = new Array( F(1) );
+tieBomber.far[2] = new Array( F(1) );
+tieBomber.far[3] = new Array( F(1) );
+tieBomber.far[4] = new Array( F(1) );
+tieBomber.far[5] = new Array( F(1) );
+tieBomber.far[6] = new Array( F(1) );
+tieBomber.far[7] = new Array( F(1) );
+
+// ****************************************************************************
+// B-Wing
+
+var bwing = new Object();
+bwing.name = "B-Wing";
+bwing.image = "img/bwing.png";
+bwing.simple = new Array( BL(1), F(1), F(2), BR(1) );
+bwing.difficult = new Array( TL(1), BL(3), F(1), BR(3), TR(1), K(2) );   
+bwing.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
+
+bwing.closing = new Array();
+bwing.closing[0] = new Array( F(1) );
+bwing.closing[1] = new Array( F(1) );
+bwing.closing[2] = new Array( F(1) );
+bwing.closing[3] = new Array( F(1) );
+bwing.closing[4] = new Array( F(1) );
+bwing.closing[5] = new Array( F(1) );
+bwing.closing[6] = new Array( F(1) );
+bwing.closing[7] = new Array( F(1) );
+
+bwing.away = new Array();
+bwing.away[0] = new Array( F(1) );
+bwing.away[1] = new Array( F(1) );
+bwing.away[2] = new Array( F(1) );
+bwing.away[3] = new Array( F(1) );
+bwing.away[4] = new Array( F(1) );
+bwing.away[5] = new Array( F(1) );
+bwing.away[6] = new Array( F(1) );
+bwing.away[7] = new Array( F(1) );
+
+bwing.far = new Array();
+bwing.far[0] = new Array( F(1) );
+bwing.far[1] = new Array( F(1) );
+bwing.far[2] = new Array( F(1) );
+bwing.far[3] = new Array( F(1) );
+bwing.far[4] = new Array( F(1) );
+bwing.far[5] = new Array( F(1) );
+bwing.far[6] = new Array( F(1) );
+bwing.far[7] = new Array( F(1) );
+
+// ****************************************************************************
+// Lamda Shuttle
+
+var lambda = new Object();
+lambda.name = "Lambda Shuttle";
+lambda.image = "img/lambda.png";
+lambda.simple = new Array( BL(1), F(1), F(2), BR(1) );
+lambda.difficult = new Array( TL(2), BL(3), F(0), BR(3), TR(2) );   
+lambda.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
+
+lambda.closing = new Array();
+lambda.closing[0] = new Array( F(0) );
+lambda.closing[1] = new Array( F(1) );
+lambda.closing[2] = new Array( F(1) );
+lambda.closing[3] = new Array( F(1) );
+lambda.closing[4] = new Array( F(1) );
+lambda.closing[5] = new Array( F(1) );
+lambda.closing[6] = new Array( F(1) );
+lambda.closing[7] = new Array( F(1) );
+
+lambda.away = new Array();
+lambda.away[0] = new Array( F(1) );
+lambda.away[1] = new Array( F(1) );
+lambda.away[2] = new Array( F(1) );
+lambda.away[3] = new Array( F(1) );
+lambda.away[4] = new Array( F(1) );
+lambda.away[5] = new Array( F(1) );
+lambda.away[6] = new Array( F(1) );
+lambda.away[7] = new Array( F(1) );
+
+lambda.far = new Array();
+lambda.far[0] = new Array( F(1) );
+lambda.far[1] = new Array( F(1) );
+lambda.far[2] = new Array( F(1) );
+lambda.far[3] = new Array( F(1) );
+lambda.far[4] = new Array( F(1) );
+lambda.far[5] = new Array( F(1) );
+lambda.far[6] = new Array( F(1) );
+lambda.far[7] = new Array( F(1) );
+
+// ****************************************************************************
+// HWK-290 (Moldy Crow)
+
+var hwk290 = new Object();
+hwk290.name = "HWK-290";
+hwk290.image = "img/hwk290.png";
+hwk290.simple = new Array( BL(1), F(1), F(2), BR(1) );
+hwk290.difficult = new Array( BL(3), F(4), BR(3) );   
+hwk290.actions = ( FOCUS + TARGET_LOCK );
+
+hwk290.closing = new Array();
+hwk290.closing[0] = new Array( F(1) );
+hwk290.closing[1] = new Array( F(1) );
+hwk290.closing[2] = new Array( F(1) );
+hwk290.closing[3] = new Array( F(1) );
+hwk290.closing[4] = new Array( F(1) );
+hwk290.closing[5] = new Array( F(1) );
+hwk290.closing[6] = new Array( F(1) );
+hwk290.closing[7] = new Array( F(1) );
+
+hwk290.away = new Array();
+hwk290.away[0] = new Array( F(1) );
+hwk290.away[1] = new Array( F(1) );
+hwk290.away[2] = new Array( F(1) );
+hwk290.away[3] = new Array( F(1) );
+hwk290.away[4] = new Array( F(1) );
+hwk290.away[5] = new Array( F(1) );
+hwk290.away[6] = new Array( F(1) );
+hwk290.away[7] = new Array( F(1) );
+
+hwk290.far = new Array();
+hwk290.far[0] = new Array( F(1) );
+hwk290.far[1] = new Array( F(1) );
+hwk290.far[2] = new Array( F(1) );
+hwk290.far[3] = new Array( F(1) );
+hwk290.far[4] = new Array( F(1) );
+hwk290.far[5] = new Array( F(1) );
+hwk290.far[6] = new Array( F(1) );
+hwk290.far[7] = new Array( F(1) );
+
+// ****************************************************************************
 // Ships
 
 var SHIP_TIE = 0;
@@ -463,7 +624,12 @@ var SHIP_AWING = 5;
 var SHIP_SLAVE1 = 6;
 var SHIP_FALCON = 7;
 
-var ships = new Array( tie, tieAdvanced, xwing, ywing, tieInterceptor, awing, slave1, falcon );
+var SHIP_TIE_BOMBER = 8;
+var SHIP_BWING = 9;
+var SHIP_LAMBDA = 10;
+var SHIP_HWK290 = 11;
+
+var ships = new Array( tie, tieAdvanced, xwing, ywing, tieInterceptor, awing, slave1, falcon, tieBomber, bwing, lambda, hwk290 );
 var SHIP = tie;
 
 // ****************************************************************************
@@ -623,7 +789,7 @@ function format_maneuver( ship, maneuver )
 		num = "<span style=color:green>" + maneuver.num + "</span>";
 		img = '<img src="img/' + MANEUVER[maneuver.dir] + '-green.png">';
 	}
-	else if ( maneuverInList( maneuver, ship.simple ) )
+	else if ( maneuverInList( maneuver, ship.difficult ) )
 	{
 		num = "<span style=color:red>" + maneuver.num + "</span>";
 		img = '<img src="img/' + MANEUVER[maneuver.dir] + '-red.png">';
