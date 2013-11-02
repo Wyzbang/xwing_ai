@@ -55,10 +55,18 @@ Contact
 
 Email: rberrett4@gmail.com
 BoardGameGeek: wyzbang
--------
+-------
 Credits
 -------
 
 Game Web Site:  http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174
 
-Special thanks to Andrzej Sieradzki, who crated the orginal AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
+
+
+--------------
+Special thanks
+--------------
+
+Andrzej Sieradzki, who crated the orginal AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
+
+SeraphTC for the HWK-290 image http://boardgamegeek.com/user/SeraphTC
