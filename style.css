@@ -47,8 +47,19 @@ body
 {
 	display: table-cell;
 	text-align: right;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	vertical-align: top;
 }
 
+#version
+{
+	display: inline;
+	font-size: small;
+	vertical-align: top;
+	text-align: right;
+}
 /*****************************************************************************/
 /* Main Section */
 
@@ -230,9 +241,3 @@ td.ship_cell
 	width: 100px;
 }
 
-#version
-{
-	display: table-cell;
-	font-size: small;
-	vertical-align: top;
-}

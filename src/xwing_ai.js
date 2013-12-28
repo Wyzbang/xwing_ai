@@ -724,12 +724,17 @@ function get_ship()
 	return ships[ selection ];
 }
 
+function set_version()
+{
+	document.getElementById('version').innerHTML = VERSION;
+}
+
 function set_ship( ship_id )
 {
 	// Set the global to the selected ship
 	SHIP = ships[ ship_id ];
 	
-	document.getElementById('version').innerHTML = VERSION;
+	set_version()
 	
 	// Update index html elements for the selected ship
 	document.getElementById('ship_image').src = SHIP.image;

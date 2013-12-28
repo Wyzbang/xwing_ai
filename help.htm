@@ -4,7 +4,11 @@
 <title>X-Wing Miniatures AI - Help</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="style.css" />
-<body>
+<script src="src/xwing_ai.js">
+</script>
+</head>
+
+<body onload=set_version()>
 <div id="header">
 	<div id="logos">
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
@@ -12,6 +16,7 @@
 		<img class=applet_logo src="img/applet_logo.png" alt="AI"> 
 	</div>
 	<div id="links">
+		<div id="version"></div><br>
 		<a href="index.htm"><img class=index_icon src="img/star.png" alt="index"></a>
 		<a href="info.htm"><img class=info_icon src="img/info.png" alt="info"></a>
 		<a href="ships.htm"><img class=ships_icon src="img/ships.png" alt="ships"></a>
