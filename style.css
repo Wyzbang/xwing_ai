@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* X-Wing Minitures AI Cascading Style Sheet                                 */
+/*****************************************************************************/
+
 body
 {
 	background: black;
@@ -5,21 +9,9 @@ body
 	color: white;
 }
 
-.direction_grid
-{
-	padding: 0;
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
-.direction_grid td
-{
-	padding: 0;
-	height: 100px;
-	width: 100px;
-	display: inline-block;
-}
-
+/*****************************************************************************/
+/* Header Section */
 
 #header
 {
@@ -31,12 +23,6 @@ body
 {
 	display: table-cell;
 	text-align: center;
-}
-
-#links
-{
-	display: table-cell;
-	text-align: right;
 }
 
 .company_logo
@@ -57,10 +43,23 @@ body
 	display: inline-block;
 }
 
+#links
+{
+	display: table-cell;
+	text-align: right;
+}
+
+/*****************************************************************************/
+/* Main Section */
+
 #main
 {
 	display: table;
 }
+
+
+/*****************************************************************************/
+/* Ship Buttons */
 
 #ships
 {
@@ -68,12 +67,6 @@ body
 	vertical-align: top;
 	text-align: center;
 	width: 100px;
-}
-
-.ship_button
-{
-	width: 50px;
-	height: 50px;
 }
 
 label
@@ -89,13 +82,44 @@ label:hover {
     background:#006699;   
 }
 
+.ship_button
+{
+	width: 50px;
+	height: 50px;
+}
+
+
+/*****************************************************************************/
+/* Direction Grid */
+
 #diagram
 {
 	display: table-cell;
 	padding-left: 25px;
 	text-align: center;
-	width: 300px;
+	width: 310px;
 }
+
+.direction_grid
+{
+	padding: 0;
+	border: 0px;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.direction_grid td
+{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+}
+
+/*****************************************************************************/
+/* Maneuvers */
 
 #maneuvers
 {
@@ -103,29 +127,6 @@ label:hover {
 	padding-left: 25px;
 	vertical-align: top;
 	text-align: center;
-}
-
-#results
-{
-	display: table-cell;
-	padding-left: 25px;
-	font-size: large;
-	font-weight: bold;
-	vertical-align: top;
-}
-
-#table
-{
-	display: table-cell;
-	padding-left: 50px;
-	text-align: left;
-}
-
-.label
-{
-	color: teal;
-	font-size: large;
-	font-weight: bold;
 }
 
 .maneuver_label
@@ -151,12 +152,17 @@ label:hover {
 	vertical-align: middle;
 }
 
-.seperator
+
+/*****************************************************************************/
+/* Results */
+
+#results
 {
 	display: table-cell;
-	font-size: x-large;
-	text-align: center;
-	width: 100px;
+	padding-left: 25px;
+	font-size: large;
+	font-weight: bold;
+	vertical-align: top;
 }
 
 #actions-text
@@ -164,9 +170,14 @@ label:hover {
 	font-size: large;
 }
 
-#footer
+/*****************************************************************************/
+/* Ship Details page */
+
+#table
 {
-	text-align: center;
+	display: table-cell;
+	padding-left: 50px;
+	text-align: left;
 }
 
 table.ship_table
@@ -190,4 +201,38 @@ td.ship_cell
 	vertical-align: middle;
 	text-align: right;
 	padding: 0;
+}
+
+
+/*****************************************************************************/
+/* Footer */
+
+#footer
+{
+	text-align: center;
+}
+
+/*****************************************************************************/
+/* Misc */
+
+.label
+{
+	color: teal;
+	font-size: large;
+	font-weight: bold;
+}
+
+.seperator
+{
+	display: table-cell;
+	font-size: x-large;
+	text-align: center;
+	width: 100px;
+}
+
+#version
+{
+	display: table-cell;
+	font-size: small;
+	vertical-align: top;
 }

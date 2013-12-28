@@ -20,6 +20,8 @@
 // ****************************************************************************
 // Constants
 
+var VERSION = "v1.6.0";
+
 // ENEMY SHIP DIRECTIONS
 var DIR_000 = 0;
 var DIR_045 = 1;
@@ -703,6 +705,7 @@ function display_ship( ship_id )
 	}
 	data += "</table>";
 	
+	document.getElementById('version').innerHTML = VERSION;
 	document.getElementById( "table" ).innerHTML = data;
 }
 
@@ -725,6 +728,8 @@ function set_ship( ship_id )
 {
 	// Set the global to the selected ship
 	SHIP = ships[ ship_id ];
+	
+	document.getElementById('version').innerHTML = VERSION;
 	
 	// Update index html elements for the selected ship
 	document.getElementById('ship_image').src = SHIP.image;

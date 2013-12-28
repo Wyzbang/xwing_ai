@@ -43,6 +43,7 @@ Change History
 					Display maneuvers as images instead of text
 					Converted to a simplified selection (ring) method
 08/25/2013	1.6.0	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
+					Improved Ring display on Firefox
 
 --------------
 Known Problems
