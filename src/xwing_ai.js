@@ -1,21 +1,7 @@
 <!--
 
-// Revision History:
-// 10/14/2012	Initial coding
-// 10/15/2012	Adding Tie Advanced Object
-// 10/17/2012	Added multiple ship support
-//				Added X-Wing and Y-Wing object (no AI for Y-Wing)
-// 10/28/2012	Added Y-Wing AI choices
-// 12/12/2012	Convert movement string to function calls
-//				Added Tie-Interceptor, A-Wing, YT-1300 (Falcon), Firspare(Slave 1)
-// 01/09/2013	Added 
-// 01/14/2013	Added A-Wing and Tie Interceptor AI maneuvers
-//				Updated actions for Wave 2 ships
-//				Added code to set actions text on main page
-// 01/30/2013	Added Far table to each ship, set near and far maneuvers
-// 02/06/2013	Adjust TieFighter maneuver percentages
-// 02/09/2013	Convert maneuver display to have Icons instead of text
-// 08/25/2013	Added Objects for Wave 3 ships (need to add maneuvers)
+// ***************************************************************************
+// X-Wing Miniatures AI - Javascript
 
 // ****************************************************************************
 // Constants
