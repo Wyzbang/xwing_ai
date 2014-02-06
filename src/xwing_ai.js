@@ -490,34 +490,34 @@ bwing.difficult = new Array( TL(1), BL(3), F(1), BR(3), TR(1), K(2) );
 bwing.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
 
 bwing.closing = new Array();
-bwing.closing[0] = new Array( F(1) );
-bwing.closing[1] = new Array( F(1) );
-bwing.closing[2] = new Array( F(1) );
-bwing.closing[3] = new Array( F(1) );
-bwing.closing[4] = new Array( F(1) );
-bwing.closing[5] = new Array( F(1) );
-bwing.closing[6] = new Array( F(1) );
-bwing.closing[7] = new Array( F(1) );
+bwing.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(2), F(2), F(2), BR(1), K(2), K(2) );
+bwing.closing[1] = new Array( BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), TR(2) );
+bwing.closing[2] = new Array( BR(2), BR(1), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1), TR(1), TR(1) );
+bwing.closing[3] = new Array( TR(1), TR(1), TR(2), TR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.closing[4] = new Array( TL(2), TL(2), TL(1), TR(1), TR(2), TR(2), K(2), K(2), K(2), K(2) );
+bwing.closing[5] = new Array( TL(1), TL(1), TL(2), TL(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.closing[6] = new Array( BL(2), BL(1), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1), TL(1), TL(1) );
+bwing.closing[7] = new Array( BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), TL(2) );
 
 bwing.away = new Array();
-bwing.away[0] = new Array( F(1) );
-bwing.away[1] = new Array( F(1) );
-bwing.away[2] = new Array( F(1) );
-bwing.away[3] = new Array( F(1) );
-bwing.away[4] = new Array( F(1) );
-bwing.away[5] = new Array( F(1) );
-bwing.away[6] = new Array( F(1) );
-bwing.away[7] = new Array( F(1) );
+bwing.away[0] = new Array( F(2), F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4) );
+bwing.away[1] = new Array( BR(1), BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2) )
+bwing.away[2] = new Array( BR(1), BR(1), BR(2), BR(2), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2) );
+bwing.away[3] = new Array( BR(2), BR(2), BR(2), BR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.away[4] = new Array( TL(2), TL(2), TR(2), TR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.away[5] = new Array( BL(2), BL(2), BL(2), BL(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.away[6] = new Array( BL(1), BL(1), BL(2), BL(2), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2) );
+bwing.away[7] = new Array( BL(1), BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), TL(2), TL(2) );
 
 bwing.far = new Array();
-bwing.far[0] = new Array( F(1) );
-bwing.far[1] = new Array( F(1) );
-bwing.far[2] = new Array( F(1) );
-bwing.far[3] = new Array( F(1) );
-bwing.far[4] = new Array( F(1) );
-bwing.far[5] = new Array( F(1) );
-bwing.far[6] = new Array( F(1) );
-bwing.far[7] = new Array( F(1) );
+bwing.far[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4) );
+bwing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), TR(2), TR(2) );
+bwing.far[2] = new Array( BR(2), BR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+bwing.far[3] = new Array( TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), K(2), K(2) );
+bwing.far[4] = new Array( TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), K(2), K(2), K(2), K(2) );
+bwing.far[5] = new Array( TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), K(2), K(2) );
+bwing.far[6] = new Array( BL(2), BL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+bwing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), TL(2), TL(2) );
 
 // ****************************************************************************
 // Lamda Shuttle
