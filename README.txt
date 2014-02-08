@@ -42,9 +42,11 @@ Change History
 					Added Ships details page, Minor reforatting
 					Display maneuvers as images instead of text
 					Converted to a simplified selection (ring) method
-12/28/2013	1.6.0	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
+02/08/2014	1.6.B1	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
+					Maneuvers for B-Wing and HWK-290, but Tie Bomber and Lambda Shuttle still pending.
 					Improved Ring display on Firefox
 					Added Version display on all pages
+					
 
 --------------
 Known Problems

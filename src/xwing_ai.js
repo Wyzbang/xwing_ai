@@ -570,34 +570,34 @@ hwk290.difficult = new Array( BL(3), F(4), BR(3) );
 hwk290.actions = ( FOCUS + TARGET_LOCK );
 
 hwk290.closing = new Array();
-hwk290.closing[0] = new Array( F(1) );
-hwk290.closing[1] = new Array( F(1) );
-hwk290.closing[2] = new Array( F(1) );
-hwk290.closing[3] = new Array( F(1) );
-hwk290.closing[4] = new Array( F(1) );
-hwk290.closing[5] = new Array( F(1) );
-hwk290.closing[6] = new Array( F(1) );
-hwk290.closing[7] = new Array( F(1) );
+hwk290.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), BR(1) );
+hwk290.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), TR(2) );
+hwk290.closing[2] = new Array( F(3), F(3), BR(1), BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[3] = new Array( F(1), F(1), F(1), F(3), F(4), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[4] = new Array( TL(2), TL(2), TL(2), TL(2), F(1), F(4), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[5] = new Array( F(1), F(1), F(1), F(3), F(4), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.closing[6] = new Array( F(3), F(3), BL(1), BL(1), BL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), TL(2) );
 
 hwk290.away = new Array();
-hwk290.away[0] = new Array( F(1) );
-hwk290.away[1] = new Array( F(1) );
-hwk290.away[2] = new Array( F(1) );
-hwk290.away[3] = new Array( F(1) );
-hwk290.away[4] = new Array( F(1) );
-hwk290.away[5] = new Array( F(1) );
-hwk290.away[6] = new Array( F(1) );
-hwk290.away[7] = new Array( F(1) );
+hwk290.away[0] = new Array( BL(3), BL(2), F(3), F(3), F(3), F(3), F(4), F(4), BR(2), BR(3) );
+hwk290.away[1] = new Array( F(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2), TR(2) );
+hwk290.away[2] = new Array( BR(2), BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[3] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[5] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.away[6] = new Array( BL(2), BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.away[7] = new Array( F(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), TL(2), TL(2), TL(2) );
 
 hwk290.far = new Array();
-hwk290.far[0] = new Array( F(1) );
-hwk290.far[1] = new Array( F(1) );
-hwk290.far[2] = new Array( F(1) );
-hwk290.far[3] = new Array( F(1) );
-hwk290.far[4] = new Array( F(1) );
-hwk290.far[5] = new Array( F(1) );
-hwk290.far[6] = new Array( F(1) );
-hwk290.far[7] = new Array( F(1) );
+hwk290.far[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4) );
+hwk290.far[1] = new Array( F(3), F(3), F(3), F(4), F(4), BR(2), BR(2), BR(3), BR(3), TR(2) );
+hwk290.far[2] = new Array( BR(3), BR(3), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.far[6] = new Array( BL(3), BL(3), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.far[7] = new Array( F(3), F(3), F(3), F(4), F(4), BL(2), BL(2), BL(3), BL(3), TL(2) );
 
 // ****************************************************************************
 // Ships

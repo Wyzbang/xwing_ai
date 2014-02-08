@@ -117,9 +117,14 @@ label:hover {
 	border: 0px;
 	border-collapse: collapse;
 	border-spacing: 0;
+	display: block;
+	vertical-align: top;
+	margin: 0;
+	width: 310px;
+	height: 100px;
 }
 
-.direction_grid td
+.direction_grid > input
 {
 	border: 0;
 	margin: 0;
@@ -127,7 +132,9 @@ label:hover {
 	height: 100px;
 	width: 100px;
 	display: inline-block;
+	vertical-align: top;
 }
+
 
 /*****************************************************************************/
 /* Maneuvers */
