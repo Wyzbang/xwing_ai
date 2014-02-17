@@ -6,7 +6,7 @@
 // ****************************************************************************
 // Constants
 
-var VERSION = "v1.6.0";
+var VERSION = "v1.6.0B1";
 
 // ENEMY SHIP DIRECTIONS
 var DIR_000 = 0;
@@ -113,7 +113,7 @@ function K( distance )
 // ****************************************************************************
 // Tie Fighter
 
-var	tie = new Object();
+var tie = new Object();
 tie.name = "Tie Fighter";
 tie.image = "img/tie.png";
 tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
@@ -195,7 +195,7 @@ tieAdvanced.far[7] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), BL(3), BL(2),
 // ****************************************************************************
 // X-Wing
 
-var	xwing = new Object();
+var xwing = new Object();
 xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
@@ -236,7 +236,7 @@ xwing.far[7] = new Array( BL(3), BL(2), BL(1), TL(3), TL(3), TL(2), TL(2), TL(2)
 // ****************************************************************************
 // Y-Wing
 
-var	ywing = new Object();
+var ywing = new Object();
 ywing.name = "Y-Wing";
 ywing.image = "img/ywing.png";
 ywing.simple = new Array( F(1), F(2) );
@@ -446,6 +446,7 @@ var tieBomber = new Object();
 tieBomber.name = "Tie Bomber";
 tieBomber.image = "img/tieBomber.png";
 tieBomber.simple = new Array( F(1), F(2), F(3), BL(2), BR(2) );
+tieBomber.normal = new Array( BL(1), TL(3), BL(3), F(4), BR(3), BL(3), BR(1) );
 tieBomber.difficult = new Array( TL(2), TR(2), K(5) );   
 tieBomber.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
 
@@ -486,7 +487,8 @@ var bwing = new Object();
 bwing.name = "B-Wing";
 bwing.image = "img/bwing.png";
 bwing.simple = new Array( BL(1), F(1), F(2), BR(1) );
-bwing.difficult = new Array( TL(1), BL(3), F(1), BR(3), TR(1), K(2) );   
+bwing.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(1) );
+bwing.difficult = new Array( TL(1), BL(3), F(4), BR(3), TR(1), K(2) );   
 bwing.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
 
 bwing.closing = new Array();
