@@ -117,6 +117,7 @@ var tie = new Object();
 tie.name = "Tie Fighter";
 tie.image = "img/tie.png";
 tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
+tie.normal = new Array( TL(1), TL(2), TL(3), BL(3), F(4), F(5), BR(3), TR(1), TR(2), TR(3) );
 tie.difficult = new Array( K(3), K(4) );  
 tie.actions = ( BARREL_ROLL + FOCUS + EVADE );
 
@@ -158,6 +159,7 @@ var tieAdvanced = new Object();
 tieAdvanced.name = "Tie Advanced";
 tieAdvanced.image = "img/TieAdvanced.png";
 tieAdvanced.simple = new Array( BL(1), BR(1), F(2), F(3) );
+tieAdvanced.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(4), F(5), BR(2), BR(3), TR(2), TR(3) );
 tieAdvanced.difficult = new Array( K(4) );
 tieAdvanced.actions = ( TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE );
 
@@ -199,6 +201,7 @@ var xwing = new Object();
 xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
+xwing.norma = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
 xwing.difficult = new Array( K(4) );
 xwing.actions = ( TARGET_LOCK + FOCUS );
 
@@ -240,6 +243,7 @@ var ywing = new Object();
 ywing.name = "Y-Wing";
 ywing.image = "img/ywing.png";
 ywing.simple = new Array( F(1), F(2) );
+ywing.normal = new Array( TL(2), BL(1), BL(2), BL(3), F(3), BR(1), BR(2), BR(3), TR(2) );
 ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );
 ywing.actions = ( TARGET_LOCK + FOCUS );
 
@@ -281,6 +285,7 @@ var tieInterceptor = new Object();
 tieInterceptor.name = "Tie Interceptor";
 tieInterceptor.image = "img/tieInterceptor.png";
 tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
+tieInterceptor.normal = new Array( TL(1), TL(3), BL(3), F(5), BR(3), TR(1), TR(3) );
 tieInterceptor.difficult = new Array( K(3), K(5) );   
 tieInterceptor.actions = ( BARREL_ROLL + BOOST + FOCUS + EVADE );
 
@@ -322,6 +327,7 @@ var awing = new Object();
 awing.name = "A-Wing";
 awing.image = "img/awing.png";
 awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2));
+awing.normal = new Array( TL(1), TL(3), BL(3), BR(3), TR(1), TR(3) );
 awing.difficult = new Array( K(3), K(5) );
 awing.actions = ( TARGET_LOCK + BOOST + FOCUS + EVADE );
 
@@ -363,6 +369,7 @@ var slave1 = new Object();
 slave1.name = "Firespray-31";
 slave1.image = "img/slave1.png";
 slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
+slave1.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
 slave1.difficult = new Array( K(3), K(4) );   
 slave1.actions = ( TARGET_LOCK + FOCUS + EVADE );
 
@@ -405,6 +412,7 @@ var falcon = new Object();
 falcon.name = "YT-1300";
 falcon.image = "img/falcon.png";
 falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
+falcon.normal = new Array( TL(1), TL(2), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(1), TR(2) );
 falcon.difficult = new Array( K(3), K(4) );   
 falcon.actions = ( TARGET_LOCK + FOCUS );
 
@@ -528,6 +536,7 @@ var lambda = new Object();
 lambda.name = "Lambda Shuttle";
 lambda.image = "img/lambda.png";
 lambda.simple = new Array( BL(1), F(1), F(2), BR(1) );
+lambda.normal = new Array( BL(2), F(3), BR(2) );
 lambda.difficult = new Array( TL(2), BL(3), F(0), BR(3), TR(2) );   
 lambda.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
 
@@ -568,6 +577,7 @@ var hwk290 = new Object();
 hwk290.name = "HWK-290";
 hwk290.image = "img/hwk290.png";
 hwk290.simple = new Array( BL(1), F(1), F(2), BR(1) );
+hwk290.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
 hwk290.difficult = new Array( BL(3), F(4), BR(3) );   
 hwk290.actions = ( FOCUS + TARGET_LOCK );
 
