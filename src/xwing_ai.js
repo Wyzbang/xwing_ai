@@ -201,7 +201,7 @@ var xwing = new Object();
 xwing.name = "X-Wing";
 xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
-xwing.norma = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
+xwing.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
 xwing.difficult = new Array( K(4) );
 xwing.actions = ( TARGET_LOCK + FOCUS );
 
@@ -495,7 +495,7 @@ var bwing = new Object();
 bwing.name = "B-Wing";
 bwing.image = "img/bwing.png";
 bwing.simple = new Array( BL(1), F(1), F(2), BR(1) );
-bwing.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(1) );
+bwing.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
 bwing.difficult = new Array( TL(1), BL(3), F(4), BR(3), TR(1), K(2) );   
 bwing.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
 
