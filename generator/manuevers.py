@@ -395,10 +395,20 @@ class Ship:
 # ******************************************************************************
 
 class XWingGenerator:
+    VERSION = "v1.6.0B2"
     
     def __init__( self ):
         self.ships = {}
 
+    def __copy_file( self, filepath, dst ):
+        """
+        Write contents of file to open file
+        """
+        src = open( filepath, 'r' )
+        for line in src.readlines():
+            dst.write( line )
+        src.close()  
+        
         
     def export_js( self, filepath ):
         """
@@ -407,12 +417,12 @@ class XWingGenerator:
         print( "Exporting ships to %s..." % filepath )
         js = open( filepath, 'w' )
         
-        pre = open( "xwing_ai_pre.js", 'r' )
-        for line in pre.readlines():
-            js.write( line )
-        pre.close()
+        # Create javascript header, version and first section of code
+        self.__copy_file( "xwing_ai_header.js", js )
+        js.write( 'var VERSION = "%s";\n' % self.VERSION )
+        self.__copy_file( "xwing_ai_pre.js", js )
         
-        
+        # Convert and write ships to the javascript
         for ship in sorted( self.ships ):
             print( "   exporting %s..." % ship )
             self.ships[ship].generate_tables()
@@ -420,11 +430,9 @@ class XWingGenerator:
             for line in code:
                 js.write( line + "\n" )
      
-        post = open( "xwing_ai_post.js", 'r' )
-        for line in post.readlines():
-            js.write( line )
-        post.close()
-        js.close()
+        # Append the last section of code
+        self.__copy_file( "xwing_ai_post.js", js )
+        
         print( "Export complete." )
         
     
@@ -546,21 +554,21 @@ class XWingGenerator:
             
             simple = s.find( 'simple' )
             for man in list(simple):
-                m = man.text
+                m = man.text.strip()
                 bearing = m[:-1]
                 speed = int( m[-1] )
                 self.ships[name].simple.append( Maneuver( bearing, speed ) ) 
             
             normal = s.find( 'normal' )
             for man in list(normal):
-                m = man.text
+                m = man.text.strip()
                 bearing = m[:-1]
                 speed = int( m[-1] )
                 self.ships[name].normal.append( Maneuver( bearing, speed ) ) 
             
             difficult = s.find( 'difficult' )
             for man in list(difficult):
-                m = man.text
+                m = man.text.strip()
                 bearing = m[:-1]
                 speed = int( m[-1] )
                 self.ships[name].difficult.append( Maneuver( bearing, speed ) ) 
@@ -572,6 +580,10 @@ class XWingGenerator:
                 
 if __name__ == "__main__":
     xwing = XWingGenerator()
+    
+    #xwing.parse_xml( "xwing_ai_save.js" )
+    #xwing.export_xml( "ships.xml" )
+
     xwing.parse_xml( "ships.xml" )
     xwing.export_js( "..\\src\\xwing_ai.js" )
     
