@@ -1,13 +1,16 @@
 """
+X-wing Minitures AI Maneuver Generator
 """
 import copy
+import optparse
 import os
 import re
 import string
 import sys
-
-import xml.etree.ElementTree as ElementTree
 import xml.dom.minidom
+import xml.etree.ElementTree as ElementTree
+
+from version import VERSION
 
 # ******************************************************************************
 # List of potential maneuvers
@@ -24,7 +27,9 @@ BEARINGS = [ TL, BL, F, BR, TR, K ]
 # ******************************************************************************
 
 class Maneuver:
+    """
     
+    """
     def __init__( self, bearing, speed ):
         self.bearing = bearing
         self.speed = speed
@@ -127,6 +132,18 @@ class Ship:
                 self.limits[ maneuver.bearing ][0] = maneuver.speed
 
                 
+    def isSimple( self, maneuver ):
+        return maneuver in self.simple
+    
+    
+    def isNormal( self, maneuver ):
+        return maneuver in self.normal
+    
+    
+    def isDifficult( self, maneuver ):
+        return maneuver in self.difficult
+        
+    
     def isFast( self, maneuver ):
         if self.limits == {}:
             self._gen_limits()
@@ -350,26 +367,40 @@ class Ship:
         #   closing: TR, K
         #      away: BR, TR
         #       far: TR
-        self.closing.append( self.generate_row( [TR], [], [K], "slow" ) )
-        self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
-        self.far.append( self.generate_row( [TR], [], [], "fast" ) )
+        if self.name in [ "lambda" ]:
+            self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
+            self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
+            self.far.append( self.generate_row( [BR], [], [], "fast" ) )
+        else:
+            self.closing.append( self.generate_row( [TR], [], [K], "slow" ) )
+            self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
+            self.far.append( self.generate_row( [TR], [], [], "fast" ) )
         
         # 3, SE, 4-5 o'clock
         #   closing: BR, TR, K
         #      away: TR, K
         #       far: TR
-        self.closing.append( self.generate_row( [TR], [K], [BR], "slow" ) )
-        self.away.append( self.generate_row( [TR], [K], [], "fast" ) )
-        self.far.append( self.generate_row( [TR], [], [], "fast" ) )
+        if self.name in [ "lambda" ]:
+            self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
+            self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
+            self.far.append( self.generate_row( [BR], [TR], [], "fast" ) )
+        else:
+            self.closing.append( self.generate_row( [TR], [K], [BR], "slow" ) )
+            self.away.append( self.generate_row( [TR], [K], [], "fast" ) )
+            self.far.append( self.generate_row( [TR], [], [], "fast" ) )
                 
         # 4, S,  6   o'clock
         #   closing: F, K*, TL, TR
         #      away: K*, TR, TL
         #       far: K, TR*, TL*
-        if self.name in [ "hwk290", "lambda" ]:
+        if self.name in [ "lambda" ]:
+            # Special case as this ship does not support Koiogran Turn 
+            self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
+            self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
+        elif self.name in [ "hwk290" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [TL,TR], [F], [], "fast" ) )
-            self.away.append( self.generate_row( [TR,TL], [], [], "fast" ) )
+            self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
         else:
             self.closing.append( self.generate_row( [K], [TL,F,TR], [], "fast" ) )
             self.away.append( self.generate_row( [K], [TR, TL], [], "fast" ) )
@@ -395,7 +426,6 @@ class Ship:
 # ******************************************************************************
 
 class XWingGenerator:
-    VERSION = "v1.6.0B2"
     
     def __init__( self ):
         self.ships = {}
@@ -419,7 +449,7 @@ class XWingGenerator:
         
         # Create javascript header, version and first section of code
         self.__copy_file( "xwing_ai_header.js", js )
-        js.write( 'var VERSION = "%s";\n' % self.VERSION )
+        js.write( 'var VERSION = "%s";\n' % VERSION )
         self.__copy_file( "xwing_ai_pre.js", js )
         
         # Convert and write ships to the javascript
@@ -503,7 +533,8 @@ class XWingGenerator:
         root = ElementTree.Element( "ships" )
     
         # Convert each ship into XML
-        for name, ship in self.ships.items():
+        for name in sorted( self.ships ):
+            ship = self.ships[name]
             attribs = { "name": ship.name2, "image": ship.image, "actions": ship.actions }
             s = ElementTree.SubElement( root, name, attribs )
     
@@ -579,11 +610,18 @@ class XWingGenerator:
 # ******************************************************************************
                 
 if __name__ == "__main__":
+    
+    parser = optparse.OptionParser()
+    parser.add_option( "-j", "--js", action="store_true", dest="js_to_xml", default=False,
+                       help="Convert ships from javascript to xml" )
+    (options, args) = parser.parse_args()
+    
     xwing = XWingGenerator()
     
-    #xwing.parse_xml( "xwing_ai_save.js" )
-    #xwing.export_xml( "ships.xml" )
-
-    xwing.parse_xml( "ships.xml" )
-    xwing.export_js( "..\\src\\xwing_ai.js" )
+    if( options.js_to_xml ):
+        xwing.parse_xml( "xwing_ai_save.js" )
+        xwing.export_xml( "ships.xml" )
+    else:
+        xwing.parse_xml( "ships.xml" )
+        xwing.export_js( "..\\src\\xwing_ai.js" )
     

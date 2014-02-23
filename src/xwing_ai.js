@@ -6,7 +6,7 @@
 // ****************************************************************************
 // Constants
 
-var VERSION = "v1.6.0B1";
+var VERSION = "v1.6.0B3";
 
 // ENEMY SHIP DIRECTIONS
 var DIR_000 = 0;
@@ -109,6 +109,251 @@ function K( distance )
 	return move
 } 
 
+// ****************************************************************************
+// A-Wing
+
+var awing = new Object();
+awing.name = "A-Wing";
+awing.image = "img/awing.png";
+awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2) );
+awing.normal = new Array( TL(1), TL(3), BL(3), BR(3), TR(1), TR(3) );
+awing.difficult = new Array( K(3), K(5) );
+awing.actions = (TARGET_LOCK + BOOST + FOCUS + EVADE);
+
+awing.closing = new Array();
+awing.closing[0] = new Array( BL(2), F(2), F(2), F(2), F(2), F(3), F(3), F(3), K(3), K(3) );
+awing.closing[1] = new Array( F(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), TR(1), TR(2) );
+awing.closing[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(3), K(3) );
+awing.closing[3] = new Array( BR(2), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), K(3), K(3) );
+awing.closing[4] = new Array( TL(3), F(5), TR(3), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+awing.closing[5] = new Array( BL(2), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), K(3), K(3) );
+awing.closing[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(3), K(3) );
+awing.closing[7] = new Array( F(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+awing.away = new Array();
+awing.away[0] = new Array( F(4), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), F(5) );
+awing.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+awing.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+awing.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(5), K(5), K(5) );
+awing.away[4] = new Array( TL(3), TR(3), TR(3), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+awing.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(5), K(5), K(5) );
+awing.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+awing.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
+
+awing.far = new Array();
+awing.far[0] = new Array( BL(3), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), BR(3) );
+awing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+awing.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+awing.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+awing.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(5), K(5) );
+awing.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+awing.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+awing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
+
+// ****************************************************************************
+// B-Wing
+
+var bwing = new Object();
+bwing.name = "B-Wing";
+bwing.image = "img/bwing.png";
+bwing.simple = new Array( BL(1), F(1), F(2), BR(1) );
+bwing.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
+bwing.difficult = new Array( TL(1), BL(3), F(4), BR(3), TR(1), K(2) );
+bwing.actions = (BARREL_ROLL + FOCUS + TARGET_LOCK);
+
+bwing.closing = new Array();
+bwing.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(2), K(2) );
+bwing.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(1), TR(2) );
+bwing.closing[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(2), K(2) );
+bwing.closing[3] = new Array( BR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), K(2), K(2) );
+bwing.closing[4] = new Array( TL(2), F(4), TR(2), K(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.closing[5] = new Array( BL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), K(2), K(2) );
+bwing.closing[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(2), K(2) );
+bwing.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(1), TL(2) );
+
+bwing.away = new Array();
+bwing.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+bwing.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(1), TR(2) );
+bwing.away[2] = new Array( BR(2), BR(3), BR(3), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2) );
+bwing.away[3] = new Array( TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(2), K(2), K(2) );
+bwing.away[4] = new Array( TL(2), TR(2), TR(2), K(2), K(2), K(2), K(2), K(2), K(2), K(2) );
+bwing.away[5] = new Array( TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(2), K(2), K(2) );
+bwing.away[6] = new Array( BL(2), BL(3), BL(3), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2) );
+bwing.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+bwing.far = new Array();
+bwing.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+bwing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(1), TR(2) );
+bwing.far[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
+bwing.far[3] = new Array( TR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
+bwing.far[4] = new Array( TL(1), TL(1), TL(2), TL(2), TR(1), TR(1), TR(2), TR(2), K(2), K(2) );
+bwing.far[5] = new Array( TL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
+bwing.far[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
+bwing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+// ****************************************************************************
+// YT-1300
+
+var falcon = new Object();
+falcon.name = "YT-1300";
+falcon.image = "img/falcon.png";
+falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
+falcon.normal = new Array( TL(1), TL(2), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(1), TR(2) );
+falcon.difficult = new Array( K(3), K(4) );
+falcon.actions = (TARGET_LOCK + FOCUS);
+
+falcon.closing = new Array();
+falcon.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(3), K(4) );
+falcon.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(1), TR(2) );
+falcon.closing[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(3), K(4) );
+falcon.closing[3] = new Array( BR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), K(3), K(4) );
+falcon.closing[4] = new Array( TL(2), F(4), TR(2), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+falcon.closing[5] = new Array( BL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), K(3), K(4) );
+falcon.closing[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(3), K(4) );
+falcon.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(1), TL(2) );
+
+falcon.away = new Array();
+falcon.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+falcon.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(1), TR(2) );
+falcon.away[2] = new Array( BR(2), BR(3), BR(3), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2) );
+falcon.away[3] = new Array( TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(3), K(4), K(4) );
+falcon.away[4] = new Array( TL(2), TR(2), TR(2), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+falcon.away[5] = new Array( TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(3), K(4), K(4) );
+falcon.away[6] = new Array( BL(2), BL(3), BL(3), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2) );
+falcon.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+falcon.far = new Array();
+falcon.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+falcon.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(1), TR(2) );
+falcon.far[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
+falcon.far[3] = new Array( TR(1), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
+falcon.far[4] = new Array( TL(1), TL(1), TL(2), TL(2), TR(1), TR(1), TR(2), TR(2), K(3), K(4) );
+falcon.far[5] = new Array( TL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
+falcon.far[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
+falcon.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+// ****************************************************************************
+// HWK-290
+
+var hwk290 = new Object();
+hwk290.name = "HWK-290";
+hwk290.image = "img/hwk290.png";
+hwk290.simple = new Array( BL(1), F(1), F(2), BR(1) );
+hwk290.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
+hwk290.difficult = new Array( BL(3), F(4), BR(3) );
+hwk290.actions = (FOCUS + TARGET_LOCK);
+
+hwk290.closing = new Array();
+hwk290.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), F(2), BR(1) );
+hwk290.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(2) );
+hwk290.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[3] = new Array( BR(1), BR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[4] = new Array( TL(2), TL(2), TL(2), F(3), F(4), F(4), TR(2), TR(2), TR(2), TR(2) );
+hwk290.closing[5] = new Array( BL(1), BL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(2) );
+
+hwk290.away = new Array();
+hwk290.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+hwk290.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+hwk290.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.away[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+hwk290.far = new Array();
+hwk290.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+hwk290.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+hwk290.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+hwk290.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+hwk290.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+// ****************************************************************************
+// Lambda Shuttle
+
+var lambda = new Object();
+lambda.name = "Lambda Shuttle";
+lambda.image = "img/lambda.png";
+lambda.simple = new Array( BL(1), F(1), F(2), BR(1) );
+lambda.normal = new Array( BL(2), F(3), BR(2) );
+lambda.difficult = new Array( TL(2), BL(3), F(0), BR(3), TR(2) );
+lambda.actions = (FOCUS + TARGET_LOCK);
+
+lambda.closing = new Array();
+lambda.closing[0] = new Array( BL(1), F(0), F(0), F(0), F(0), F(1), F(1), F(1), F(1), BR(1) );
+lambda.closing[1] = new Array( F(0), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(2) );
+lambda.closing[2] = new Array( BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(2), TR(2) );
+lambda.closing[3] = new Array( BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(2), TR(2) );
+lambda.closing[4] = new Array( BL(2), BL(3), BL(3), F(2), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2) );
+lambda.closing[5] = new Array( BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(2), TL(2) );
+lambda.closing[6] = new Array( BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(2), TL(2) );
+lambda.closing[7] = new Array( F(0), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(2) );
+
+lambda.away = new Array();
+lambda.away[0] = new Array( F(2), F(2), F(2), F(2), F(2), F(3), F(3), F(3), F(3), F(3) );
+lambda.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+lambda.away[2] = new Array( BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2), TR(2) );
+lambda.away[3] = new Array( BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2), TR(2) );
+lambda.away[4] = new Array( TL(2), BL(2), BL(3), BL(3), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2) );
+lambda.away[5] = new Array( BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2), TL(2) );
+lambda.away[6] = new Array( BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2), TL(2) );
+lambda.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+lambda.far = new Array();
+lambda.far[0] = new Array( BL(3), F(2), F(2), F(2), F(2), F(3), F(3), F(3), F(3), BR(3) );
+lambda.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+lambda.far[2] = new Array( BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), BR(3) );
+lambda.far[3] = new Array( BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2), TR(2) );
+lambda.far[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+lambda.far[5] = new Array( BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2), TL(2) );
+lambda.far[6] = new Array( BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), BL(3) );
+lambda.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+// ****************************************************************************
+// Firespray-31
+
+var slave1 = new Object();
+slave1.name = "Firespray-31";
+slave1.image = "img/slave1.png";
+slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
+slave1.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
+slave1.difficult = new Array( K(3), K(4) );
+slave1.actions = (TARGET_LOCK + FOCUS + EVADE);
+
+slave1.closing = new Array();
+slave1.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(3), K(4) );
+slave1.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(3) );
+slave1.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(3), K(4) );
+slave1.closing[3] = new Array( BR(1), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), K(3), K(4) );
+slave1.closing[4] = new Array( TL(3), F(4), TR(3), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+slave1.closing[5] = new Array( BL(1), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), K(3), K(4) );
+slave1.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(3), K(4) );
+slave1.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(3) );
+
+slave1.away = new Array();
+slave1.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+slave1.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+slave1.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+slave1.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(3), K(4), K(4) );
+slave1.away[4] = new Array( TL(3), TR(3), TR(3), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+slave1.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(3), K(4), K(4) );
+slave1.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+slave1.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
+
+slave1.far = new Array();
+slave1.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+slave1.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+slave1.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+slave1.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+slave1.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(3), K(4) );
+slave1.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+slave1.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+slave1.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 // ****************************************************************************
 // Tie Fighter
@@ -118,39 +363,38 @@ tie.name = "Tie Fighter";
 tie.image = "img/tie.png";
 tie.simple = new Array( F(2), BL(2), BR(2), F(3) );
 tie.normal = new Array( TL(1), TL(2), TL(3), BL(3), F(4), F(5), BR(3), TR(1), TR(2), TR(3) );
-tie.difficult = new Array( K(3), K(4) );  
-tie.actions = ( BARREL_ROLL + FOCUS + EVADE );
+tie.difficult = new Array( K(3), K(4) );
+tie.actions = (BARREL_ROLL + FOCUS + EVADE);
 
-// AI choices
 tie.closing = new Array();
-tie.closing[0] = new Array( BL(2), F(2),  F(2),  F(2),  F(2),  BR(2), K(4),  K(4)  );
-tie.closing[1] = new Array( F(2),  BR(3), BR(3), BR(2), BR(2), BR(2), TR(2), TR(1) );
-tie.closing[2] = new Array( TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), K(4),  K(3)  );
-tie.closing[3] = new Array( TR(2), TR(2), TR(1), TR(1), TR(1), K(4),  K(4),  K(3)  );
-tie.closing[4] = new Array( TL(3), F(5),  TR(3), K(4),  K(4),  K(3),  K(3),  K(3)  );
-tie.closing[5] = new Array( TL(2), TL(2), TL(1), TL(1), TL(1), K(4),  K(4),  K(3)  );
-tie.closing[6] = new Array( TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), K(4),  K(3)  );
-tie.closing[7] = new Array( TL(2), TL(1), BL(3), BL(3), BL(2), BL(2), BL(2), F(2)  );
+tie.closing[0] = new Array( BL(2), F(2), F(2), F(2), F(2), F(3), F(3), F(3), K(3), K(4) );
+tie.closing[1] = new Array( F(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), TR(1), TR(2) );
+tie.closing[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(3), K(4) );
+tie.closing[3] = new Array( BR(2), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), K(3), K(4) );
+tie.closing[4] = new Array( TL(3), F(5), TR(3), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+tie.closing[5] = new Array( BL(2), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), K(3), K(4) );
+tie.closing[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(3), K(4) );
+tie.closing[7] = new Array( F(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), TL(1), TL(2) );
 
 tie.away = new Array();
-tie.away[0] = new Array( F(5),  F(5),  F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  );
-tie.away[1] = new Array( F(5),  F(4),  F(4),  BR(3), BR(3), BR(3), BR(2), BR(2) );
-tie.away[2] = new Array( BR(3), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tie.away[3] = new Array( TR(2), TR(2), TR(2), TR(1), TR(1), K(4),  K(3),  K(3)  );
-tie.away[4] = new Array( TL(1), TR(1), K(4),  K(4),  K(3),  K(3),  K(3),  K(3)  );
-tie.away[5] = new Array( TL(2), TL(2), TL(2), TL(1), TL(1), K(4),  K(3),  K(3)  );
-tie.away[6] = new Array( TL(3), TL(3), TL(2), TL(2), TL(1), TL(1), BL(3), BL(2) );
-tie.away[7] = new Array( BL(3), BL(3), BL(3), BL(2), BL(2), F(5),  F(4),  F(4)  );
+tie.away[0] = new Array( F(4), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), F(5) );
+tie.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tie.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+tie.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(3), K(4), K(4) );
+tie.away[4] = new Array( TL(3), TR(3), TR(3), K(3), K(3), K(3), K(4), K(4), K(4), K(4) );
+tie.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(3), K(4), K(4) );
+tie.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+tie.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 tie.far = new Array();
-tie.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(3),  BR(3) );
-tie.far[1] = new Array( BR(3), BR(3), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1) );
-tie.far[2] = new Array( BR(3), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tie.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tie.far[4] = new Array( TL(2), TL(1), TL(1), TR(2), TR(1), TR(1), K(3),  K(3)  );
-tie.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
-tie.far[6] = new Array( TL(3), TL(3), TL(2), TL(2), TL(1), TL(1), BL(3), BL(2) );
-tie.far[7] = new Array( TL(3), TL(3), TL(2), TL(2), TL(1), BL(3), BL(3), BL(2) );
+tie.far[0] = new Array( BL(3), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), BR(3) );
+tie.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tie.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tie.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tie.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(3), K(4) );
+tie.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tie.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tie.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 // ****************************************************************************
 // Tie Advanced
@@ -161,38 +405,119 @@ tieAdvanced.image = "img/TieAdvanced.png";
 tieAdvanced.simple = new Array( BL(1), BR(1), F(2), F(3) );
 tieAdvanced.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(4), F(5), BR(2), BR(3), TR(2), TR(3) );
 tieAdvanced.difficult = new Array( K(4) );
-tieAdvanced.actions = ( TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE );
+tieAdvanced.actions = (TARGET_LOCK + BARREL_ROLL + FOCUS + EVADE);
 
-// AI choices
 tieAdvanced.closing = new Array();
-tieAdvanced.closing[0] = new Array( BL(2), F(2),  F(2),  F(2),  F(2),  BR(2), K(4),  K(4)  );
-tieAdvanced.closing[1] = new Array( F(2),  BR(3), BR(3), BR(2), BR(2), BR(2), TR(3), TR(2) );
-tieAdvanced.closing[2] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), K(4),  K(4)  );
-tieAdvanced.closing[3] = new Array( F(5),  BR(1), TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
-tieAdvanced.closing[4] = new Array( TL(3), TL(2), F(4),  TR(3), TR(2), K(4),  K(4),  K(4)  );
-tieAdvanced.closing[5] = new Array( TL(2), TL(2), TL(2), BL(1), F(5),  K(4),  K(4),  K(4)  );
-tieAdvanced.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), BL(1), BL(1), K(4),  K(4)  );
-tieAdvanced.closing[7] = new Array( TL(3), TL(2), BL(3), BL(3), BL(2), BL(2), BL(2), F(2)  );
+tieAdvanced.closing[0] = new Array( BL(1), F(2), F(2), F(2), F(2), F(3), F(3), F(3), K(4), K(4) );
+tieAdvanced.closing[1] = new Array( F(2), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(3) );
+tieAdvanced.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4) );
+tieAdvanced.closing[3] = new Array( BR(1), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), K(4), K(4) );
+tieAdvanced.closing[4] = new Array( TL(3), F(5), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+tieAdvanced.closing[5] = new Array( BL(1), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), K(4), K(4) );
+tieAdvanced.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4) );
+tieAdvanced.closing[7] = new Array( F(2), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(3) );
 
 tieAdvanced.away = new Array();
-tieAdvanced.away[0] = new Array( F(5),  F(5),  F(5),  F(4),  F(4),  F(3),  F(3),  F(2)  );
-tieAdvanced.away[1] = new Array( F(4),  F(3),  BR(3), BR(3), BR(3), BR(2), BR(2), BR(2) );
-tieAdvanced.away[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(2), TR(2), TR(2) );
-tieAdvanced.away[3] = new Array( TR(2), TR(2), TR(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
-tieAdvanced.away[4] = new Array( TL(2), TL(2), TR(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
-tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), TL(2), K(4),  K(4),  K(4),  K(4)  );
-tieAdvanced.away[6] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), BL(1), BL(2) );
-tieAdvanced.away[7] = new Array( BL(3), BL(3), BL(3), BL(2), BL(2), BL(2), F(4),  F(3)  );
+tieAdvanced.away[0] = new Array( F(4), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), F(5) );
+tieAdvanced.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tieAdvanced.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+tieAdvanced.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4), K(4) );
+tieAdvanced.away[4] = new Array( TL(3), TR(3), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+tieAdvanced.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4), K(4) );
+tieAdvanced.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+tieAdvanced.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 tieAdvanced.far = new Array();
-tieAdvanced.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(3),  BR(3) );
-tieAdvanced.far[1] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2) );
-tieAdvanced.far[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2) );
-tieAdvanced.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2) );
-tieAdvanced.far[4] = new Array( TL(3), TL(2), TL(2), TR(3), TR(2), TR(2), K(4),  K(4)  );
-tieAdvanced.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2) );
-tieAdvanced.far[6] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), BL(3), BL(2), BL(1) );
-tieAdvanced.far[7] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), BL(3), BL(2), BL(1) );
+tieAdvanced.far[0] = new Array( BL(3), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), BR(3) );
+tieAdvanced.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tieAdvanced.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tieAdvanced.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tieAdvanced.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(4), K(4) );
+tieAdvanced.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tieAdvanced.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tieAdvanced.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
+
+// ****************************************************************************
+// Tie Bomber
+
+var tieBomber = new Object();
+tieBomber.name = "Tie Bomber";
+tieBomber.image = "img/tieBomber.png";
+tieBomber.simple = new Array( F(1), F(2), F(3), BL(2), BR(2) );
+tieBomber.normal = new Array( BL(1), TL(3), BL(3), F(4), BR(3), BL(3), BR(1) );
+tieBomber.difficult = new Array( TL(2), TR(2), K(5) );
+tieBomber.actions = (BARREL_ROLL + FOCUS + TARGET_LOCK);
+
+tieBomber.closing = new Array();
+tieBomber.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(5), K(5) );
+tieBomber.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(2) );
+tieBomber.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), K(5), K(5) );
+tieBomber.closing[3] = new Array( BR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), K(5), K(5) );
+tieBomber.closing[4] = new Array( TL(2), F(3), TR(2), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+tieBomber.closing[5] = new Array( BL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), K(5), K(5) );
+tieBomber.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), K(5), K(5) );
+tieBomber.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(2) );
+
+tieBomber.away = new Array();
+tieBomber.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+tieBomber.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+tieBomber.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+tieBomber.away[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), K(5), K(5), K(5) );
+tieBomber.away[4] = new Array( TL(2), TL(3), TR(2), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+tieBomber.away[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), K(5), K(5), K(5) );
+tieBomber.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+tieBomber.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+tieBomber.far = new Array();
+tieBomber.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+tieBomber.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(2) );
+tieBomber.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+tieBomber.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
+tieBomber.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TL(3), TR(2), TR(2), TR(2), K(5), K(5) );
+tieBomber.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+tieBomber.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
+tieBomber.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(2) );
+
+// ****************************************************************************
+// Tie Interceptor
+
+var tieInterceptor = new Object();
+tieInterceptor.name = "Tie Interceptor";
+tieInterceptor.image = "img/tieInterceptor.png";
+tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
+tieInterceptor.normal = new Array( TL(1), TL(3), BL(3), F(5), BR(3), TR(1), TR(3) );
+tieInterceptor.difficult = new Array( K(3), K(5) );
+tieInterceptor.actions = (BARREL_ROLL + BOOST + FOCUS + EVADE);
+
+tieInterceptor.closing = new Array();
+tieInterceptor.closing[0] = new Array( BL(2), F(2), F(2), F(2), F(2), F(3), F(3), F(3), K(3), K(3) );
+tieInterceptor.closing[1] = new Array( F(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), TR(1), TR(2) );
+tieInterceptor.closing[2] = new Array( TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), K(3), K(3) );
+tieInterceptor.closing[3] = new Array( BR(2), TR(1), TR(1), TR(1), TR(1), TR(2), TR(2), TR(2), K(3), K(3) );
+tieInterceptor.closing[4] = new Array( TL(3), F(5), TR(3), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+tieInterceptor.closing[5] = new Array( BL(2), TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), K(3), K(3) );
+tieInterceptor.closing[6] = new Array( TL(1), TL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), K(3), K(3) );
+tieInterceptor.closing[7] = new Array( F(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), TL(1), TL(2) );
+
+tieInterceptor.away = new Array();
+tieInterceptor.away[0] = new Array( F(4), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), F(5) );
+tieInterceptor.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tieInterceptor.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+tieInterceptor.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(5), K(5), K(5) );
+tieInterceptor.away[4] = new Array( TL(3), TR(3), TR(3), K(5), K(5), K(5), K(5), K(5), K(5), K(5) );
+tieInterceptor.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(5), K(5), K(5) );
+tieInterceptor.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+tieInterceptor.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
+
+tieInterceptor.far = new Array();
+tieInterceptor.far[0] = new Array( BL(3), F(4), F(4), F(4), F(4), F(5), F(5), F(5), F(5), BR(3) );
+tieInterceptor.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+tieInterceptor.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tieInterceptor.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+tieInterceptor.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(5), K(5) );
+tieInterceptor.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tieInterceptor.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+tieInterceptor.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 // ****************************************************************************
 // X-Wing
@@ -203,38 +528,37 @@ xwing.image = "img/xwing.png";
 xwing.simple = new Array( F(1), BL(1), BR(1), F(2) );
 xwing.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
 xwing.difficult = new Array( K(4) );
-xwing.actions = ( TARGET_LOCK + FOCUS );
+xwing.actions = (TARGET_LOCK + FOCUS);
 
-// AI choices
 xwing.closing = new Array();
-xwing.closing[0] = new Array( BL(1), F(2),  F(2),  F(2),  F(1),  F(1),  F(1),  BR(1) );
-xwing.closing[1] = new Array( F(1),  BR(3), BR(3), BR(2), BR(2), BR(2), TR(2), TR(1) );
-xwing.closing[2] = new Array( BR(1), BR(1), BR(1), TR(3), TR(3), TR(2), TR(2), TR(2) );
-xwing.closing[3] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
-xwing.closing[4] = new Array( TL(3), F(3),  TR(3), K(4),  K(4),  K(4),  K(4),  K(4) );
-xwing.closing[5] = new Array( TL(2), TL(2), TL(2), BL(1), BL(1), K(4),  K(4),  K(4)  );
-xwing.closing[6] = new Array( TL(3), TL(3), TL(2), TL(2), TL(2), BL(1), BL(1), BL(1) );
-xwing.closing[7] = new Array( TL(2), TL(1), BL(3), BL(3), BL(2), BL(2), BL(2), F(1)  );
+xwing.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(4), K(4) );
+xwing.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(3) );
+xwing.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4) );
+xwing.closing[3] = new Array( BR(1), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), K(4), K(4) );
+xwing.closing[4] = new Array( TL(3), F(4), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+xwing.closing[5] = new Array( BL(1), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), K(4), K(4) );
+xwing.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4) );
+xwing.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(3) );
 
 xwing.away = new Array();
-xwing.away[0] = new Array( F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  F(2),  F(1)  );
-xwing.away[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2) );
-xwing.away[2] = new Array( BR(2), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-xwing.away[3] = new Array( TR(3), TR(3), TR(2), TR(2), TR(2), K(4),  K(4),  K(4)  );
-xwing.away[4] = new Array( TL(2), TL(2), TR(2), TR(2), K(4),  K(4),  K(4),  K(4)  );
-xwing.away[5] = new Array( TL(3), TL(3), TL(2), TL(2), TL(2), K(4),  K(4),  K(4)  );
-xwing.away[6] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), BL(2), BL(1) );
-xwing.away[7] = new Array( TL(3), TL(3), TL(2), TL(2), BL(3), BL(3), BL(2), BL(2) );
+xwing.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+xwing.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+xwing.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+xwing.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4), K(4) );
+xwing.away[4] = new Array( TL(3), TR(3), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+xwing.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4), K(4) );
+xwing.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+xwing.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 xwing.far = new Array();
-xwing.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(3),  F(3),  F(2),  BR(3) );
-xwing.far[1] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(2), TR(2), TR(2) );
-xwing.far[2] = new Array( BR(3), BR(2), BR(1), TR(3), TR(3), TR(2), TR(2), TR(2) );
-xwing.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2) );
-xwing.far[4] = new Array( TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(2), TR(2) );
-xwing.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2) );
-xwing.far[6] = new Array( BL(3), BL(2), BL(1), TL(3), TL(3), TL(2), TL(2), TL(2) );
-xwing.far[7] = new Array( BL(3), BL(2), BL(1), TL(3), TL(3), TL(2), TL(2), TL(2) );
+xwing.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+xwing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+xwing.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+xwing.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+xwing.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(4), K(4) );
+xwing.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+xwing.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+xwing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 // ****************************************************************************
 // Y-Wing
@@ -245,371 +569,38 @@ ywing.image = "img/ywing.png";
 ywing.simple = new Array( F(1), F(2) );
 ywing.normal = new Array( TL(2), BL(1), BL(2), BL(3), F(3), BR(1), BR(2), BR(3), TR(2) );
 ywing.difficult = new Array( TL(3), TR(3), F(4), K(4) );
-ywing.actions = ( TARGET_LOCK + FOCUS );
+ywing.actions = (TARGET_LOCK + FOCUS);
 
-// AI choices
 ywing.closing = new Array();
-ywing.closing[0] = new Array( BL(1), F(1),  F(1),  F(2),  F(2),  BR(1) );
-ywing.closing[1] = new Array( F(1),  BR(2), BR(2), BR(1), TR(2), TR(2) );
-ywing.closing[2] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2) );
-ywing.closing[3] = new Array( K(4),  K(4),  K(4),  BR(1), TR(2), TR(2) );
-ywing.closing[4] = new Array( TL(2), K(4),  K(4),  K(4),  K(4),  TR(2) );
-ywing.closing[5] = new Array( TL(2), TL(2), BL(1), K(4),  K(4),  K(4)  );
-ywing.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), BL(1), BL(1) );
-ywing.closing[7] = new Array( TL(2), TL(2), BL(2), BL(2), BL(1), F(1)  );
+ywing.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), K(4), K(4) );
+ywing.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), TR(2), TR(3) );
+ywing.closing[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4) );
+ywing.closing[3] = new Array( BR(1), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), K(4), K(4) );
+ywing.closing[4] = new Array( TL(3), F(4), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+ywing.closing[5] = new Array( BL(1), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), K(4), K(4) );
+ywing.closing[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4) );
+ywing.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), TL(2), TL(3) );
 
 ywing.away = new Array();
-ywing.away[0] = new Array( F(3),  F(3),  F(2),  F(2),  F(2),  F(1)  );
-ywing.away[1] = new Array( BR(3), BR(2), TR(2), TR(2), TR(2), TR(3) );
-ywing.away[2] = new Array( BR(1), BR(2), TR(2), TR(2), TR(2), TR(3) );
-ywing.away[3] = new Array( K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
-ywing.away[4] = new Array( TL(2), K(4),  K(4),  K(4),  K(4),  TR(2) );
-ywing.away[5] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4)  );
-ywing.away[6] = new Array( TL(2), TL(2), TL(2), TL(3), BL(1), BL(2) );
-ywing.away[7] = new Array( TR(2), TR(2), TL(2), TL(3), BL(3), BL(2) );
+ywing.away[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), F(4) );
+ywing.away[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+ywing.away[2] = new Array( BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3) );
+ywing.away[3] = new Array( TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), K(4), K(4), K(4) );
+ywing.away[4] = new Array( TL(3), TR(3), TR(3), K(4), K(4), K(4), K(4), K(4), K(4), K(4) );
+ywing.away[5] = new Array( TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), K(4), K(4), K(4) );
+ywing.away[6] = new Array( BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3) );
+ywing.away[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
 ywing.far = new Array();
-ywing.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
-ywing.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-ywing.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-ywing.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-ywing.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(4),  K(4),  TR(3), TR(3), TR(2), TR(2) );
-ywing.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-ywing.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
-ywing.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
+ywing.far[0] = new Array( BL(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4), BR(3) );
+ywing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), BR(3), TR(2), TR(3) );
+ywing.far[2] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+ywing.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(3), TR(3), TR(3), TR(3), TR(3) );
+ywing.far[4] = new Array( TL(2), TL(2), TL(3), TL(3), TR(2), TR(2), TR(3), TR(3), K(4), K(4) );
+ywing.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+ywing.far[6] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(3), TL(3), TL(3), TL(3), TL(3) );
+ywing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), BL(3), TL(2), TL(3) );
 
-// ****************************************************************************
-// Tie Interceptor
-
-var tieInterceptor = new Object();
-tieInterceptor.name = "Tie Interceptor";
-tieInterceptor.image = "img/tieInterceptor.png";
-tieInterceptor.simple = new Array( F(2), F(3), F(4), TL(2), BL(2), BR(2), TR(2) );
-tieInterceptor.normal = new Array( TL(1), TL(3), BL(3), F(5), BR(3), TR(1), TR(3) );
-tieInterceptor.difficult = new Array( K(3), K(5) );   
-tieInterceptor.actions = ( BARREL_ROLL + BOOST + FOCUS + EVADE );
-
-// AI choices
-tieInterceptor.closing = new Array();
-tieInterceptor.closing[0] = new Array( BL(2), F(2),  F(2),  K(5),  K(5),  BR(2) );
-tieInterceptor.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(2), TR(1)  );
-tieInterceptor.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(5) );
-tieInterceptor.closing[3] = new Array( K(5),  K(5),  K(3),  TR(2), TR(1), TR(1)  );
-tieInterceptor.closing[4] = new Array( K(5),  K(3),  K(3),  TL(3), TR(3), F(5)  );
-tieInterceptor.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(5),  K(5) );
-tieInterceptor.closing[6] = new Array( K(5),  K(3),  TL(2), TL(2), TL(1), TL(1) );
-tieInterceptor.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
-
-tieInterceptor.away = new Array();
-tieInterceptor.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
-tieInterceptor.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
-tieInterceptor.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), TR(1) );
-tieInterceptor.away[3] = new Array( K(5),  K(3),  K(3),  TR(2), TR(2), TR(1) );
-tieInterceptor.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
-tieInterceptor.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
-tieInterceptor.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
-tieInterceptor.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
-
-tieInterceptor.far = new Array();
-tieInterceptor.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
-tieInterceptor.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tieInterceptor.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-tieInterceptor.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
-tieInterceptor.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
-tieInterceptor.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
-tieInterceptor.far[6] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
-tieInterceptor.far[7] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
-
-// ****************************************************************************
-// A-Wing
-
-var awing = new Object();
-awing.name = "A-Wing";
-awing.image = "img/awing.png";
-awing.simple = new Array( F(2), F(3), F(4), F(5), TL(2), BL(2), BR(2), TR(2));
-awing.normal = new Array( TL(1), TL(3), BL(3), BR(3), TR(1), TR(3) );
-awing.difficult = new Array( K(3), K(5) );
-awing.actions = ( TARGET_LOCK + BOOST + FOCUS + EVADE );
-
-// AI choices
-awing.closing = new Array();
-awing.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(5),  K(5) );
-awing.closing[1] = new Array( F(2),  BR(3), BR(2), BR(2), TR(2), TR(1)  );
-awing.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(5) );
-awing.closing[3] = new Array( K(5),  K(5),  K(3),  TR(2), TR(1), TR(1)  );
-awing.closing[4] = new Array( K(5),  K(3),  K(3),  TL(3), TR(3), F(5)  );
-awing.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(5),  K(5) );
-awing.closing[6] = new Array( K(5),  K(3),  TL(2), TL(2), TL(1), TL(1) );
-awing.closing[7] = new Array( F(2),  BL(3), BL(2), BL(2), TL(2), TL(1) );
-
-awing.away = new Array();
-awing.away[0] = new Array( F(5),  F(4),  F(4),  F(3),  F(3),  F(2) );
-awing.away[1] = new Array( F(5),  F(4),  BR(3), BR(3), BR(2), BR(2) );
-awing.away[2] = new Array( BR(3), TR(3), BR(2), TR(2), TR(2), TR(1) );
-awing.away[3] = new Array( K(5),  K(3),  K(3),  TR(2), TR(2), TR(1) );
-awing.away[4] = new Array( K(3),  K(3),  K(3),  K(3),  TL(1), TR(1) );
-awing.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(5) );
-awing.away[6] = new Array( BL(3), TL(3), BL(2), TL(2), TL(2), TL(1) );
-awing.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(4),  F(5) );
-
-awing.far = new Array();
-awing.far[0] = new Array( BL(3), F(5),  F(5),  F(5),  F(5),  F(4),  F(4),  F(4),  F(3),  BR(3) );
-awing.far[1] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-awing.far[2] = new Array( BR(3), BR(3), BR(2), BR(2), TR(3), TR(3), TR(2), TR(2), TR(1), TR(1) );
-awing.far[3] = new Array( TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1) );
-awing.far[4] = new Array( TL(3), TL(2), TL(1), TL(1), K(3),  K(3),  TR(3), TR(2), TR(1), TR(1) );
-awing.far[5] = new Array( TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1) );
-awing.far[6] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
-awing.far[7] = new Array( BL(3), BL(3), BL(2), BL(2), TL(3), TL(3), TL(2), TL(2), TL(1), TL(1) );
-
-// ****************************************************************************
-// Slave 1
-
-var slave1 = new Object();
-slave1.name = "Firespray-31";
-slave1.image = "img/slave1.png";
-slave1.simple = new Array( F(1), F(2), BL(1), BR(1) );
-slave1.normal = new Array( TL(2), TL(3), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(2), TR(3) );
-slave1.difficult = new Array( K(3), K(4) );   
-slave1.actions = ( TARGET_LOCK + FOCUS + EVADE );
-
-// AI choices
-slave1.closing = new Array();
-slave1.closing[0] = new Array( BL(3), BR(3), F(2),  F(2),  K(3),  K(4) );
-slave1.closing[1] = new Array( F(1),  BR(3), BR(3), BR(3), TR(3), TR(2) );
-slave1.closing[2] = new Array( TR(2), TR(2), TR(3), TR(3), K(3),  K(4) );
-slave1.closing[3] = new Array( TR(2), TR(2), TR(3), K(3),  K(4),  K(4) );
-slave1.closing[4] = new Array( F(4),  TL(3), TR(3), K(3),  K(4),  K(4) );
-slave1.closing[5] = new Array( TL(2), TL(2), TL(3), K(3),  K(4),  K(4) );
-slave1.closing[6] = new Array( TL(2), TL(2), TL(3), TL(3), K(3),  K(3) );
-slave1.closing[7] = new Array( F(1),  BL(3), BL(3), BL(3), TL(3), TL(2) );
-
-slave1.away = new Array();
-slave1.away[0] = new Array( F(4),  F(4),  F(3),  F(3),  F(2),  F(2) );
-slave1.away[1] = new Array( BR(3), BR(3), BR(3), BR(3), F(3),  F(4) );
-slave1.away[2] = new Array( TR(2), TR(2), BR(2), BR(3), TR(3), TR(3) );
-slave1.away[3] = new Array( TR(3), TR(3), TR(3), K(3),  K(3),  K(4) );
-slave1.away[4] = new Array( TL(2), TR(2), K(3),  K(3),  K(3),  K(3) );
-slave1.away[5] = new Array( TL(2), TL(3), TL(3), K(3),  K(3),  K(4) );
-slave1.away[6] = new Array( TL(2), TL(2), BL(2), BL(3), TL(3), TL(3) );
-slave1.away[7] = new Array( BL(3), BL(3), BL(3), BL(3), F(3),  F(4) );
-
-slave1.far = new Array();
-slave1.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
-slave1.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-slave1.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2) );
-slave1.far[3] = new Array( TR(3), TR(3), TR(3), TR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-slave1.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(3),  K(3),  TR(3), TR(3), TR(2), TR(2) );
-slave1.far[5] = new Array( TL(3), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-slave1.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
-slave1.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(3), TL(3), TL(3), TL(2), TL(2), TL(2) );
-
-
-// ****************************************************************************
-// Millenium Falcon
-
-var falcon = new Object();
-falcon.name = "YT-1300";
-falcon.image = "img/falcon.png";
-falcon.simple = new Array( F(1), F(2), BL(1), BR(1) );
-falcon.normal = new Array( TL(1), TL(2), BL(2), BL(3), F(3), F(4), BR(2), BR(3), TR(1), TR(2) );
-falcon.difficult = new Array( K(3), K(4) );   
-falcon.actions = ( TARGET_LOCK + FOCUS );
-
-// AI choices
-falcon.closing = new Array();
-falcon.closing[0] = new Array( BL(2), BR(2), F(2),  F(2),  K(3),  K(4) );
-falcon.closing[1] = new Array( F(1),  BR(3), BR(2), BR(2), TR(2), TR(1) );
-falcon.closing[2] = new Array( TR(1), TR(1), TR(2), TR(2), K(3),  K(4) );
-falcon.closing[3] = new Array( TR(1), TR(1), TR(2), K(3),  K(4),  K(4) );
-falcon.closing[4] = new Array( F(4),  TL(2), TR(2), K(3),  K(4),  K(4) );
-falcon.closing[5] = new Array( TL(1), TL(1), TL(2), K(3),  K(4),  K(4) );
-falcon.closing[6] = new Array( TL(1), TL(1), TL(2), TL(2), K(3),  K(3) );
-falcon.closing[7] = new Array( F(1),  BL(3), BL(2), BL(2), TL(2), TL(1) );
-
-falcon.away = new Array();
-falcon.away[0] = new Array( F(4),  F(4),  F(3),  F(3),  F(2),  F(2) );
-falcon.away[1] = new Array( BR(2), BR(2), BR(3), BR(3), F(3),  F(4) );
-falcon.away[2] = new Array( TR(1), TR(1), BR(1), BR(2), TR(2), TR(2) );
-falcon.away[3] = new Array( TR(2), TR(2), TR(2), K(3),  K(3),  K(4) );
-falcon.away[4] = new Array( TL(1), TR(1), K(3),  K(3),  K(3),  K(3) );
-falcon.away[5] = new Array( TL(1), TL(2), TL(2), K(3),  K(3),  K(4) );
-falcon.away[6] = new Array( TL(1), TL(1), BL(1), BL(2), TL(2), TL(2) );
-falcon.away[7] = new Array( BL(2), BL(2), BL(3), BL(3), F(3),  F(4) );
-
-falcon.far = new Array();
-falcon.far[0] = new Array( BL(3), F(4),  F(4),  F(4),  F(4),  F(3),  F(3),  F(3),  F(2),  BR(3) );
-falcon.far[1] = new Array( BR(3), BR(2), BR(1), BR(1), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1) );
-falcon.far[2] = new Array( BR(3), BR(2), BR(1), BR(1), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1) );
-falcon.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1), TR(1), TR(1) );
-falcon.far[4] = new Array( TL(3), TL(3), TL(2), TL(2), K(3),  K(3),  TR(3), TR(3), TR(2), TR(2) );
-falcon.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1), TL(1), TL(1) );
-falcon.far[6] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1) );
-falcon.far[7] = new Array( BL(3), BL(2), BL(1), BL(1), TL(2), TL(2), TL(2), TL(1), TL(1), TL(1) );
-
-// ****************************************************************************
-// TieBomber
-
-var tieBomber = new Object();
-tieBomber.name = "Tie Bomber";
-tieBomber.image = "img/tieBomber.png";
-tieBomber.simple = new Array( F(1), F(2), F(3), BL(2), BR(2) );
-tieBomber.normal = new Array( BL(1), TL(3), BL(3), F(4), BR(3), BL(3), BR(1) );
-tieBomber.difficult = new Array( TL(2), TR(2), K(5) );   
-tieBomber.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
-
-tieBomber.closing = new Array();
-tieBomber.closing[0] = new Array( F(1) );
-tieBomber.closing[1] = new Array( F(1) );
-tieBomber.closing[2] = new Array( F(1) );
-tieBomber.closing[3] = new Array( F(1) );
-tieBomber.closing[4] = new Array( F(1) );
-tieBomber.closing[5] = new Array( F(1) );
-tieBomber.closing[6] = new Array( F(1) );
-tieBomber.closing[7] = new Array( F(1) );
-
-tieBomber.away = new Array();
-tieBomber.away[0] = new Array( F(1) );
-tieBomber.away[1] = new Array( F(1) );
-tieBomber.away[2] = new Array( F(1) );
-tieBomber.away[3] = new Array( F(1) );
-tieBomber.away[4] = new Array( F(1) );
-tieBomber.away[5] = new Array( F(1) );
-tieBomber.away[6] = new Array( F(1) );
-tieBomber.away[7] = new Array( F(1) );
-
-tieBomber.far = new Array();
-tieBomber.far[0] = new Array( F(1) );
-tieBomber.far[1] = new Array( F(1) );
-tieBomber.far[2] = new Array( F(1) );
-tieBomber.far[3] = new Array( F(1) );
-tieBomber.far[4] = new Array( F(1) );
-tieBomber.far[5] = new Array( F(1) );
-tieBomber.far[6] = new Array( F(1) );
-tieBomber.far[7] = new Array( F(1) );
-
-// ****************************************************************************
-// B-Wing
-
-var bwing = new Object();
-bwing.name = "B-Wing";
-bwing.image = "img/bwing.png";
-bwing.simple = new Array( BL(1), F(1), F(2), BR(1) );
-bwing.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
-bwing.difficult = new Array( TL(1), BL(3), F(4), BR(3), TR(1), K(2) );   
-bwing.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
-
-bwing.closing = new Array();
-bwing.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(2), F(2), F(2), BR(1), K(2), K(2) );
-bwing.closing[1] = new Array( BR(1), BR(1), BR(1), BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), TR(2) );
-bwing.closing[2] = new Array( BR(2), BR(1), TR(2), TR(2), TR(1), TR(1), TR(1), TR(1), TR(1), TR(1) );
-bwing.closing[3] = new Array( TR(1), TR(1), TR(2), TR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
-bwing.closing[4] = new Array( TL(2), TL(2), TL(1), TR(1), TR(2), TR(2), K(2), K(2), K(2), K(2) );
-bwing.closing[5] = new Array( TL(1), TL(1), TL(2), TL(2), K(2), K(2), K(2), K(2), K(2), K(2) );
-bwing.closing[6] = new Array( BL(2), BL(1), TL(2), TL(2), TL(1), TL(1), TL(1), TL(1), TL(1), TL(1) );
-bwing.closing[7] = new Array( BL(1), BL(1), BL(1), BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), TL(2) );
-
-bwing.away = new Array();
-bwing.away[0] = new Array( F(2), F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4) );
-bwing.away[1] = new Array( BR(1), BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2) )
-bwing.away[2] = new Array( BR(1), BR(1), BR(2), BR(2), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2) );
-bwing.away[3] = new Array( BR(2), BR(2), BR(2), BR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
-bwing.away[4] = new Array( TL(2), TL(2), TR(2), TR(2), K(2), K(2), K(2), K(2), K(2), K(2) );
-bwing.away[5] = new Array( BL(2), BL(2), BL(2), BL(2), K(2), K(2), K(2), K(2), K(2), K(2) );
-bwing.away[6] = new Array( BL(1), BL(1), BL(2), BL(2), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2) );
-bwing.away[7] = new Array( BL(1), BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), TL(2), TL(2) );
-
-bwing.far = new Array();
-bwing.far[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4) );
-bwing.far[1] = new Array( BR(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), BR(3), TR(2), TR(2) );
-bwing.far[2] = new Array( BR(2), BR(1), TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-bwing.far[3] = new Array( TR(1), TR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), K(2), K(2) );
-bwing.far[4] = new Array( TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), K(2), K(2), K(2), K(2) );
-bwing.far[5] = new Array( TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), K(2), K(2) );
-bwing.far[6] = new Array( BL(2), BL(1), TL(1), TL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-bwing.far[7] = new Array( BL(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), BL(3), TL(2), TL(2) );
-
-// ****************************************************************************
-// Lamda Shuttle
-
-var lambda = new Object();
-lambda.name = "Lambda Shuttle";
-lambda.image = "img/lambda.png";
-lambda.simple = new Array( BL(1), F(1), F(2), BR(1) );
-lambda.normal = new Array( BL(2), F(3), BR(2) );
-lambda.difficult = new Array( TL(2), BL(3), F(0), BR(3), TR(2) );   
-lambda.actions = ( BARREL_ROLL + FOCUS + TARGET_LOCK );
-
-lambda.closing = new Array();
-lambda.closing[0] = new Array( F(0) );
-lambda.closing[1] = new Array( F(1) );
-lambda.closing[2] = new Array( F(1) );
-lambda.closing[3] = new Array( F(1) );
-lambda.closing[4] = new Array( F(1) );
-lambda.closing[5] = new Array( F(1) );
-lambda.closing[6] = new Array( F(1) );
-lambda.closing[7] = new Array( F(1) );
-
-lambda.away = new Array();
-lambda.away[0] = new Array( F(1) );
-lambda.away[1] = new Array( F(1) );
-lambda.away[2] = new Array( F(1) );
-lambda.away[3] = new Array( F(1) );
-lambda.away[4] = new Array( F(1) );
-lambda.away[5] = new Array( F(1) );
-lambda.away[6] = new Array( F(1) );
-lambda.away[7] = new Array( F(1) );
-
-lambda.far = new Array();
-lambda.far[0] = new Array( F(1) );
-lambda.far[1] = new Array( F(1) );
-lambda.far[2] = new Array( F(1) );
-lambda.far[3] = new Array( F(1) );
-lambda.far[4] = new Array( F(1) );
-lambda.far[5] = new Array( F(1) );
-lambda.far[6] = new Array( F(1) );
-lambda.far[7] = new Array( F(1) );
-
-// ****************************************************************************
-// HWK-290 (Moldy Crow)
-
-var hwk290 = new Object();
-hwk290.name = "HWK-290";
-hwk290.image = "img/hwk290.png";
-hwk290.simple = new Array( BL(1), F(1), F(2), BR(1) );
-hwk290.normal = new Array( TL(2), BL(2), F(3), BR(2), TR(2) );
-hwk290.difficult = new Array( BL(3), F(4), BR(3) );   
-hwk290.actions = ( FOCUS + TARGET_LOCK );
-
-hwk290.closing = new Array();
-hwk290.closing[0] = new Array( BL(1), F(1), F(1), F(1), F(1), F(1), F(2), F(2), F(2), BR(1) );
-hwk290.closing[1] = new Array( F(1), BR(1), BR(1), BR(1), BR(1), BR(1), BR(2), BR(2), TR(2) );
-hwk290.closing[2] = new Array( F(3), F(3), BR(1), BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.closing[3] = new Array( F(1), F(1), F(1), F(3), F(4), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.closing[4] = new Array( TL(2), TL(2), TL(2), TL(2), F(1), F(4), TR(2), TR(2), TR(2), TR(2) );
-hwk290.closing[5] = new Array( F(1), F(1), F(1), F(3), F(4), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.closing[6] = new Array( F(3), F(3), BL(1), BL(1), BL(1), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.closing[7] = new Array( F(1), BL(1), BL(1), BL(1), BL(1), BL(1), BL(2), BL(2), TL(2) );
-
-hwk290.away = new Array();
-hwk290.away[0] = new Array( BL(3), BL(2), F(3), F(3), F(3), F(3), F(4), F(4), BR(2), BR(3) );
-hwk290.away[1] = new Array( F(2), BR(2), BR(2), BR(2), BR(2), BR(3), BR(3), TR(2), TR(2), TR(2) );
-hwk290.away[2] = new Array( BR(2), BR(2), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.away[3] = new Array( BR(1), BR(1), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.away[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.away[5] = new Array( BL(1), BL(1), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.away[6] = new Array( BL(2), BL(2), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.away[7] = new Array( F(2), BL(2), BL(2), BL(2), BL(2), BL(3), BL(3), TL(2), TL(2), TL(2) );
-
-hwk290.far = new Array();
-hwk290.far[0] = new Array( F(3), F(3), F(3), F(3), F(3), F(3), F(4), F(4), F(4), F(4) );
-hwk290.far[1] = new Array( F(3), F(3), F(3), F(4), F(4), BR(2), BR(2), BR(3), BR(3), TR(2) );
-hwk290.far[2] = new Array( BR(3), BR(3), BR(3), BR(3), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.far[3] = new Array( TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.far[4] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TR(2), TR(2), TR(2), TR(2), TR(2) );
-hwk290.far[5] = new Array( TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.far[6] = new Array( BL(3), BL(3), BL(3), BL(3), TL(2), TL(2), TL(2), TL(2), TL(2), TL(2) );
-hwk290.far[7] = new Array( F(3), F(3), F(3), F(4), F(4), BL(2), BL(2), BL(3), BL(3), TL(2) );
 
 // ****************************************************************************
 // Ships
