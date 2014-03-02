@@ -9,6 +9,7 @@ import string
 import sys
 import xml.dom.minidom
 import xml.etree.ElementTree as ElementTree
+import zipfile
 
 from version import VERSION
 
@@ -606,7 +607,39 @@ class XWingGenerator:
 
         print( "Parsing complete." )
         
-            
+        
+# ******************************************************************************
+
+def doBuild():
+    """
+    """
+    
+    dst = r"F:\src\builds\xwing_ai_%s.zip" % VERSION
+    src = r"F:\src\xwing_ai"
+    exclude_dirs = ( ".git", "generator" )
+    exclude_files = ( ".gitignore", )
+    
+    print( "Building %s..." % (dst) )
+
+    # Do not overwrite existing file
+    if os.path.exists( dst ):
+        print( "ERROR: Zip file already exists!" )
+        return
+    
+    zip1 = zipfile.ZipFile( dst, 'w', zipfile.ZIP_DEFLATED )
+    for root, dirs, files in os.walk(src, topdown=True):
+        
+        # ignore directory
+        dirs[:] = [ d for d in dirs if d not in exclude_dirs ]
+
+        for file in files:
+            if file not in exclude_files:
+                filepath = os.path.join( root, file )
+                print( "Adding %s..." % filepath )
+                zip1.write( filepath, os.path.relpath(filepath, src) )
+    
+    print( "Build complete." )
+
 # ******************************************************************************
                 
 if __name__ == "__main__":
@@ -614,14 +647,18 @@ if __name__ == "__main__":
     parser = optparse.OptionParser()
     parser.add_option( "-j", "--js", action="store_true", dest="js_to_xml", default=False,
                        help="Convert ships from javascript to xml" )
+    parser.add_option( "-b", "--build", action="store_true", dest="build", default=False,
+                       help="Save" )
     (options, args) = parser.parse_args()
     
     xwing = XWingGenerator()
     
-    if( options.js_to_xml ):
+    if( options.build ):
+        doBuild()
+    elif( options.js_to_xml ):
         xwing.parse_xml( "xwing_ai_save.js" )
         xwing.export_xml( "ships.xml" )
     else:
         xwing.parse_xml( "ships.xml" )
         xwing.export_js( "..\\src\\xwing_ai.js" )
-    
+           
