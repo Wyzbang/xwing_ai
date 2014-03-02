@@ -33,6 +33,12 @@ var BARREL_ROLL = 0x2;
 var BOOST       = 0x4;
 var FOCUS       = 0x8;
 var EVADE       = 0x10;
+var CLOAKING    = 0x20;
+
+var CORDINATE   = 0x1000;
+var JAM         = 0x2000;
+var RECOVER     = 0x4000;
+var REINFORCE   = 0x8000;
 
 // ACTIONS TEXT
 var TARGET_LOCK_TEXT =  "Obtain <b>Target-Lock</b> on targeted ship as a free action.<br>";
@@ -48,6 +54,18 @@ var FOCUS_TEXT1 = "If target is in a firing arc choose <b>Focus</b>";
 var FOCUS_TEXT2 = "Always use Focus";
 
 var EVADE_TEXT = "Else Choose <b>Evade</b>";
+
+var CLOAKING_TEXT = "CLOAKING";				// TODO
+
+// ACTION TEXT - Hugh Ships
+var CORDINATE   = "CORDINATE";				// TODO
+
+var JAM         = "JAM";					// TODO
+
+var RECOVER     = "RECOVER";				// TODO
+
+var REINFORCE   = "REINFORCE";				// TODO
+
 
 // ****************************************************************************
 // Moves

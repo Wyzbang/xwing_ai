@@ -236,9 +236,35 @@ function format_actions( ship )
 	{
 		actions += "<li>" + EVADE_TEXT + "</li>";
 	}
-	actions += "</ol>";
 	
 	return actions;
+	
+	if( ship.actions & CLOAKING )
+	{
+		actions += "<li>" + CLOAKING_TEXT + "</li>";
+	}
+	
+	if( ship.actions & CORDINATE )
+	{
+		actions += "<li>" + CORDINATE_TEXT + "</li>";
+	}
+	
+	if( ship.actions & JAM )
+	{
+		actions += "<li>" + JAM_TEXT + "</li>";
+	}
+	
+	if( ship.actions & RECOVER )
+	{
+		actions += "<li>" + RECOVER_TEXT + "</li>";
+	}
+	
+	if( ship.actions & REINFORCE )
+	{
+		actions += "<li>" + REINFORCE_TEXT + "</li>";
+	}
+	
+	actions += "</ol>";
 }
 
 // ****************************************************************************
