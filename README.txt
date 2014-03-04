@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.6.0 Beta 1
+                  v1.6.0
 =========================================
 
 -------------------
@@ -48,6 +48,7 @@ Change History
 					Added Version display on all pages
 02/20/2014	1.6.B2	New method for generating maneuver tables
 					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber)
+03/03/2014	1.6.0	Adjusted Lambda Shuttle maneuvers to have a few less Red moves
 
 --------------
 Known Problems

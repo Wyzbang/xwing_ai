@@ -1,4 +1,4 @@
 """
 X-Wing Minitures AI Version Info
 """
-VERSION = "1.6.0b3"
+VERSION = "1.6.0"
