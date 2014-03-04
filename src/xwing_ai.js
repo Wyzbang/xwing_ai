@@ -6,7 +6,7 @@
 // ****************************************************************************
 // Constants
 
-var VERSION = "v1.6.0B3";
+var VERSION = "1.6.0";
 
 // ENEMY SHIP DIRECTIONS
 var DIR_000 = 0;
