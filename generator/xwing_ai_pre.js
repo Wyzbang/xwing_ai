@@ -9,12 +9,12 @@ var DIR_225 = 5;
 var DIR_270 = 6;
 var DIR_315 = 7;
 
-var DIRECTION = new Array( "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" );
+var DIRECTION = [ "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" ];
 
 // HEADING
-var AWAY = "Retreating";			// Heading away
-var CLOSING = "Closing";			// Closing
-var FAR = "Out of Range";			// Far
+var AWAY = "Retreating";            // Heading away
+var CLOSING = "Closing";            // Closing
+var FAR = "Out of Range";            // Far
 
 // MANEUVER DIRECTIONS
 var TURN_LEFT = 0;
@@ -24,8 +24,7 @@ var BANK_RIGHT = 3;
 var TURN_RIGHT = 4;
 var KOIOGRAN = 5;
 
-var MANEUVER = new Array( "turn-left", "bank-left", "forward", 
-						  "bank-right", "turn-right", "koiogran" );
+var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran" ];
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -55,16 +54,16 @@ var FOCUS_TEXT2 = "Always use Focus";
 
 var EVADE_TEXT = "Else Choose <b>Evade</b>";
 
-var CLOAKING_TEXT = "CLOAKING";				// TODO
+var CLOAKING_TEXT = "CLOAKING";          // TODO
 
 // ACTION TEXT - Hugh Ships
-var CORDINATE   = "CORDINATE";				// TODO
+var CORDINATE_TEXT = "CORDINATE";        // TODO
 
-var JAM         = "JAM";					// TODO
+var JAM_TEXT = "JAM";                    // TODO
 
-var RECOVER     = "RECOVER";				// TODO
+var RECOVER_TEXT = "RECOVER";            // TODO
 
-var REINFORCE   = "REINFORCE";				// TODO
+var REINFORCE_TEXT = "REINFORCE";        // TODO
 
 
 // ****************************************************************************
@@ -72,49 +71,49 @@ var REINFORCE   = "REINFORCE";				// TODO
 
 function F( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = FORWARD;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = FORWARD;
+    return move;
 } 
 
 function BL( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = BANK_LEFT;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = BANK_LEFT;
+    return move;
 } 
 
 function BR( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = BANK_RIGHT;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = BANK_RIGHT;
+    return move;
 } 
 
 function TL( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = TURN_LEFT;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = TURN_LEFT;
+    return move;
 } 
 
 function TR( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = TURN_RIGHT;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = TURN_RIGHT;
+    return move;
 } 
 
 function K( distance )
 {
-	var move = new Object();
-	move.num = distance;
-	move.dir = KOIOGRAN;
-	return move
+    var move = {};
+    move.num = distance;
+    move.dir = KOIOGRAN;
+    return move;
 } 
 

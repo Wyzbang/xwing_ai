@@ -14,6 +14,11 @@ import zipfile
 from version import VERSION
 
 # ******************************************************************************
+
+DEBUG=False
+VEBOSE=False
+
+# ******************************************************************************
 # List of potential maneuvers
 
 F = "F"
@@ -175,14 +180,14 @@ class Ship:
         """
         code = ""
         
-        code = '%s.%s = new Array( ' % (self.name, target ) 
+        code = '%s.%s = [ ' % (self.name, target ) 
         for i, maneuver in enumerate(maneuvers):
             if i < len(maneuvers) - 1:
                 code += '%s, ' % (maneuver)
             else:
                 code += "%s" % (maneuver)
                 
-        code += ' );'
+        code += ' ];'
                 
         return code
     
@@ -197,7 +202,7 @@ class Ship:
         code.append( "// %s" % self.name2 )
         code.append( "" )
 
-        code.append( 'var %s = new Object();' % self.name )
+        code.append( 'var %s = {};' % self.name )
         code.append( '%s.name = "%s";' % ( self.name, self.name2 ) )
         code.append( '%s.image = "%s";' % ( self.name, self.image ) )
         
@@ -209,17 +214,17 @@ class Ship:
         
         # AI Tables: closing, away, far (two-dimentional arrays)
         code.append( "" )
-        code.append( '%s.closing = new Array();' % ( self.name ) )
+        code.append( '%s.closing = [];' % ( self.name ) )
         for i, row in enumerate( self.closing ):
             code.append( self.__gen_js_maneuver_list( "closing[%d]" % (i), row ) )
 
         code.append( "" )
-        code.append( '%s.away = new Array();' % ( self.name ) )
+        code.append( '%s.away = [];' % ( self.name ) )
         for i, row in enumerate( self.away ):
             code.append( self.__gen_js_maneuver_list( "away[%d]" % (i), row ) )
             
         code.append( "" )
-        code.append( '%s.far = new Array();' % ( self.name ) )
+        code.append( '%s.far = [];' % ( self.name ) )
         for i, row in enumerate( self.far ):
             code.append( self.__gen_js_maneuver_list( "far[%d]" % (i), row ) )
         
@@ -282,9 +287,11 @@ class Ship:
             common.reverse()
             uncommon.reverse()
             rare.reverse()
-                
-        # TODO: use common and rare to generate table with more common than rare
-        assert( len(common) > 0 )
+        
+        if len(common) == 0:
+            print( "WARNING: No common maneuvers for %s" % self.name )
+            return []
+        
         if len(uncommon) == 0 and len(rare) == 0:
             numCommon = 10
             numUncommon = 0
@@ -348,6 +355,10 @@ class Ship:
         """
         Generate a AI tables
         """
+        if( len(self.getManeuvers()) == 0 ): 
+            print( "WARNING: No maneuvers available for %s" % self.name )
+            return
+        
         # 0, N,  12  o'clock
         #   closing: F*, K, BR, BL       short
         #      away: F                   long
@@ -454,12 +465,22 @@ class XWingGenerator:
         self.__copy_file( "xwing_ai_pre.js", js )
         
         # Convert and write ships to the javascript
+        ships_array = ""
         for ship in sorted( self.ships ):
             print( "   exporting %s..." % ship )
             self.ships[ship].generate_tables()
             code = self.ships[ship].generate_javascript()
             for line in code:
                 js.write( line + "\n" )
+            
+            ships_array += "%s, " % self.ships[ship].name
+        
+        # Append array of all the created ship objects        
+        js.write( "\n" )
+        js.write( "// %s\n" % ( '*' * 76 ) )
+        js.write( "// Ships\n" )
+        js.write( "\n" )
+        js.write( "var ships = [ %s ];" % ships_array[:-2] )
      
         # Append the last section of code
         self.__copy_file( "xwing_ai_post.js", js )
@@ -653,12 +674,16 @@ if __name__ == "__main__":
     
     xwing = XWingGenerator()
     
-    if( options.build ):
-        doBuild()
-    elif( options.js_to_xml ):
+    if( options.build and options.js_to_xml ):
+        print( "ERROR: Invalid options" )
+    
+    if( options.js_to_xml ):
         xwing.parse_xml( "xwing_ai_save.js" )
         xwing.export_xml( "ships.xml" )
     else:
         xwing.parse_xml( "ships.xml" )
         xwing.export_js( "..\\src\\xwing_ai.js" )
+
+    if( options.build ):
+        doBuild()
            
