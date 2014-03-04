@@ -47,6 +47,14 @@
 			<maneuver>K2</maneuver>
 		</difficult>
 	</bwing>
+	<corvette actions="CORDINATE + RECOVER + REINFORCE + TARGET_LOCK" image="img/corvette.png" name="CR90 Corvette">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</corvette>
 	<ewing actions="BARREL_ROLL + EVADE + FOCUS + TARGET_LOCK" image="img/ewing.png" name="E-Wing">
 		<simple>
 		</simple>
@@ -253,6 +261,14 @@
 		<difficult>
 		</difficult>
 	</tiePhantom>
+	<transport actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</transport>
 	<xwing actions="TARGET_LOCK + FOCUS" image="img/xwing.png" name="X-Wing">
 		<simple>
 			<maneuver>F1</maneuver>
@@ -308,21 +324,3 @@
 		</difficult>
 	</z95>
 </ships>
-<capitol>
-	<corvette actions="CORDINATE + RECOVER + REINFORCE + TARGET_LOCK" image="img/corvette.png" name="CR90 Corvette">
-		<simple>
-		</simple>
-		<normal>
-		</normal>
-		<difficult>
-		</difficult>
-	</z95>
-	<transport actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport">
-		<simple>
-		</simple>
-		<normal>
-		</normal>
-		<difficult>
-		</difficult>
-	</z95>
-</capitol>
