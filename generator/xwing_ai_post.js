@@ -10,19 +10,31 @@ function display_ship_choice( faction, funct )
     var data = "";
     var ship_idx=0;
     
-    data += '<b>AI Ship:</b><br><br>';
-    data += '<form action="demo_form.asp" name="ship_radio">';
+    data += '<form action="demo_form.asp" name="ship_buttons">';
 
+    data += '<b>Faction:</b><br>';
+
+    data += '<label>\n';
+    data += '    <input type="radio" onclick="display_ship_choice(\'empire\', \'' + funct + '\')" hidden >'
+    data += '    <img class="faction_button" src="img/empire.png" />'
+    data += '</label>\n';
+    
+    data += '<label>\n';
+    data += '    <input type="radio" onclick="display_ship_choice(\'rebel\', \'' + funct + '\')" hidden >'
+    data += '    <img class="faction_button" src="img/rebel.png" />'
+    data += '</label>\n';
+    
+    data += '<b>AI Ship:</b><br>';
+    
     for( ship_idx=0; ship_idx < ships.length; ship_idx++ )
     {
         funct_args = funct + "(" + ship_idx + ")";
     
         data += '<label>\n';
-        
-        data += '<input type="radio" name="ship_selection" onclick="' + funct_args + '" hidden checked />\n';
-        
-        data += '<img class=ship_button src="' + ships[ship_idx].image + '">\n';
+        data += '    <input type="radio" onclick="' + funct_args + '" hidden />'
+        data += '    <img class="ship_button" src="' + ships[ship_idx].image + '" />'
         data += '</label>\n';
+    
         if( ship_idx % 2 == 1 )
         {
             data += '<br>\n'
@@ -32,6 +44,7 @@ function display_ship_choice( faction, funct )
     data += '<br>\n';
     data += '</form>\n';
     document.getElementById( "ships" ).innerHTML = data;
+    
 }
 
 function display_ship( ship_id )
@@ -104,21 +117,6 @@ function display_ship( ship_id )
     
     document.getElementById('version').innerHTML = VERSION;
     document.getElementById( "table" ).innerHTML = data;
-}
-
-function get_ship()
-{
-    var selection = 0;
-    for( var i=0; i < document.ship_radio.ship_selection.length; i++ )
-    {
-        if( document.ship_radio.ship_selection[i].checked )
-        {
-            selection = eval( document.ship_radio.ship_selection[i].value );
-            break;
-        }
-    }
-    
-    return ships[ selection ];
 }
 
 function set_version()
@@ -283,13 +281,13 @@ function format_actions( ship )
 function load_index()
 {
     set_ship(0);
-    display_ship_choice( "faction", "set_ship" );
+    display_ship_choice( "empire", "set_ship" );
 }
 
 function load_ships()
 {
     display_ship(0);
-    display_ship_choice( "faction", "display_ship" );
+    display_ship_choice( "empire", "display_ship" );
 }
 
 function movement( direction )
