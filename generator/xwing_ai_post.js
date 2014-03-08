@@ -8,43 +8,61 @@ var SHIP = tie;
 function display_ship_choice( faction, funct )
 {
     var data = "";
-    var ship_idx=0;
+    var idx=0;
+    var shown=0;
     
     data += '<form action="demo_form.asp" name="ship_buttons">';
 
     data += '<b>Faction:</b><br>';
 
     data += '<label>\n';
-    data += '    <input type="radio" onclick="display_ship_choice(\'empire\', \'' + funct + '\')" hidden >'
-    data += '    <img class="faction_button" src="img/empire.png" />'
+    data += '    <div title="Empire">' 
+    data += '       <input type="radio" onclick="display_ship_choice(\'empire\', \'' + funct + '\')" hidden >'
+    data += '       <img class="faction_button" src="img/empire.png" />'
+    data += '    </div>'
     data += '</label>\n';
     
     data += '<label>\n';
-    data += '    <input type="radio" onclick="display_ship_choice(\'rebel\', \'' + funct + '\')" hidden >'
-    data += '    <img class="faction_button" src="img/rebel.png" />'
+    data += '    <div title="Rebels">' 
+    data += '       <input type="radio" onclick="display_ship_choice(\'rebel\', \'' + funct + '\')" hidden >'
+    data += '        <img class="faction_button" src="img/rebel.png" />'
+    data += '    </div>'
     data += '</label>\n';
     
     data += '<b>AI Ship:</b><br>';
     
-    for( ship_idx=0; ship_idx < ships.length; ship_idx++ )
+    for( idx=0; idx < ships.length; idx++ )
     {
-        funct_args = funct + "(" + ship_idx + ")";
-    
-        data += '<label>\n';
-        data += '    <input type="radio" onclick="' + funct_args + '" hidden />'
-        data += '    <img class="ship_button" src="' + ships[ship_idx].image + '" />'
-        data += '</label>\n';
-    
-        if( ship_idx % 2 == 1 )
+        // only add buttons for ships for the selected faction
+        if( ships[idx].faction == faction )
         {
-            data += '<br>\n'
+            // run the selected function on the first faction ship found
+            if( shown == 0 )
+            {
+                var fn = window[funct];
+                fn(idx);
+            }
+            
+            shown++;
+            funct_args = funct + "(" + idx + ")";
+    
+            data += '<label>\n';
+            data += '    <div title="' + ships[idx].name + '">' 
+            data += '       <input type="radio" onclick="' + funct_args + '" hidden />'
+            data += '       <img class="ship_button" src="' + ships[idx].image + '" />'
+            data += '    </div>'
+            data += '</label>\n';
+    
+            if( idx % 2 == 1 )
+            {
+                data += '<br>\n'
+            }
         }
     }
-    
+        
     data += '<br>\n';
     data += '</form>\n';
     document.getElementById( "ships" ).innerHTML = data;
-    
 }
 
 function display_ship( ship_id )
@@ -133,22 +151,13 @@ function set_ship( ship_id )
     
     // Update index html elements for the selected ship
     document.getElementById('ship_image').src = SHIP.image;
+    document.getElementById('ship_name').innerHTML = "<br>" + SHIP.name;
     
-    // TODO: Temporary difference between ARROW and CIRCLE versions
-    if( document.getElementById( "near_img" ) != null )
-    {
-        document.getElementById('output-label').innerHTML = SHIP.name + " Manuever (near/far)";
-        document.getElementById('near_num').innerHTML = "<p></p>";
-        document.getElementById('near_img').innerHTML = "<p></p>";
-    }
-    else
-    {
-        document.getElementById('closing_num').innerHTML = "<p></p>";
-        document.getElementById('closing_img').innerHTML = "<p></p>";
-        document.getElementById('away_num').innerHTML = "<p></p>";
-        document.getElementById('away_img').innerHTML = "<p></p>";
-    }
-    
+    // Clear any previous maneuvers shown
+    document.getElementById('closing_num').innerHTML = "<p></p>";
+    document.getElementById('closing_img').innerHTML = "<p></p>";
+    document.getElementById('away_num').innerHTML = "<p></p>";
+    document.getElementById('away_img').innerHTML = "<p></p>";
     document.getElementById('far_num').innerHTML = "<p></p>";
     document.getElementById('far_img').innerHTML = "<p></p>";
     

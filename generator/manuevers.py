@@ -91,6 +91,7 @@ class Ship:
         self.name2 = name2           
         self.image = ""
         self.actions = []
+        self.faction = ""
         
         self.maneuvers = []
         self.simple = []
@@ -205,6 +206,7 @@ class Ship:
         code.append( 'var %s = {};' % self.name )
         code.append( '%s.name = "%s";' % ( self.name, self.name2 ) )
         code.append( '%s.image = "%s";' % ( self.name, self.image ) )
+        code.append( '%s.faction = "%s";' % ( self.name, self.faction ) )
         
         code.append( self.__gen_js_maneuver_list( "simple", self.simple ) )
         code.append( self.__gen_js_maneuver_list( "normal", self.normal ) )
@@ -604,6 +606,7 @@ class XWingGenerator:
             self.ships[name].name2 = s.attrib[ 'name' ]
             self.ships[name].image = s.attrib[ 'image' ]
             self.ships[name].actions = s.attrib[ 'actions' ]
+            self.ships[name].faction = s.attrib[ 'faction' ]
             
             simple = s.find( 'simple' )
             for man in list(simple):

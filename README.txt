@@ -47,7 +47,11 @@ Change History
 					Improved Ring display on Firefox
 					Added Version display on all pages
 02/20/2014	1.6.B2	New method for generating maneuver tables
-					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber)
+					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber
+03/07/2014	1.7.0	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
+					Added faction buttons, seperate which ships are shown
+					Added hover text for all ship buttons
+					Added label for select ship name
 
 --------------
 Known Problems
