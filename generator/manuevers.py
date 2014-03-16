@@ -461,10 +461,12 @@ class XWingGenerator:
         print( "Exporting ships to %s..." % filepath )
         js = open( filepath, 'w' )
         
-        # Create javascript header, version and first section of code
-        self.__copy_file( "xwing_ai_header.js", js )
+        # Create javascript header and version 
+        js.write( "// %s\n" % ( '*' * 76 ) )
+        js.write( "// X-Wing Miniatures AI - Ships \n" )
+        js.write( "\n" )
         js.write( 'var VERSION = "%s";\n' % VERSION )
-        self.__copy_file( "xwing_ai_pre.js", js )
+        js.write( "\n\n" )
         
         # Convert and write ships to the javascript
         ships_array = ""
@@ -483,10 +485,7 @@ class XWingGenerator:
         js.write( "// Ships\n" )
         js.write( "\n" )
         js.write( "var ships = [ %s ];" % ships_array[:-2] )
-     
-        # Append the last section of code
-        self.__copy_file( "xwing_ai_post.js", js )
-        
+             
         print( "Export complete." )
         
     
@@ -685,7 +684,7 @@ if __name__ == "__main__":
         xwing.export_xml( "ships.xml" )
     else:
         xwing.parse_xml( "ships.xml" )
-        xwing.export_js( "..\\src\\xwing_ai.js" )
+        xwing.export_js( "..\\src\\xwing_ships.js" )
 
     if( options.build ):
         doBuild()
