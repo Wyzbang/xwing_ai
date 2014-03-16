@@ -1,6 +1,7 @@
 """
 X-wing Minitures AI Maneuver Generator
 """
+import datetime
 import copy
 import optparse
 import os
@@ -464,6 +465,7 @@ class XWingGenerator:
         # Create javascript header and version 
         js.write( "// %s\n" % ( '*' * 76 ) )
         js.write( "// X-Wing Miniatures AI - Ships \n" )
+        js.write( "// Generated: %s\n" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") )
         js.write( "\n" )
         js.write( 'var VERSION = "%s";\n' % VERSION )
         js.write( "\n\n" )
