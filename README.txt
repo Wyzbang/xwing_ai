@@ -1,14 +1,14 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.6.0 Beta 1
+                  v1.7.0 Beta 1
 =========================================
 
 -------------------
 Standard Disclaimer
 -------------------
 
-Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved. 
+Star Wars and all associated elements are © 2014 Lucasfilm Ltd. & TM. All rights reserved. 
 Fantasy Flight Games and the FFG logo are trademarks of Fantasy Flight Publishing, Inc.
 
 You use this software at your own risk, the authors are not responsible for any loss or damage resulting from the use of this software. If you do not agree with these terms do not use this software, simple.
@@ -25,6 +25,8 @@ Installation / Usage
 
 Extract zip file to any location
 Open "index.html" in a browser
+Click the "?" button for deailed instruction on using the application
+
 
 --------------
 Change History
@@ -72,11 +74,10 @@ Credits
 Game Web Site:  http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174
 
 
-
 --------------
 Special thanks
 --------------
 
 Andrzej Sieradzki, who crated the orginal AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
 
-SeraphTC for the HWK-290 image http://boardgamegeek.com/user/SeraphTC
+SeraphTC for the HWK-290 and Z95-Headhunnter images http://boardgamegeek.com/user/SeraphTC
