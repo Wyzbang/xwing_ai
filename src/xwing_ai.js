@@ -45,21 +45,21 @@ var RECOVER     = 0x4000;
 var REINFORCE   = 0x8000;
 
 // ACTIONS TEXT
-var TARGET_LOCK_TEXT =  "Obtain <b>Target-Lock</b> on targeted ship as a free action.<br>";
+var TARGET_LOCK_TEXT =  'Obtain <img src="img/action_targetlock.png" alt="Target-Lock"> on targeted ship as a free action.<br>';
 TARGET_LOCK_TEXT += "Clear Target Lock at end of turn.";
 
-var BARREL_ROLL_TEXT1 = "If this will target into AI ship's firing arc choose <b>Barrel-Roll</b>";
-var BARREL_ROLL_TEXT2 = "If this will put the AI ship out of firing enemy ship firing arc choose <b>Barrel-Roll</b>";
+var BARREL_ROLL_TEXT1 = 'If this will target into AI ship\'s firing arc choose <img src="img/action_barrelroll.png" alt="Barrel Roll">';
+var BARREL_ROLL_TEXT2 = 'If this will put the AI ship out of firing enemy ship firing arc choose <img src="img/action_barrelroll.png" alt="Barrel Roll">';
 
-var BOOST_TEXT1 = "If this will target into AI ship's firing arc choose <b>Boost</b>";
-var BOOST_TEXT2 = "If this will put the AI ship out of firing enemy ship firing arc choose <b>Boost</b>";
+var BOOST_TEXT1 = 'If this will target into AI ship\'s firing arc choose <img src="img/action_boost.png" alt="Boost">';
+var BOOST_TEXT2 = 'If this will put the AI ship out of firing enemy ship firing arc choose <img src="img/action_boost.png" alt="Boost">';
 
-var FOCUS_TEXT1 = "If target is in a firing arc choose <b>Focus</b>";
-var FOCUS_TEXT2 = "Always use Focus";
+var FOCUS_TEXT1 = 'If target is in a firing arc choose <img src="img/action_focus.png" alt="Focus">';
+var FOCUS_TEXT2 = 'Always use <img src="img/action_focus.png" alt="Focus">';
 
-var EVADE_TEXT = "Else Choose <b>Evade</b>";
+var EVADE_TEXT = 'Else Choose <img src="img/action_evade.png" alt="Evade">';
 
-var CLOAKING_TEXT = "CLOAKING";          // TODO
+var CLOAKING_TEXT = '<img src="img/action_cloak.png" alt="Cloak">';          // TODO
 
 // ACTION TEXT - Hugh Ships
 var CORDINATE_TEXT = "CORDINATE";        // TODO
