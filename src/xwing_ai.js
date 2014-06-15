@@ -19,7 +19,8 @@ var DIRECTION = [ "12", "1-2", "3", "4-5", "6", "7-8", "9", "10-11" ];
 // HEADING
 var AWAY = "Retreating";            // Heading away
 var CLOSING = "Closing";            // Closing
-var FAR = "Out of Range";            // Far
+var FAR = "Out of Range";           // Far
+var STRESSED = "Stressed";          // Stressed
 
 // MANEUVER DIRECTIONS
 var TURN_LEFT = 0;
@@ -28,6 +29,7 @@ var FORWARD = 2;
 var BANK_RIGHT = 3;
 var TURN_RIGHT = 4;
 var KOIOGRAN = 5;
+var INVALID = 99;
 
 var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran" ];
 
@@ -59,9 +61,9 @@ var FOCUS_TEXT2 = 'Always use <img src="img/action_focus.png" alt="Focus">';
 
 var EVADE_TEXT = 'Else Choose <img src="img/action_evade.png" alt="Evade">';
 
-var CLOAKING_TEXT = '<img src="img/action_cloak.png" alt="Cloak">';          // TODO
+var CLOAKING_TEXT = 'Cloak/Decloak <img src="img/action_cloak.png" alt="Cloak">';          // TODO
 
-// ACTION TEXT - Hugh Ships
+// ACTION TEXT - Huge Ships
 var CORDINATE_TEXT = "CORDINATE";        // TODO
 
 var JAM_TEXT = "JAM";                    // TODO
@@ -70,7 +72,7 @@ var RECOVER_TEXT = "RECOVER";            // TODO
 
 var REINFORCE_TEXT = "REINFORCE";        // TODO
 
-// SHIPS array and currently selected SHIP (re-defined in seperate js file)
+// SHIPS array and currently selected SHIP (re-defined in separate js file)
 var ships = [];
 var SHIP = {};
 
@@ -126,6 +128,14 @@ function K( distance )
     return move;
 } 
 
+function invalid()
+{
+	var move = {};
+	move.num = 0;
+	move.dir = INVALID;
+	return move;
+}
+
 // ****************************************************************************
 // Helper Functions
 
@@ -177,7 +187,7 @@ function display_ship_choice( faction, funct )
             data += '    </div>'
             data += '</label>\n';
     
-            if( idx % 2 == 1 )
+            if( shown % 2 == 0 )
             {
                 data += '<br>\n'
             }
@@ -189,11 +199,37 @@ function display_ship_choice( faction, funct )
     document.getElementById( "ships" ).innerHTML = data;
 }
 
+function gen_maneuver_table( name, table )
+{
+    var data;
+    data = '<div class="label">' + name + "</div>";
+    data += '<table class="ship_table">';
+    for( var dir=0; dir < table.length; dir++ )
+    {
+        data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
+        for( var item=0; item < table[dir].length; item++ )
+        {
+            maneuver = format_maneuver( SHIP, table[dir][item] );
+            data += "<td class=\"ship_cell\">";
+            data += '<div class="table_num">' + maneuver.num + '</div>';
+            data += '<div class="table_num">' + maneuver.img + '</div>';
+            data += "</td>";
+        }
+        data += "</tr>";
+    }
+    data += "</table><br>";
+    return data;
+}
 
 function display_ship( ship_id )
 {
     // Set the global to the selected ship
     SHIP = ships[ ship_id ];
+    if (SHIP === undefined ) {
+    	var error = "<div><p>Unable to get ship(" + ship_id + ")</div>";
+    	document.getElementById( "table" ).innerHTML( error );
+    	return;
+    } 
     
     var data;
     data = '<div style="font-size: x-large; font-weight: bold">';
@@ -206,57 +242,11 @@ function display_ship( ship_id )
     data += SHIP.name + "</div>";
     data += format_actions( SHIP );
     
-    // Tables (closing, away)
-    data += '<div class="label">' + CLOSING + "</div>";
-    data += '<table class="ship_table">';
-    for( var dir=0; dir < SHIP.closing.length; dir++ )
-    {
-        data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
-        for( var item=0; item < SHIP.closing[dir].length; item++ )
-        {
-            maneuver = format_maneuver( SHIP, SHIP.closing[dir][item] );
-            data += "<td class=\"ship_cell\">";
-            data += '<div class="table_num">' + maneuver.num + '</div>';
-            data += '<div class="table_num">' + maneuver.img + '</div>';
-            data += "</td>";
-        }
-        data += "</tr>";
-    }
-    data += "</table><br>";
-    
-    data += '<div class="label">' + AWAY + "</div>";
-    data += '<table class="ship_table">';
-    for( var dir=0; dir < SHIP.away.length; dir++ )
-    {
-        data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
-        for( var item=0; item < SHIP.away[dir].length; item++ )
-        {
-            maneuver = format_maneuver( SHIP, SHIP.away[dir][item] );
-            data += "<td class=\"ship_cell\">";
-            data += '<div class="table_num">' + maneuver.num + '</div>';
-            data += '<div class="table_num">' + maneuver.img + '</div>';
-            data += "</td>";
-        }
-        data += "</tr>";
-    }
-    data += "</table><br>";
-    
-    data += '<div class="label">' + FAR + "</div>";
-    data += '<table class="ship_table">';
-    for( var dir=0; dir < SHIP.far.length; dir++ )
-    {
-        data += "<tr><td class=\"ship_cell\">" + DIRECTION[dir];
-        for( var item=0; item < SHIP.far[dir].length; item++ )
-        {
-            maneuver = format_maneuver( SHIP, SHIP.far[dir][item] );
-            data += "<td class=\"ship_cell\">";
-            data += '<div class="table_num">' + maneuver.num + '</div>';
-            data += '<div class="table_num">' + maneuver.img + '</div>';
-            data += "</td>";
-        }
-        data += "</tr>";
-    }
-    data += "</table>";
+    // Tables (closing, away, etc.)
+    data += gen_maneuver_table( CLOSING, SHIP.closing )
+    data += gen_maneuver_table( AWAY, SHIP.away )
+    data += gen_maneuver_table( FAR, SHIP.far )
+    data += gen_maneuver_table( STRESSED, SHIP.stressed )
     
     document.getElementById('version').innerHTML = VERSION;
     document.getElementById( "table" ).innerHTML = data;
@@ -273,12 +263,16 @@ function set_ship( ship_id )
 {
     // Set the global to the selected ship
     SHIP = ships[ ship_id ];
-    
+    if (SHIP === undefined ) {
+    	document.getElementById('ship_name').innerHTML = "<br>Unknown Ship: " + ship_id;
+    	return;
+    }
+
     set_version();
     
     // Update index html elements for the selected ship
-    document.getElementById('ship_image').src = SHIP.image;
-    document.getElementById('ship_name').innerHTML = "<br>" + SHIP.name;
+   	document.getElementById('ship_image').src = SHIP.image;
+   	document.getElementById('ship_name').innerHTML = "<br>" + SHIP.name;
     
     // Clear any previous maneuvers shown
     document.getElementById('closing_num').innerHTML = "<p></p>";
@@ -295,7 +289,16 @@ function set_ship( ship_id )
 
 function pick( options )
 {
-    var size=options.length;
+	if (options === undefined)
+	{
+		return invalid();
+	}
+
+	var size=options.length;
+	if ( size == 0 )
+	{
+		return invalid();
+	}
     var choice=Math.floor(Math.random()*size);
     return options[choice];
 }
@@ -323,7 +326,12 @@ function format_maneuver( ship, maneuver )
     var img;
     
     // Koiogran is always red
-    if( maneuver.dir == KOIOGRAN )
+    if( maneuver.dir == INVALID )
+    {
+    	num = "<span style=color:purple>NA</span>";
+    	img = "";
+    }
+    else if( maneuver.dir == KOIOGRAN )
     {
         num = "<span style=color:red>" + maneuver.num + "</span>";
         img = '<img src="img/koiogran.png">';
@@ -458,4 +466,9 @@ function movement( direction )
     formatted = format_maneuver( SHIP, maneuver );
     document.getElementById( "far_num" ).innerHTML = formatted.num;
     document.getElementById( "far_img" ).innerHTML = formatted.img;
+    
+    maneuver = pick( SHIP.stressed[direction] );
+    formatted = format_maneuver( SHIP, maneuver );
+    document.getElementById( "stressed_num" ).innerHTML = formatted.num;
+    document.getElementById( "stressed_img" ).innerHTML = formatted.img;
 }

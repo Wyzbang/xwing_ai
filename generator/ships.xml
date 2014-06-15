@@ -51,16 +51,50 @@
 		<simple>
 		</simple>
 		<normal>
+		    <maneuver>BL1</maneuver>
+		    <maneuver>BR1</maneuver>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>F3</maneuver>
+		    <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
 		</difficult>
 	</corvette>
-	<ewing actions="BARREL_ROLL + EVADE + FOCUS + TARGET_LOCK" image="img/ewing.png" name="E-Wing" faction="rebel">
+	<!-- 
+	<decimator actions="FOCUS + TARGET_LOCK" image="img/decimator.png" name="VT-49 Decimator" faction="empire">
 		<simple>
 		</simple>
 		<normal>
 		</normal>
 		<difficult>
+		</difficult>
+	</decimator>
+	-->
+	<ewing actions="BARREL_ROLL + EVADE + FOCUS + TARGET_LOCK" image="img/ewing.png" name="E-Wing" faction="rebel">
+		<simple>
+			<maneuver>F1</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>F3</maneuver>
+		</simple>
+		<normal>
+			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>TL3</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>TR3</maneuver>
+			<maneuver>F4</maneuver>
+			<maneuver>F5</maneuver>
+		</normal>
+		<difficult>
+			<maneuver>K3</maneuver>
+			<maneuver>K4</maneuver>
 		</difficult>
 	</ewing>
 	<falcon actions="TARGET_LOCK + FOCUS" image="img/falcon.png" name="YT-1300" faction="rebel">
@@ -127,6 +161,13 @@
 			<maneuver>TR2</maneuver>
 		</difficult>
 	</lambda>
+	<!-- 
+	<outrider actions="BARREL_ROLL + FOCUS + TARGET_LOCK" image="img/outrider.png" name="YT-2400" faction="rebel">
+	    <simple></simple>
+	    <normal></normal>
+	    <difficult></difficult>
+	</outrider>
+	-->
 	<slave1 actions="TARGET_LOCK + FOCUS + EVADE" image="img/slave1.png" name="Firespray-31" faction="empire">
 		<simple>
 			<maneuver>F1</maneuver>
@@ -223,10 +264,27 @@
 	</tieBomber>
 	<tieDefender actions="BARREL_ROLL + FOCUS + TARGET_LOCK" image="img/tieDefender.png" name="Tie Defender" faction="empire">
 		<simple>
+		    <maneuver>F2</maneuver>
+		    <maneuver>F3</maneuver>
+		    <maneuver>F4</maneuver>
+		    <maneuver>F5</maneuver>
 		</simple>
 		<normal>
+		    <maneuver>BL1</maneuver>
+		    <maneuver>BR1</maneuver>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>BL3</maneuver>
+		    <maneuver>BR3</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>K4</maneuver>
 		</normal>
 		<difficult>
+		    <maneuver>TL1</maneuver>
+		    <maneuver>TR1</maneuver>
+		    <maneuver>TL2</maneuver>
+		    <maneuver>TR2</maneuver>
 		</difficult>
 	</tieDefender>
 	<tieInterceptor actions="BARREL_ROLL + BOOST + FOCUS + EVADE" image="img/tieInterceptor.png" name="Tie Interceptor" faction="empire">
@@ -255,16 +313,39 @@
 	</tieInterceptor>
 	<tiePhantom actions="BARREL_ROLL + CLOAKING + EVADE + FOCUS" image="img/tiePhantom.png" name="Tie Phantom" faction="empire">
 		<simple>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>F3</maneuver>
 		</simple>
 		<normal>
+		    <maneuver>TL1</maneuver>
+		    <maneuver>TR1</maneuver>
+		    <maneuver>TL2</maneuver>
+		    <maneuver>TR2</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>BL3</maneuver>
+		    <maneuver>BR3</maneuver>
+		    <maneuver>TR3</maneuver>
+		    <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+		    <maneuver>K3</maneuver>
+		    <maneuver>K4</maneuver>
 		</difficult>
 	</tiePhantom>
 	<transport actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport" faction="rebel">
 		<simple>
 		</simple>
 		<normal>
+		    <maneuver>BL1</maneuver>
+		    <maneuver>F1</maneuver>
+		    <maneuver>BR1</maneuver>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>F3</maneuver>
+		    <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
 		</difficult>

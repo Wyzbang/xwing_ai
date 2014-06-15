@@ -54,6 +54,8 @@ Change History
 					Added faction buttons, seperate which ships are shown
 					Added hover text for all ship buttons
 					Added label for select ship name
+					Added images for actions
+					Added stressed maneuvers
 
 --------------
 Known Problems

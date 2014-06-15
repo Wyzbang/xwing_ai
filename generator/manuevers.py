@@ -1,13 +1,11 @@
 """
-X-wing Minitures AI Maneuver Generator
+X-wing Miniatures AI Maneuver Generator
 """
 import datetime
 import copy
 import optparse
 import os
 import re
-import string
-import sys
 import xml.dom.minidom
 import xml.etree.ElementTree as ElementTree
 import zipfile
@@ -104,6 +102,7 @@ class Ship:
         self.closing = []
         self.away = []
         self.far = []
+        self.stressed = []
     
         
     def getManeuvers( self ):
@@ -180,8 +179,6 @@ class Ship:
         target:  
         maneuvers:   list of maneuvers
         """
-        code = ""
-        
         code = '%s.%s = [ ' % (self.name, target ) 
         for i, maneuver in enumerate(maneuvers):
             if i < len(maneuvers) - 1:
@@ -232,6 +229,11 @@ class Ship:
             code.append( self.__gen_js_maneuver_list( "far[%d]" % (i), row ) )
         
         code.append( "" )
+        code.append( '%s.stressed = [];' % ( self.name ) )
+        for i, row in enumerate( self.stressed ):
+            code.append( self.__gen_js_maneuver_list( "stressed[%d]" % (i), row ) )
+            
+        code.append( "" )
         return code
     
     
@@ -260,7 +262,7 @@ class Ship:
         common:    list of maneuver bearings that are common
         uncommon:  list of maneuver bearings that are uncommon
         rare:      list of maneuver bearings that are rare
-        speed:     which maneuvers speed to perferred (slow or fast)
+        speed:     which maneuvers speed to perferred (slow, fast, stressed)
         """
         common = []
         uncommon = []
@@ -272,6 +274,8 @@ class Ship:
             if speed == "fast" and self.isFast( maneuver ):
                 pass
             elif speed == "slow" and self.isSlow( maneuver ):
+                pass
+            elif speed == "stressed" and not self.isDifficult( maneuver ):
                 pass
             else:
                 # Remove any maneuvers that do not match desired speed
@@ -346,7 +350,7 @@ class Ship:
         Swap left and right banks/turns
         """
         new_row = []
-        for i, maneuver in enumerate(row):
+        for maneuver in row:
             new = copy.copy( maneuver )
             new.reverse()
             new_row.append( new )
@@ -369,6 +373,7 @@ class Ship:
         self.closing.append( self.generate_row( [F], [K], [BR, BL], "slow" ) )
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
+        self.stressed.append( self.generate_row( [F], [], [BR, BL], "stressed" ) )
         
         # 1, NE, 1-2 o'clock
         #   closing: F, BR*, TR
@@ -377,6 +382,7 @@ class Ship:
         self.closing.append( self.generate_row( [BR], [TR], [F], "slow" ) )
         self.away.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.far.append( self.generate_row( [BR], [], [TR], "fast" ) )
+        self.stressed.append( self.generate_row( [BR], [TR], [F], "stressed" ) )
         
         # 2, E,  3   o'clock
         #   closing: TR, K
@@ -386,10 +392,12 @@ class Ship:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [TR], [], [K], "slow" ) )
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
+            self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
         
         # 3, SE, 4-5 o'clock
         #   closing: BR, TR, K
@@ -399,10 +407,12 @@ class Ship:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [TR], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [TR], [K], [BR], "slow" ) )
             self.away.append( self.generate_row( [TR], [K], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
+            self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
                 
         # 4, S,  6   o'clock
         #   closing: F, K*, TL, TR
@@ -412,13 +422,16 @@ class Ship:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
             self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         elif self.name in [ "hwk290" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [TL,TR], [F], [], "fast" ) )
             self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
+            self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [K], [TL,F,TR], [], "fast" ) )
             self.away.append( self.generate_row( [K], [TR, TL], [], "fast" ) )
+            self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
             
         self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
                 
@@ -426,16 +439,19 @@ class Ship:
         self.closing.append( self.reverse_row( self.closing[3] ) )
         self.away.append( self.reverse_row( self.away[3] ) )
         self.far.append( self.reverse_row( self.far[3] ) )
+        self.stressed.append( self.reverse_row( self.stressed[3] ) )
 
         # 6, W,  9     o'clock: Reverse of #2
         self.closing.append( self.reverse_row( self.closing[2] ) )
         self.away.append( self.reverse_row( self.away[2] ) )
         self.far.append( self.reverse_row( self.far[2] ) )
+        self.stressed.append( self.reverse_row( self.stressed[2] ) )
 
         # 7, NW, 10-11 o'clock: Reverse of #1
         self.closing.append( self.reverse_row( self.closing[1] ) )
         self.away.append( self.reverse_row( self.away[1] ) )
         self.far.append( self.reverse_row( self.far[1] ) )
+        self.stressed.append( self.reverse_row( self.stressed[1] ) )
 
         
 # ******************************************************************************
@@ -690,4 +706,3 @@ if __name__ == "__main__":
 
     if( options.build ):
         doBuild()
-           
