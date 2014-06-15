@@ -262,7 +262,7 @@ class Ship:
         common:    list of maneuver bearings that are common
         uncommon:  list of maneuver bearings that are uncommon
         rare:      list of maneuver bearings that are rare
-        speed:     which maneuvers speed to perferred (slow, fast, stressed)
+        speed:     which maneuvers speed to preferred (slow, fast, stressed)
         """
         common = []
         uncommon = []
@@ -296,7 +296,7 @@ class Ship:
             rare.reverse()
         
         if len(common) == 0:
-            print( "WARNING: No common maneuvers for %s" % self.name )
+            print( "WARNING: No common maneuvers for %s at %s" % (self.name, speed) )
             return []
         
         if len(uncommon) == 0 and len(rare) == 0:
@@ -602,8 +602,6 @@ class XWingGenerator:
         xmlfile.write( reparsed.toprettyxml(indent="\t") )
         xmlfile.close()
 
-        #ET.ElementTree( root ).write( filepath )
-        
         print( "Export complete." )
             
         
