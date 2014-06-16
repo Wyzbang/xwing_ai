@@ -296,9 +296,9 @@ class Ship:
             rare.reverse()
         
         if len(common) == 0:
-            print( "WARNING: No common maneuvers for %s at %s" % (self.name, speed) )
+            print( "WARNING: No common maneuvers for %s in %s at %s" % (self.name, speed, self.label) )
             return []
-        
+                
         if len(uncommon) == 0 and len(rare) == 0:
             numCommon = 10
             numUncommon = 0
@@ -370,6 +370,7 @@ class Ship:
         #   closing: F*, K, BR, BL       short
         #      away: F                   long
         #       far: F*, BL, BR
+        self.label = "12 o'clock"
         self.closing.append( self.generate_row( [F], [K], [BR, BL], "slow" ) )
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
@@ -379,6 +380,7 @@ class Ship:
         #   closing: F, BR*, TR
         #      away: BR, TR
         #       far: BR, TR
+        self.label = "1-2 o'clock"
         self.closing.append( self.generate_row( [BR], [TR], [F], "slow" ) )
         self.away.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.far.append( self.generate_row( [BR], [], [TR], "fast" ) )
@@ -388,11 +390,17 @@ class Ship:
         #   closing: TR, K
         #      away: BR, TR
         #       far: TR
+        self.label = "3 o'clock"
         if self.name in [ "lambda" ]:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
+        elif self.name in [ "corvette", "transport" ]:
+            self.closing.append( self.generate_row( [BR], [F], [], "slow" ) )
+            self.away.append( self.generate_row( [BR], [F], [], "fast" ) )
+            self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [TR], [], [K], "slow" ) )
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
@@ -403,11 +411,17 @@ class Ship:
         #   closing: BR, TR, K
         #      away: TR, K
         #       far: TR
+        self.label = "4-5 o'clock"
         if self.name in [ "lambda" ]:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
+        elif self.name in [ "corvette", "transport" ]:
+            self.closing.append( self.generate_row( [BR], [F], [], "slow" ) )
+            self.away.append( self.generate_row( [BR], [F], [], "fast" ) )
+            self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [TR], [K], [BR], "slow" ) )
             self.away.append( self.generate_row( [TR], [K], [], "fast" ) )
@@ -418,22 +432,29 @@ class Ship:
         #   closing: F, K*, TL, TR
         #      away: K*, TR, TL
         #       far: K, TR*, TL*
+        self.label = "6 o'clock"
         if self.name in [ "lambda" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
             self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
             self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         elif self.name in [ "hwk290" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [TL,TR], [F], [], "fast" ) )
             self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
+        elif self.name in [ "corvette", "transport" ]:
+            self.closing.append( self.generate_row( [BL, BR], [], [], "slow" ) )
+            self.away.append( self.generate_row( [BL, BR], [], [], "fast" ) )
+            self.far.append( self.generate_row( [BL, BR], [], [], "fast" ) )
+            self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         else:
             self.closing.append( self.generate_row( [K], [TL,F,TR], [], "fast" ) )
             self.away.append( self.generate_row( [K], [TR, TL], [], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
-            
-        self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
                 
         # 5, SW, 7-8   o'clock: Reverse of #3
         self.closing.append( self.reverse_row( self.closing[3] ) )
@@ -524,7 +545,7 @@ class XWingGenerator:
 
     def parse_js( self, filepath ):
         """
-        Populate the ships dictioary from java script
+        Populate the ships dictionary from java script
         """
         
         NEW_SHIP = re.compile( "^var.* = new Object" )

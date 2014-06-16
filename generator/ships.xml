@@ -249,12 +249,12 @@
 		</simple>
 		<normal>
 			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
 			<maneuver>TL3</maneuver>
 			<maneuver>BL3</maneuver>
 			<maneuver>F4</maneuver>
 			<maneuver>BR3</maneuver>
-			<maneuver>BL3</maneuver>
-			<maneuver>BR1</maneuver>
+			<maneuver>TR3</maneuver>
 		</normal>
 		<difficult>
 			<maneuver>TL2</maneuver>
@@ -277,7 +277,7 @@
 		    <maneuver>TL3</maneuver>
 		    <maneuver>BL3</maneuver>
 		    <maneuver>BR3</maneuver>
-		    <maneuver>TL3</maneuver>
+		    <maneuver>TR3</maneuver>
 		    <maneuver>K4</maneuver>
 		</normal>
 		<difficult>

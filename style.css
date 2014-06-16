@@ -199,11 +199,21 @@ img.ship_button
 /*****************************************************************************/
 /* Ship Details page */
 
-#table
+#details
 {
-	display: table-cell;
+	display: table-cell;	
 	padding-left: 50px;
 	text-align: left;
+}
+
+#detail_head 
+{
+	display: table;
+}
+
+#ship #actions #table
+{
+	display: table-cell;
 }
 
 table.ship_table

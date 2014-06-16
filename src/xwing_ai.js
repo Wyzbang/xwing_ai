@@ -231,25 +231,22 @@ function display_ship( ship_id )
     	return;
     } 
     
-    var data;
-    data = '<div style="font-size: x-large; font-weight: bold">';
-    data += '<a name="' + SHIP.name + '"></a>';
-    
     // image
-    data += '<img src="' + SHIP.image + '" alt="' + SHIP.name + '">';
+    ship = '<img src="' + SHIP.image + '" alt="' + SHIP.name + '"><br>' + SHIP.name;
     
-    // name
-    data += SHIP.name + "</div>";
-    data += format_actions( SHIP );
+    actions =  format_actions( SHIP );
     
     // Tables (closing, away, etc.)
-    data += gen_maneuver_table( CLOSING, SHIP.closing )
-    data += gen_maneuver_table( AWAY, SHIP.away )
-    data += gen_maneuver_table( FAR, SHIP.far )
-    data += gen_maneuver_table( STRESSED, SHIP.stressed )
+    var tables = "";
+    tables += gen_maneuver_table( CLOSING, SHIP.closing )
+    tables += gen_maneuver_table( AWAY, SHIP.away )
+    tables += gen_maneuver_table( FAR, SHIP.far )
+    tables += gen_maneuver_table( STRESSED, SHIP.stressed )
     
-    document.getElementById('version').innerHTML = VERSION;
-    document.getElementById( "table" ).innerHTML = data;
+    document.getElementById( "version" ).innerHTML = VERSION;
+    document.getElementById( "ship").innerHTML = ship;
+    document.getElementById( "actions" ).innerHTML = actions;
+    document.getElementById( "table" ).innerHTML = tables;
 }
 
 
