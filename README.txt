@@ -25,7 +25,7 @@ Installation / Usage
 
 Extract zip file to any location
 Open "index.html" in a browser
-Click the "?" button for deailed instruction on using the application
+Click the "?" button for detailed instruction on using the application
 
 
 --------------
@@ -33,15 +33,15 @@ Change History
 --------------
 
 10/17/2012	1.1.0	Added Multiple ship support and AI for Tie Advanced and X-Wing
-10/27/2012	1.2.0	Converted several images to smaller files, Added infrastucture for Wave-2 ships
+10/27/2012	1.2.0	Converted several images to smaller files, Added infrastructure for Wave-2 ships
 10/29/2012	1.3.0	Added Y-Wing AI, Converted from radio to image buttons for ships
 01/09/2013	1.4B1	Added AI for YT-1300 and Firespray-31
 					FIX: TieInteceptor image name case-sensitivity problem
 01/12/2013	1.4.0	Added AU for A-Wing and Tie Interceptor
 					Added actions section to main page
 01/17/2013	1.4.1	Fixed ship selection bug, was always selecting TieFighter table
-02/09/2013	1.5.0	Added "far" meneuvers for use when AI ship is outside target range
-					Added Ships details page, Minor reforatting
+02/09/2013	1.5.0	Added "far" maneuvers for use when AI ship is outside target range
+					Added Ships details page, Minor reformatting
 					Display maneuvers as images instead of text
 					Converted to a simplified selection (ring) method
 02/08/2014	1.6.B1	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
@@ -51,7 +51,7 @@ Change History
 02/20/2014	1.6.B2	New method for generating maneuver tables
 					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber
 03/07/2014	1.7.0	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
-					Added faction buttons, seperate which ships are shown
+					Added faction buttons, separate which ships are shown
 					Added hover text for all ship buttons
 					Added label for select ship name
 					Added images for actions
@@ -80,6 +80,6 @@ Game Web Site:  http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174
 Special thanks
 --------------
 
-Andrzej Sieradzki, who crated the orginal AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
+Andrzej Sieradzki, who created the original AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
 
 SeraphTC for the HWK-290 and Z95-Headhunnter images http://boardgamegeek.com/user/SeraphTC
