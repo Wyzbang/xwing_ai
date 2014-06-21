@@ -197,6 +197,14 @@ function display_ship_choice( faction, funct )
     data += '<br>\n';
     data += '</form>\n';
     document.getElementById( "ships" ).innerHTML = data;
+    
+    // Set faction specific target images
+    for( var idx=0; idx < 8; idx++ ) {
+    	var target = "target" + idx
+    	var image  = "img/" + faction + idx + ".png"
+        document.getElementById(target).src = image;
+    }
+    
 }
 
 function gen_maneuver_table( name, table )
@@ -278,6 +286,8 @@ function set_ship( ship_id )
     document.getElementById('away_img').innerHTML = "<p></p>";
     document.getElementById('far_num').innerHTML = "<p></p>";
     document.getElementById('far_img').innerHTML = "<p></p>";
+    document.getElementById('stressed_num').innerHTML = "<p></p>";
+    document.getElementById('stressed_img').innerHTML = "<p></p>";
     
     document.getElementById('selection').innerHTML = "<p>Press a direction</p>";
     document.getElementById('actions-text').innerHTML = format_actions( SHIP );
