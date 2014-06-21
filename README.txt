@@ -50,16 +50,12 @@ Change History
 					Added Version display on all pages
 02/20/2014	1.6.B2	New method for generating maneuver tables
 					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber
-03/07/2014	1.7.0	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
+06/18/2014	1.7.0	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
 					Added faction buttons, separate which ships are shown
 					Added hover text for all ship buttons
 					Added label for select ship name
 					Added images for actions
 					Added stressed maneuvers
-
---------------
-Known Problems
---------------
 
 
 -------
@@ -77,9 +73,13 @@ Game Web Site:  http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174
 
 
 --------------
-Special thanks
+Special Thanks
 --------------
 
 Andrzej Sieradzki, who created the original AI algorithms (http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter)
 
-SeraphTC for the HWK-290 and Z95-Headhunnter images http://boardgamegeek.com/user/SeraphTC
+SeraphTC for the HWK-290 and Z95-Headhunnter images (http://boardgamegeek.com/user/SeraphTC)
+
+reverend Uncle Bastard for the new target ring images (http://boardgamegeek.com/user/reverendunclebastard)
+
+Spark for the Stressed Maneuver and using the Action Icons idea.
