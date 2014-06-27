@@ -677,7 +677,7 @@ def doBuild():
     dst = r"F:\src\builds\xwing_ai_%s.zip" % VERSION
     src = r"F:\src\xwing_ai"
     exclude_dirs = ( ".git", "generator" )
-    exclude_files = ( ".gitignore", )
+    exclude_files = ( ".gitignore", ".project", ".pydevproject" )
     
     print( "Building %s..." % (dst) )
 

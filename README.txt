@@ -1,7 +1,7 @@
 =========================================
    Star Wars X-Wing Minitures: Ship AI
  
-                  v1.7.0 Beta 1
+                  v1.7.0 Beta 2
 =========================================
 
 -------------------
@@ -44,18 +44,19 @@ Change History
 					Added Ships details page, Minor reformatting
 					Display maneuvers as images instead of text
 					Converted to a simplified selection (ring) method
-02/08/2014	1.6.B1	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
+02/08/2014	1.6.0b1	Added Wave 3 Ships (B-Wing, Tie Bomber, HWK-290, Lambda Shuttle)
 					Maneuvers for B-Wing and HWK-290, but Tie Bomber and Lambda Shuttle still pending.
 					Improved Ring display on Firefox
 					Added Version display on all pages
-02/20/2014	1.6.B2	New method for generating maneuver tables
+02/20/2014	1.6.0b2	New method for generating maneuver tables
 					Maneuvers for all three waves (first for Lambda Shuttle and Tie Bomber
-06/18/2014	1.7.0	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
+06/18/2014	1.7.0b1	Adding Wave 3.5 and 4 Ships: E-wing, Z95, Tie Defender, Tie Phantom, Corvette, Transport
 					Added faction buttons, separate which ships are shown
 					Added hover text for all ship buttons
 					Added label for select ship name
 					Added images for actions
 					Added stressed maneuvers
+06/26/2014	1.7.0b2	New faction specific target ring images
 
 
 -------
