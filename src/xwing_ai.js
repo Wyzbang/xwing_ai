@@ -338,11 +338,6 @@ function format_maneuver( ship, maneuver )
     	num = "<span style=color:purple>NA</span>";
     	img = "";
     }
-    else if( maneuver.dir == KOIOGRAN )
-    {
-        num = "<span style=color:red>" + maneuver.num + "</span>";
-        img = '<img src="img/koiogran.png">';
-    }
     else if ( maneuverInList( maneuver, ship.simple ) )
     {
         num = "<span style=color:green>" + maneuver.num + "</span>";
