@@ -721,7 +721,7 @@ if __name__ == "__main__":
         xwing.export_xml( "ships.xml" )
     else:
         xwing.parse_xml( "ships.xml" )
-        xwing.export_js( "..\\src\\xwing_ships.js" )
+        xwing.export_js( "..\\web\\src\\xwing_ships.js" )
 
     if( options.build ):
         doBuild()

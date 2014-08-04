@@ -1,0 +1,35 @@
+<project name="MyProject" default="compile" basedir=".">
+	<description>
+            simple example build file
+	</description>
+		 
+ 	<!-- set global properties for this build -->
+    <property name="src" location="generator"/>
+    <property name="web" location="web"/>
+    <property name="dist"  location="dist"/>
+
+	<target name="init">
+    </target>
+
+    <target name="compile" depends="init" description="compile the source " >
+		<!-- Compile the java code from ${src} into ${build} -->
+		<exec dir="${src}" executable="python" failonerror="true">
+			<arg line="manuvers.pys" />
+		</exec>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution" >
+	      <!-- Create the distribution directory -->
+          <mkdir dir="${dist}"/>
+
+	      <!-- Put everything in ${web} into the xwing_ai.zip -->
+	      <zip destfile="${dist}/xwing_ai.zip" basedir="${web}"
+    </target>
+
+    <target name="clean" description="clean up" >
+          <!-- Delete the ${build} and ${dist} directory trees -->
+	      <delete dir="${src}/__pycache__"/>
+          <delete dir="${dist}"/>
+    </target>
+
+</project>
