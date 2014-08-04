@@ -28,7 +28,7 @@
 </div>
 
 <div id="diagram">
-<div class="label">Enemy ship's location</div><br>
+<div class="label">Select Target Location</div><br>
 	<!-- NOTE: Do no add line feed or images will not be flush -->
 	<div class="direction_grid">
 		<input id="target7" type="image" onclick="movement(DIR_315)" src="img/7.png" /><input id="target0" type="image" onclick="movement(DIR_000)" src="img/0.png" /><input id="target1" type="image" onclick="movement(DIR_045)" src="img/1.png" />
@@ -39,31 +39,31 @@
 	<div class="direction_grid">
 		<input id="target5" type="image" onclick="movement(DIR_225)" src="img/5.png" /><input id="target4" type="image" onclick="movement(DIR_180)" src="img/4.png" /><input id="target3" type="image" onclick="movement(DIR_135)" src="img/3.png" />
 	</div>
-	<div class="label" id="ship_name">
+	<div class="ship_name" id="ship_name">
 	</div>
 </div>
 <div id="maneuvers">
-	<div class="label">Maneuver</div>
+	<div class="label">AI Maneuver</div>
 	<div class="seperator"><p></p></div>
-	<div class="maneuver_label">Closing</div>
+	<div class="maneuver_label">Target Closing</div>
 	<div class="maneuver">
 		<div id="closing_num" class="output"></div>
 		<div id="closing_img" class="output"></div>
 	</div>
 	<div class="seperator"><p></p></div>
-	<div class="maneuver_label">Retreating</div>
+	<div class="maneuver_label">Target Retreating</div>
 	<div class="maneuver">
 		<div id="away_num" class="output"></div>
 		<div id="away_img" class="output"></div>
 	</div>
 	<div class="seperator"><p></p></div>
-	<div class="maneuver_label">Out-of-Range</div>
+	<div class="maneuver_label">Target Out-of-Range</div>
 	<div class="maneuver">
 		<div id="far_num" class="output"></div>
 		<div id="far_img" class="output"></div>
 	</div>
 	<div class="seperator"><p></p></div>
-	<div class="maneuver_label">Stressed</div>
+	<div class="maneuver_label_red">AI Stressed</div>
 	<div class="maneuver">
 		<div id="stressed_num" class="output"></div>
 		<div id="stressed_img" class="output"></div>
@@ -71,11 +71,11 @@
 </div>
 <div id="results">
 	<div>
-		<div class="label">Player Ship Location</div>
+		<div class="label">Target Location</div>
 		<div id="selection"><p>Press a direction and heading</p></div>
 	</div>
 	<div>
-		<div class="label">Actions</div>
+		<div class="label">AI Actions</div>
 		<div id="actions-text"></div>
 	</div>
 </div>

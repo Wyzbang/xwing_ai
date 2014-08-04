@@ -143,6 +143,12 @@ img.ship_button
 	vertical-align: top;
 }
 
+.ship_name 
+{
+	color: GoldenRod;
+	font-size: large;
+	font-weight: bold;
+}
 
 /*****************************************************************************/
 /* Maneuvers */
@@ -158,6 +164,13 @@ img.ship_button
 .maneuver_label
 {
 	color: silver;
+	font-size: medium;
+	font-weight: bold;
+}
+
+.maneuver_label_red
+{
+	color: red;
 	font-size: medium;
 	font-weight: bold;
 }
