@@ -1,8 +1,8 @@
-=========================================
-   Star Wars X-Wing Minitures: Ship AI
+==========================================
+   Star Wars X-Wing Miniatures: Ship AI
  
-                  v1.7.0 Beta 2
-=========================================
+                  v1.7.0 Beta 3
+==========================================
 
 -------------------
 Standard Disclaimer
@@ -57,6 +57,8 @@ Change History
 					Added images for actions
 					Added stressed maneuvers
 06/26/2014	1.7.0b2	New faction specific target ring images
+08/05/2014	1.7.0b3 Fix Tie Defender Korigan maneuver is white, not red
+					Page formatting and labels to make choices clearer
 
 
 -------
