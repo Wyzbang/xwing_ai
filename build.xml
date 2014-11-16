@@ -1,0 +1,35 @@
+<project name="MyProject" default="default" basedir=".">
+	<description>
+            simple example build file
+	</description>
+		 
+ 	<!-- set global properties for this build -->
+    <property name="src" location="generator"/>
+    <property name="web" location="web"/>
+    <property name="dist" location="dist"/>
+
+	<target name="default" depends="compile,dist" />
+
+    <target name="compile" description="compile the source " >
+		<echo message="Generating ship manuever tables" />
+		<exec dir="${src}" executable="python" failonerror="true">
+			<arg line="maneuvers.py" />
+		</exec>
+	</target>
+
+	<target name="dist" description="generate the distribution" >
+		<echo message="Generating ship maneuver tables" />
+	    <!-- Create the distribution directory -->
+		<mkdir dir="${dist}"/>
+
+		<!-- Put everything in ${web} into the xwing_ai.zip -->
+		<zip destfile="${dist}/xwing_ai.zip" basedir="${web}" />
+    </target>
+
+    <target name="clean" description="clean up" >
+          <!-- Delete the ${build} and ${dist} directory trees -->
+	      <delete dir="${src}/__pycache__"/>
+          <delete dir="${dist}"/>
+    </target>
+
+</project>

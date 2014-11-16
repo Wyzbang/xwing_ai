@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>X-Wing Miniatures AI - Info</title>
+<title>X-Wing Miniatures AI - Ship Info</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script src="src/xwing_ai.js">
-</script>
+<script src="src/xwing_ai.js"></script>
+<script src="src/xwing_ships.js"></script>
 </head>
 
-<body onload=set_version()>
+<body onload=load_ships()>
 <div id="header">
 	<div id="logos">
 		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
@@ -19,31 +19,26 @@
 		<div id="version"></div><br>
 		<a href="index.htm"><img class=index_icon src="img/star.png" alt="index"></a>
 		<a href="help.htm"><img class=help_icon src="img/help.png" alt="help"></a>
-		<a href="ships.htm"><img class=ships_icon src="img/ships.png" alt="ships"></a>
+		<a href="info.htm"><img class=info_icon src="img/info.png" alt="info"></a>
 	</div>
 </div>
 
 <div id="main">
-<h2>Disclaimer:</h2>
+	<div id="ships"></div>
 
-Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved.<br>
-Fantasy Flight Games, the FFG logo and X-Wing Miniatures Game are trademarks of Fantasy Flight Publishing, Inc.<br>
-<br>
-You use this software at your own risk, the authors are not responsible for any loss or damage resulting from the use of this software. If you do not agree with these terms do not use this software, simple.<br>
-
-<h2>Links:</h2>
-<a href="http://www.fantasyflightgames.com/edge_minisite.asp?eidm=174">Fantast Flight Games</a>
-
-<h2>AI Design:</h2>
-Special thanks to <a href="http://boardgamegeek.com/user/nightbomber">nightbomer</a> from BoardGameGeeks for the Ship AI Algorithm.<br>
-<a href="http://boardgamegeek.com/filepage/83094/x-wing-solo-system-tie-fighter">Tie Fighter AI Design</a><br>
-<a href="http://boardgamegeek.com/filepage/83269/x-wing-solo-system-part-2-tie-advanced">Tie Advanced AI Design</a><br>
-<a href="http://boardgamegeek.com/filepage/83468/x-wing-solo-system-part-3-x-wing">X-Wing AIM</a><br>
+	<div id="details">
+		<div id="detail_head">
+			<div id="ship"></div>
+			<div id="actions"></div>
+		</div>
+		<div id="table"></div>
+	</div>
 </div>
 
-<div id="footer">
+<div id=footer>
+<br><br><br>
 <hr>
-Star Wars and all associated elements are © 2012 Lucasfilm Ltd. & TM. All rights reserved.<br>
+Star Wars and all associated elements are © 2014 Lucasfilm Ltd. & TM. All rights reserved.<br>
 Fantasy Flight Games, the FFG logo and X-Wing Miniatures Game are trademarks of Fantasy Flight Publishing, Inc.<br>
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">X-Wing Miniatures AI</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="mailto:rberrett4@gmail.com" property="cc:attributionName" rel="cc:attributionURL">Ralph Berrett</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
 </div>

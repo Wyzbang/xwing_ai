@@ -1,0 +1,93 @@
+<!DOCTYPE XHTML>
+<html>
+<head>
+<title>X-Wing Miniatures AI</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="src/xwing_ai.js"></script>
+<script src="src/xwing_ships.js"></script>
+</head>
+<body onload=load_index()>
+<div id="header">
+	<div id="logos">
+		<img class=company_logo src="img/ffglogoLQ.png" alt="Fantasy Flight Games">
+		<img class=game_logo src="img/game_logo.png" alt="StarWars: X-Wing Minitures">
+		<img class=applet_logo src="img/applet_logo.png" alt="AI">
+	</div>
+	<div id="links">
+		<div id="version"></div><br>
+		<a href="help.htm"><img class=help_icon src="img/help.png" alt="help"></a>
+		<a href="info.htm"><img class=info_icon src="img/info.png" alt="info"></a>
+		<a href="ships.htm"><img class=ships_icon src="img/ships.png" alt="ships"></a>
+	</div>
+</div>
+
+<div id="main">
+
+<div id="ships">
+</div>
+
+<div id="diagram">
+<div class="label">Select Target Location</div><br>
+	<!-- NOTE: Do no add line feed or images will not be flush -->
+	<div class="direction_grid">
+		<input id="target7" type="image" onclick="movement(DIR_315)" src="img/7.png" /><input id="target0" type="image" onclick="movement(DIR_000)" src="img/0.png" /><input id="target1" type="image" onclick="movement(DIR_045)" src="img/1.png" />
+	</div>
+	<div class="direction_grid">
+		<input id="target6" type="image" onclick="movement(DIR_270)" src="img/6.png" /><img id="ship_image" src="img/tie.png"><input id="target2" type="image" onclick="movement(DIR_090)" src="img/2.png" />
+	</div>
+	<div class="direction_grid">
+		<input id="target5" type="image" onclick="movement(DIR_225)" src="img/5.png" /><input id="target4" type="image" onclick="movement(DIR_180)" src="img/4.png" /><input id="target3" type="image" onclick="movement(DIR_135)" src="img/3.png" />
+	</div>
+	<div class="ship_name" id="ship_name">
+	</div>
+</div>
+<div id="maneuvers">
+	<div class="label">AI Maneuver</div>
+	<div class="seperator"><p></p></div>
+	<div class="maneuver_label">Target Closing</div>
+	<div class="maneuver">
+		<div id="closing_num" class="output"></div>
+		<div id="closing_img" class="output"></div>
+	</div>
+	<div class="seperator"><p></p></div>
+	<div class="maneuver_label">Target Retreating</div>
+	<div class="maneuver">
+		<div id="away_num" class="output"></div>
+		<div id="away_img" class="output"></div>
+	</div>
+	<div class="seperator"><p></p></div>
+	<div class="maneuver_label">Target Out-of-Range</div>
+	<div class="maneuver">
+		<div id="far_num" class="output"></div>
+		<div id="far_img" class="output"></div>
+	</div>
+	<div class="seperator"><p></p></div>
+	<div class="maneuver_label_red">AI Stressed</div>
+	<div class="maneuver">
+		<div id="stressed_num" class="output"></div>
+		<div id="stressed_img" class="output"></div>
+	</div>
+</div>
+<div id="results">
+	<div>
+		<div class="label">Target Location</div>
+		<div id="selection"><p>Press a direction and heading</p></div>
+	</div>
+	<div>
+		<div class="label">AI Actions</div>
+		<div id="actions-text"></div>
+	</div>
+</div>
+</div>
+
+<div id="footer">
+<br><br><br>
+<hr>
+Star Wars and all associated elements are © 2014 Lucasfilm Ltd. & TM. All rights reserved.<br>
+Fantasy Flight Games, the FFG logo and X-Wing Miniatures Game are trademarks of Fantasy Flight Publishing, Inc.<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">X-Wing Miniatures AI</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="mailto:rberrett4@gmail.com" property="cc:attributionName" rel="cc:attributionURL">Ralph Berrett</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+
+</div>
+</body>
+</html>

@@ -77,7 +77,7 @@ body
 	display: table-cell;
 	vertical-align: top;
 	text-align: center;
-	width: 100px;
+	width: 108px;
 }
 
 label
@@ -93,8 +93,16 @@ label:hover {
     background:#006699;   
 }
 
-.ship_button
+img.faction_button
 {
+	margin: 2px;
+	width: 50px;
+	height: 50px;
+}
+
+img.ship_button
+{
+	margin: 2px;
 	width: 50px;
 	height: 50px;
 }
@@ -135,6 +143,12 @@ label:hover {
 	vertical-align: top;
 }
 
+.ship_name 
+{
+	color: GoldenRod;
+	font-size: large;
+	font-weight: bold;
+}
 
 /*****************************************************************************/
 /* Maneuvers */
@@ -145,11 +159,19 @@ label:hover {
 	padding-left: 25px;
 	vertical-align: top;
 	text-align: center;
+	width: 150px;
 }
 
 .maneuver_label
 {
 	color: silver;
+	font-size: medium;
+	font-weight: bold;
+}
+
+.maneuver_label_red
+{
+	color: red;
 	font-size: medium;
 	font-weight: bold;
 }
@@ -191,11 +213,21 @@ label:hover {
 /*****************************************************************************/
 /* Ship Details page */
 
-#table
+#details
 {
-	display: table-cell;
+	display: table-cell;	
 	padding-left: 50px;
 	text-align: left;
+}
+
+#detail_head 
+{
+	display: table;
+}
+
+#ship #actions #table
+{
+	display: table-cell;
 }
 
 table.ship_table
