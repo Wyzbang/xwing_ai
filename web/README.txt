@@ -1,7 +1,7 @@
 ==========================================
    Star Wars X-Wing Miniatures: Ship AI
  
-                  v1.7.0 Beta 3
+                  v1.8.0
 ==========================================
 
 -------------------
@@ -17,7 +17,7 @@ You use this software at your own risk, the authors are not responsible for any 
 Overview
 -------
 
-Simple web based for AI control of ships in the "Star Wars x-Wing Minitures game".
+Simple web based for AI control of ships in the "Star Wars x-Wing Miniatures game".
 
 --------------------
 Installation / Usage
@@ -60,6 +60,7 @@ Change History
 06/26/2014	1.7.0b2	New faction specific target ring images
 08/05/2014	1.7.0b3 Fix Tie Defender Korigan maneuver is white, not red
 					Page formatting and labels to make choices clearer
+11/16/2014	1.8.0	Adding Wave 5 Ships: YT-2400 and VT-49 Decimator
 
 
 -------

@@ -437,13 +437,13 @@ class Ship:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
             self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
-            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
-        elif self.name in [ "hwk290" ]:
+        elif self.name in [ "decimator", "hwk290" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [TL,TR], [F], [], "fast" ) )
             self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
-            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
         elif self.name in [ "corvette", "transport" ]:
             self.closing.append( self.generate_row( [BL, BR], [], [], "slow" ) )
