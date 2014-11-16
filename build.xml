@@ -7,6 +7,7 @@
     <property name="src" location="generator"/>
     <property name="web" location="web"/>
     <property name="dist" location="dist"/>
+    <property name="zip" location="${dist}/xwing_ai.zip"/>
 
 	<target name="default" depends="compile,dist" />
 
@@ -18,12 +19,20 @@
 	</target>
 
 	<target name="dist" description="generate the distribution" >
-		<echo message="Generating ship maneuver tables" />
+		<echo message="Packaging web page" />
+
+		<fail message="Distribution ZIP already exists.">
+    		<condition>
+		        <available file="${zip}" />
+		    </condition>
+		</fail>
+		
+		
 	    <!-- Create the distribution directory -->
 		<mkdir dir="${dist}"/>
 
 		<!-- Put everything in ${web} into the xwing_ai.zip -->
-		<zip destfile="${dist}/xwing_ai.zip" basedir="${web}" />
+		<zip destfile="${zip}" basedir="${web}" />
     </target>
 
     <target name="clean" description="clean up" >
