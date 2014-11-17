@@ -1,0 +1,4 @@
+__pycache__
+*.pyc
+xwing_ships.js
+dist/

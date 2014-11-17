@@ -9,6 +9,8 @@ Adding a new ship
 
 
 Distribute:
+1. Run "ant dist"
+2. File is saved to dist/xwing_ai.zip
 
 
 
