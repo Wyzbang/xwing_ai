@@ -720,7 +720,9 @@ if __name__ == "__main__":
         xwing.parse_xml( "xwing_ai_save.js" )
         xwing.export_xml( "ships.xml" )
     else:
-        xwing.parse_xml( "ships.xml" )
+        for file in os.listdir("ships"):
+            filepath = "ships/%s" % file
+            xwing.parse_xml( filepath )
         xwing.export_js( "..\\web\\src\\xwing_ships.js" )
 
     if( options.build ):

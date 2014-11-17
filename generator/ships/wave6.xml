@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<ships>
+	<ig2000 actions="TARGET_LOCK + BOOST + FOCUS + EVADE" image="img/ig2000.png" name="IG-2000" faction="empire">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</ig2000>
+	<m3a actions="BARREL_ROLL + TARGET_LOCK + FOCUS + EVADE" image="img/m3aInterceptor.png" name="M3-A Interceptor" faction="empire">
+		<simple>
+			<maneuver>F2</maneuver>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</m3a>
+	<starviper actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/starviper.png" name="StarViper" faction="empire">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</starviper>
+</ships>

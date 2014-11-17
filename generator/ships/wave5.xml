@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<ships>
+	<decimator actions="FOCUS + TARGET_LOCK" image="img/decimator.png" name="VT-49 Decimator" faction="empire">
+		<simple>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>F3</maneuver>
+		    <maneuver>BR2</maneuver>
+		</simple>
+		<normal>
+		    <maneuver>TL2</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>BL1</maneuver>
+		    <maneuver>BL3</maneuver>
+		    <maneuver>F1</maneuver>
+		    <maneuver>F4</maneuver>
+		    <maneuver>BR1</maneuver>
+		    <maneuver>BR3</maneuver>
+		    <maneuver>TR2</maneuver>
+		    <maneuver>TR3</maneuver>
+		</normal>
+		<difficult>
+		</difficult>
+	</decimator>
+	<outrider actions="BARREL_ROLL + FOCUS + TARGET_LOCK" image="img/outrider.png" name="YT-2400" faction="rebel">
+	    <simple></simple>
+			<maneuver>F1</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
+	    <normal>
+			<maneuver>TL1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>TL3</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>F4</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>TR3</maneuver>
+	    </normal>
+	    <difficult>
+	    	<maneuver>K4</maneuver>
+	    </difficult>
+	</outrider>
+</ships>
