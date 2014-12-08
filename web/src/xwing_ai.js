@@ -162,6 +162,15 @@ function display_ship_choice( faction, funct )
     data += '        <img class="faction_button" src="img/rebel.png" />'
     data += '    </div>'
     data += '</label>\n';
+
+    data += '<br>\n';
+    
+    data += '<label>\n';
+    data += '    <div title="Scum">' 
+    data += '       <input type="radio" onclick="display_ship_choice(\'scum\', \'' + funct + '\')" hidden >'
+    data += '        <img class="faction_button" src="img/scum.png" />'
+    data += '    </div>'
+    data += '</label>\n';
     
     data += '<b>AI Ship:</b><br>';
     

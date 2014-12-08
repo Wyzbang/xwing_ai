@@ -22,6 +22,9 @@ TODO:
 		* http://www.fantasyflightgames.com/ffg_content/x-wing/news/scum-and-villainy/segnors-loop.png
 		* New image for Maneuver???
 		* Python and Javascript support???
+* Localization
+	* jquery  (client side, just need to download the .js and include it)
+	* sangularJs
 
 
 
