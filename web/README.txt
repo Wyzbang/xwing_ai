@@ -35,8 +35,8 @@ Change History
 10/17/2012	1.1.0	Added Multiple ship support and AI for Tie Advanced and X-Wing
 10/27/2012	1.2.0	Converted several images to smaller files, Added infrastructure for Wave-2 ships
 10/29/2012	1.3.0	Added Y-Wing AI, Converted from radio to image buttons for ships
-01/09/2013	1.4B1	Added AI for YT-1300 and Firespray-31
-					FIX: TieInteceptor image name case-sensitivity problem
+01/09/2013	1.4B1	Added YT-1300 and Firespray-31
+					Fixed TieInteceptor image name case-sensitivity problem
 01/12/2013	1.4.0	Added AU for A-Wing and Tie Interceptor
 					Added actions section to main page
 01/17/2013	1.4.1	Fixed ship selection bug, was always selecting TieFighter table
@@ -61,7 +61,7 @@ Change History
 08/05/2014	1.7.0b3 Fix Tie Defender Korigan maneuver is white, not red
 					Page formatting and labels to make choices clearer
 11/16/2014	1.8.0	Adding Wave 5 Ships: YT-2400 and VT-49 Decimator
-			1.9.0	Adding Wave 6 Ships: Ig2000, M3A, StarViper
+01/21/2015	1.9.0	Adding Wave 6 Ships: Ig2000, M3A, StarViper
 
 
 -------
