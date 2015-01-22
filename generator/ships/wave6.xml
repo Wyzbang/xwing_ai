@@ -17,7 +17,7 @@
 		<difficult>
 		</difficult>
 	</m3a>
-	s<starviper actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/starviper.png" name="StarViper" faction="scum">
+	<starviper actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/starviper.png" name="StarViper" faction="scum">
 		<simple>
 		</simple>
 		<normal>

@@ -61,6 +61,7 @@ Change History
 08/05/2014	1.7.0b3 Fix Tie Defender Korigan maneuver is white, not red
 					Page formatting and labels to make choices clearer
 11/16/2014	1.8.0	Adding Wave 5 Ships: YT-2400 and VT-49 Decimator
+			1.9.0	Adding Wave 6 Ships: Ig2000, M3A, StarViper
 
 
 -------
@@ -69,6 +70,7 @@ Contact
 
 Email: rberrett4@gmail.com
 BoardGameGeek: wyzbang
+Source: https://github.com/Wyzbang/xwing_ai
 
 -------
 Credits

@@ -20,14 +20,16 @@ VEBOSE=False
 # ******************************************************************************
 # List of potential maneuvers
 
-F = "F"
-BL = "BL"
-TL = "TL"
-BR = "BR"
-TR = "TR"
-K = "K"
+F = "F"     # Forward
+BL = "BL"   # Bank Left
+TL = "TL"   # Turn Left
+BR = "BR"   # Bank Right
+TR = "TR"   # Turn Right
+K = "K"     # Korigran Turn
+SL = "SL"   # Segnor's Loop - Left
+SL = "SR"   # Segnor's Loop - Right
 
-BEARINGS = [ TL, BL, F, BR, TR, K ]
+BEARINGS = [ TL, BL, F, BR, TR, K, SL, SR ]
 
 # ******************************************************************************
 
@@ -67,17 +69,10 @@ class Maneuver:
             self.bearing = BL
         elif self.bearing == TR:
             self.bearing = TL
-
-            
-# ******************************************************************************
-# List of potential Ships
-
-FORWARD = ( Maneuver("F",0), Maneuver("F",1), Maneuver("F",2), Maneuver("F",3), Maneuver("F",4), Maneuver("F",5) )
-BANK_LEFT = ( Maneuver("BL",1), Maneuver("BL",2), Maneuver("BL",3) )
-TURN_LEFT = ( Maneuver("TL", 1), Maneuver("TL",2), Maneuver("TL",3) )
-BANK_RIGHT = ( Maneuver("BR", 1), Maneuver("BR",2), Maneuver("BR",3) )
-TURN_RIGHT = ( Maneuver("TR", 1), Maneuver("TR",2), Maneuver("TR",3) )
-KORIGAN=( Maneuver("K",2), Maneuver("K",3), Maneuver("K",4), Maneuver("K",5) )    
+        elif self.bearing == SR:
+            self.bearing = SL
+        elif self.bearing == SR:
+            self.bearing = SL
 
 
 # ******************************************************************************
