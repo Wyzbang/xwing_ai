@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 """
 X-wing Miniatures AI Maneuver Generator
 """
-import datetime
 import copy
+import datetime
+import json
 import optparse
 import os
 import re
@@ -27,7 +29,7 @@ BR = "BR"   # Bank Right
 TR = "TR"   # Turn Right
 K = "K"     # Korigran Turn
 SL = "SL"   # Segnor's Loop - Left
-SL = "SR"   # Segnor's Loop - Right
+SR = "SR"   # Segnor's Loop - Right
 
 BEARINGS = [ TL, BL, F, BR, TR, K, SL, SR ]
 
@@ -521,107 +523,9 @@ class XWingGenerator:
         js.write( "var ships = [ %s ];" % ships_array[:-2] )
              
         print( "Export complete." )
+
         
-    
-    def __parse_js_maneuvers( self, line ):
-        """
-        Helper function to parse maneuver line from javascript
-        """
-        maneuvers = []
-        
-        one = line[  line.find( "Array(" ) + 6 : line.find( ");" ) ]
-        for item in one.split( "," ):
-            bearing = item[ 1 : item.find( '(' ) ]
-            speed   = int(item[ item.find( '(' ) + 1 : item.find( ')' )])
-            maneuvers.append( Maneuver( bearing, speed ) )
-        
-        return maneuvers
-
-
-    def parse_js( self, filepath ):
-        """
-        Populate the ships dictionary from java script
-        """
-        
-        NEW_SHIP = re.compile( "^var.* = new Object" )
-        NAME = re.compile( ".*\.name = " )
-        IMAGE = re.compile( ".*\.image = " )
-        ACTIONS = re.compile( ".*\.actions = " )
-
-        SIMPLE = re.compile( ".*\.simple = new Array" )
-        NORMAL = re.compile( ".*\.normal = new Array" )
-        DIFFICULT = re.compile( ".*\.difficult = new Array" )
-    
-        print( "Parsing %s..." % filepath )
-        js = open( filepath, 'r' )
-        for line in js.readlines():
-            
-            if( NEW_SHIP.match( line ) ):
-                name = line[4: line.find(" = ")]
-                self.ships[ name ] = Ship( name )
-
-            elif( NAME.match( line ) ):
-                self.ships[name].name2 = line[ line.find("=")+3 : -3 ]
-
-            elif( IMAGE.match( line ) ):
-                self.ships[name].image = line[ line.find("=")+3 : -3 ]
-
-            elif( ACTIONS.match( line ) ):
-                self.ships[name].actions = line[ line.find("=")+3 : -3 ].strip()
-            
-            elif( SIMPLE.match( line ) ):
-                self.ships[name].simple = self.__parse_js_maneuvers( line )
-            
-            elif( NORMAL.match( line ) ):
-                self.ships[name].normal = self.__parse_js_maneuvers( line )
-            
-            elif( DIFFICULT.match( line ) ):
-                self.ships[name].difficult = self.__parse_js_maneuvers( line )
-
-        js.close()
-        print( "Parsing complete." )                
-
-    
-    def export_xml( self, filepath ):
-        """
-        Export ships dictionary to xml
-        """
-        print( "Exporting ships to %s..." % filepath )
-        root = ElementTree.Element( "ships" )
-    
-        # Convert each ship into XML
-        for name in sorted( self.ships ):
-            ship = self.ships[name]
-            attribs = { "name": ship.name2, "image": ship.image, "actions": ship.actions }
-            s = ElementTree.SubElement( root, name, attribs )
-    
-            simple = ElementTree.SubElement( s, 'simple' )
-            for maneuver in ship.simple:   
-                m = ElementTree.SubElement( simple, "maneuver" )
-                m.text = "%s%d" % ( maneuver.bearing, maneuver.speed )
-    
-            normal = ElementTree.SubElement( s, 'normal' )
-            for maneuver in ship.normal:   
-                m = ElementTree.SubElement( normal, "maneuver" )
-                m.text = "%s%d" % ( maneuver.bearing, maneuver.speed )
-    
-            difficult = ElementTree.SubElement( s, 'difficult' )
-            for maneuver in ship.difficult:   
-                m = ElementTree.SubElement( difficult, "maneuver" )
-                m.text = "%s%d" % ( maneuver.bearing, maneuver.speed )
-
-        # Save to file (export to minidom for prettyprint)
-        rough_string = ElementTree.tostring(root, 'utf-8')
-        reparsed = xml.dom.minidom.parseString(rough_string)
-        
-        xmlfile = open( filepath, 'w' )
-        xmlfile.write( reparsed.toprettyxml(indent="\t") )
-        xmlfile.close()
-
-        print( "Export complete." )
-            
-        
-    def parse_xml( self, filepath ):
+    def parse_ship_xml( self, filepath ):
         """
         Parse xml into ships dictionary
         """
@@ -661,16 +565,16 @@ class XWingGenerator:
                 self.ships[name].difficult.append( Maneuver( bearing, speed ) ) 
 
         print( "Parsing complete." )
-        
-        
+
+
 # ******************************************************************************
 
 def doBuild():
     """
     """
     
-    dst = r"F:\src\builds\xwing_ai_%s.zip" % VERSION
-    src = r"F:\src\xwing_ai"
+    dst = r"../builds/xwing_ai_%s.zip" % VERSION
+    src = r"../xwing_ai"
     exclude_dirs = ( ".git", "generator" )
     exclude_files = ( ".gitignore", ".project", ".pydevproject" )
     
@@ -695,30 +599,27 @@ def doBuild():
     
     print( "Build complete." )
 
+
 # ******************************************************************************
                 
 if __name__ == "__main__":
     
     parser = optparse.OptionParser()
-    parser.add_option( "-j", "--js", action="store_true", dest="js_to_xml", default=False,
-                       help="Convert ships from javascript to xml" )
     parser.add_option( "-b", "--build", action="store_true", dest="build", default=False,
                        help="Save" )
     (options, args) = parser.parse_args()
     
     xwing = XWingGenerator()
     
-    if( options.build and options.js_to_xml ):
-        print( "ERROR: Invalid options" )
-    
-    if( options.js_to_xml ):
-        xwing.parse_xml( "xwing_ai_save.js" )
-        xwing.export_xml( "ships.xml" )
-    else:
-        for file in os.listdir("ships"):
-            filepath = "ships/%s" % file
-            xwing.parse_xml( filepath )
-        xwing.export_js( "..\\web\\src\\xwing_ships.js" )
+    for file in os.listdir("ships"):
+        filepath = "ships/%s" % file
+        
+        if ".xml" in filepath:
+            xwing.parse_ship_xml( filepath )
+        else:
+            print( "WARN: Unexpected file type '%s'" % filepath )
+
+    xwing.export_js( "../web/src/xwing_ships.js" )
 
     if( options.build ):
         doBuild()
