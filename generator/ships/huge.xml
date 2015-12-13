@@ -15,6 +15,7 @@
 		<difficult>
 		</difficult>
 	</corvette>
+	<!--
 	<raider actions="RECOVER + REINFORCE + CORDINATE + TARGET_LOCK" image="img/raider.png" name="Imperial Raider" faction="empire">
 		<simple>
 		</simple>
@@ -31,6 +32,7 @@
 		<difficult>
 		</difficult>
 	</carrier>
+	 -->
 	<transport actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport" faction="rebel">
 		<simple>
 		</simple>

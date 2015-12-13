@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
+	<!-- Disable Wave 8 Ships until released
 	<ghost actions="TARGET_LOCK + FOCUS + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
 		<simple>
 		</simple>
@@ -39,5 +40,6 @@
 		</normal>
 		<difficult>
 		</difficult>
-	</punishingOne>	
+	</punishingOne>
+	-->	
 </ships>
