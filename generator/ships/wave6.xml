@@ -1,28 +1,74 @@
 <?xml version="1.0" ?>
 <ships>
-	<ig2000 actions="TARGET_LOCK + BOOST + FOCUS + EVADE" image="img/ig2000.png" name="IG-2000" faction="scum">
+	<ig2000 actions="TARGET_LOCK + BOOST + FOCUS + BARREL_ROLL" image="img/ig2000.png" name="IG-2000" faction="scum">
 		<simple>
+			<maneuver>BL1</maneuver>
+			<maneuver>F1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>BR3</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TL1</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>TR2</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>SL3</maneuver>
+			<maneuver>SR3</maneuver>
+			<maneuver>K4</maneuver>
 		</difficult>
 	</ig2000>
 	<m3a actions="BARREL_ROLL + TARGET_LOCK + FOCUS + EVADE" image="img/m3aInterceptor.png" name="M3-A Interceptor" faction="scum">
 		<simple>
+			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>BL2</maneuver>
 			<maneuver>F2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>F3</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TL1</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>K3</maneuver>
+			<maneuver>K5</maneuver>
 		</difficult>
 	</m3a>
 	<starviper actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/starviper.png" name="StarViper" faction="scum">
 		<simple>
+			<maneuver>BL1</maneuver>
+			<maneuver>F1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>F3</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TL1</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>SL3</maneuver>
+			<maneuver>SR3</maneuver>
 		</difficult>
 	</starviper>
 </ships>

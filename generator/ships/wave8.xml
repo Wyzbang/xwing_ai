@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<ships>
+	<ghost actions="TARGET_LOCK + BOOST + FOCUS + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</ghost>
+	<tieInquisitor actions="BARREL_ROLL + TARGET_LOCK + FOCUS + EVADE" image="img/tieInquisitor.png" name="Inquisitor's TIE" faction="empire">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</tieInquisitor>
+	<mistHunter actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/mistHunter.png" name="Mist Hunter" faction="scum">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</mistHunter>
+	<punishingOne actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/punishingOne.png" name="Punishing One" faction="scum">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</punishingOne>	
+</ships>

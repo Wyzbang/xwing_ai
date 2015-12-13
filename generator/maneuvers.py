@@ -368,7 +368,7 @@ class Ship:
         #      away: F                   long
         #       far: F*, BL, BR
         self.label = "12 o'clock"
-        self.closing.append( self.generate_row( [F], [K], [BR, BL], "slow" ) )
+        self.closing.append( self.generate_row( [F], [SL, SR, K], [BR, BL], "slow" ) )
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
         self.stressed.append( self.generate_row( [F], [], [BR, BL], "stressed" ) )
@@ -399,7 +399,7 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [], [K], "slow" ) )
+            self.closing.append( self.generate_row( [TR], [], [SL, SR, K], "slow" ) )
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
@@ -420,8 +420,8 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [K], [BR], "slow" ) )
-            self.away.append( self.generate_row( [TR], [K], [], "fast" ) )
+            self.closing.append( self.generate_row( [TR], [SL, SR, K], [BR], "slow" ) )
+            self.away.append( self.generate_row( [TR], [SL, SR, K], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
                 
@@ -430,7 +430,7 @@ class Ship:
         #      away: K*, TR, TL
         #       far: K, TR*, TL*
         self.label = "6 o'clock"
-        if self.name in [ "lambda" ]:
+        if self.name in [ "lambda", "houndstooth", "kwing" ]:
             # Special case as this ship does not support Koiogran Turn 
             self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
             self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
@@ -448,9 +448,9 @@ class Ship:
             self.far.append( self.generate_row( [BL, BR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [K], [TL,F,TR], [], "fast" ) )
-            self.away.append( self.generate_row( [K], [TR, TL], [], "fast" ) )
-            self.far.append( self.generate_row( [TL, TR], [], [K], "fast" ) )
+            self.closing.append( self.generate_row( [SL, SR, K], [TL,F,TR], [], "fast" ) )
+            self.away.append( self.generate_row( [SL, SR, K], [TR, TL], [], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [SL, SR, K], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
                 
         # 5, SW, 7-8   o'clock: Reverse of #3
