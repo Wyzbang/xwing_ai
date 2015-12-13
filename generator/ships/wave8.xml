@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
-	<ghost actions="TARGET_LOCK + BOOST + FOCUS + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
+	<ghost actions="TARGET_LOCK + FOCUS + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
 		<simple>
 		</simple>
 		<normal>
