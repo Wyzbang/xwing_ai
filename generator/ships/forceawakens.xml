@@ -2,18 +2,52 @@
 <ships>
 	<t70xwing actions="FOCUS + TARGET_LOCK + BOOST" image="img/t70xwing.png" name="T-70 X-Wing" faction="rebel">
 		<simple>
+		    <maneuver>BL1</maneuver>
+		    <maneuver>F1</maneuver>
+		    <maneuver>BR1</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>F3</maneuver>
 		</simple>
 		<normal>
+		    <maneuver>TL2</maneuver>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>TR2</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>BL3</maneuver>
+		    <maneuver>BR3</maneuver>
+		    <maneuver>TR3</maneuver>
+		    <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+		    <maneuver>TRL3</maneuver>
+		    <maneuver>TRR3</maneuver>
+		    <maneuver>K4</maneuver>
 		</difficult>
 	</t70xwing>
 	<tiefo actions="FOCUS + TARGET_LOCK + BARREL_ROLL + EVADE" image="img/tiefo.png" name="TIE/fo" faction="empire">
 		<simple>
+		    <maneuver>TL2</maneuver>
+		    <maneuver>BL2</maneuver>
+		    <maneuver>F2</maneuver>
+		    <maneuver>BR2</maneuver>
+		    <maneuver>TR2</maneuver>
+		    <maneuver>F3</maneuver>
 		</simple>
 		<normal>
+		    <maneuver>TL1</maneuver>
+		    <maneuver>TR1</maneuver>
+		    <maneuver>TL3</maneuver>
+		    <maneuver>BL3</maneuver>
+		    <maneuver>BR3</maneuver>
+		    <maneuver>TR3</maneuver>
+		    <maneuver>F4</maneuver>
+		    <maneuver>F5</maneuver>
 		</normal>
 		<difficult>
-		</difficult>
+		    <maneuver>SLL2</maneuver>
+			<maneuver>SLR2</maneuver>
+   		    <maneuver>K4</maneuver>
+	    </difficult>
 	</tiefo>
 </ships>

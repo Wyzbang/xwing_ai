@@ -31,9 +31,11 @@ var TURN_RIGHT = 4;
 var KOIOGRAN = 5;
 var SEGNOR_LEFT = 6;
 var SEGNOR_RIGHT = 7;
+var TALLON_LEFT = 8;
+var TALLON_RIGHT = 9;
 var INVALID = 99;
 
-var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right" ];
+var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right", "tallon-roll-left", "tallon-roll-right" ];
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -133,7 +135,7 @@ function K( distance )
     return move;
 } 
 
-function SL( distance )
+function SLL( distance )
 {
     var move = {};
     move.num = distance;
@@ -141,11 +143,27 @@ function SL( distance )
     return move;
 }
 
-function SR( distance )
+function SLR( distance )
 {
     var move = {};
     move.num = distance;
     move.dir = SEGNOR_RIGHT;
+    return move;
+}
+
+function TRL( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = TALLON_RIGHT;
+    return move;
+}
+
+function TRR( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = TALLON_RIGHT;
     return move;
 }
 

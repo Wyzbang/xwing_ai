@@ -1,10 +1,10 @@
 
-Adding a new ship
+Adding a new ships
 
-1. Create new image
+1. Create new images in web/img
 	Format:		PNG
 	Size: 		100x100 pixels
-2. Add node to generator/ships.xml
+2. Add node to generator/<filename>.xml
 3. Run "ant compile"
 
 

@@ -28,10 +28,12 @@ TL = "TL"   # Turn Left
 BR = "BR"   # Bank Right
 TR = "TR"   # Turn Right
 K = "K"     # Korigran Turn
-SL = "SL"   # Segnor's Loop - Left
-SR = "SR"   # Segnor's Loop - Right
+SLL = "SLL" # Segnor's Loop - Left
+SLR = "SLR" # Segnor's Loop - Right
+TRL = "TRL" # Tallon Roll - Left
+TRR = "TRR" # Tallon Roll - Right
 
-BEARINGS = [ TL, BL, F, BR, TR, K, SL, SR ]
+BEARINGS = [ TL, BL, F, BR, TR, K, SLL, SLR, TRL, TRR ]
 
 # ******************************************************************************
 
@@ -63,18 +65,10 @@ class Maneuver:
         """
         Swap left and right banks/turns
         """
-        if self.bearing == BL:
-            self.bearing = BR
-        elif self.bearing == TL:
-            self.bearing = TR
-        elif self.bearing == BR:
-            self.bearing = BL
-        elif self.bearing == TR:
-            self.bearing = TL
-        elif self.bearing == SR:
-            self.bearing = SL
-        elif self.bearing == SR:
-            self.bearing = SL
+        swap = { BL:BR, BR:BL, TL:TR, TR:TL, SLL:SLR, SLR:SLL, TRL:TRR, TRR:TRL }
+        if( self.bearing in swap.keys() ):
+            self.bearing == swap[self.bearing]
+        
 
 
 # ******************************************************************************
@@ -368,7 +362,7 @@ class Ship:
         #      away: F                   long
         #       far: F*, BL, BR
         self.label = "12 o'clock"
-        self.closing.append( self.generate_row( [F], [SL, SR, K], [BR, BL], "slow" ) )
+        self.closing.append( self.generate_row( [F], [TRL, TRR, SLL, SLR, K], [BR, BL], "slow" ) )
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
         self.stressed.append( self.generate_row( [F], [], [BR, BL], "stressed" ) )
@@ -399,7 +393,7 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [], [SL, SR, K], "slow" ) )
+            self.closing.append( self.generate_row( [TR], [], [TRL, TRR, SLL, SLR, K], "slow" ) )
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
@@ -420,8 +414,8 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [SL, SR, K], [BR], "slow" ) )
-            self.away.append( self.generate_row( [TR], [SL, SR, K], [], "fast" ) )
+            self.closing.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K], [BR], "slow" ) )
+            self.away.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
                 
@@ -448,9 +442,9 @@ class Ship:
             self.far.append( self.generate_row( [BL, BR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [SL, SR, K], [TL,F,TR], [], "fast" ) )
-            self.away.append( self.generate_row( [SL, SR, K], [TR, TL], [], "fast" ) )
-            self.far.append( self.generate_row( [TL, TR], [], [SL, SR, K], "fast" ) )
+            self.closing.append( self.generate_row( [TRL, TRR, SLL, SLR, K], [TL,F,TR], [], "fast" ) )
+            self.away.append( self.generate_row( [TRL, TRR, SLL, SLR, K], [TR, TL], [], "fast" ) )
+            self.far.append( self.generate_row( [TL, TR], [], [TRL, TRR, SLL, SLR, K], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
                 
         # 5, SW, 7-8   o'clock: Reverse of #3

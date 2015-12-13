@@ -19,8 +19,8 @@
 			<maneuver>TR2</maneuver>
 		</normal>
 		<difficult>
-			<maneuver>SL3</maneuver>
-			<maneuver>SR3</maneuver>
+			<maneuver>SLL3</maneuver>
+			<maneuver>SLR3</maneuver>
 			<maneuver>K4</maneuver>
 		</difficult>
 	</ig2000>
@@ -67,8 +67,8 @@
 			<maneuver>F4</maneuver>
 		</normal>
 		<difficult>
-			<maneuver>SL3</maneuver>
-			<maneuver>SR3</maneuver>
+			<maneuver>SLL3</maneuver>
+			<maneuver>SLR3</maneuver>
 		</difficult>
 	</starviper>
 </ships>
