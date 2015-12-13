@@ -14,14 +14,11 @@ Distribute:
 
 
 TODO:
-* Split Ships.xml into multiple files
-* Wave 6
-	* How to handle "Scum and Villany" ships as a faction
-	* Maneuvers list
-	* Segnor’s Loop 
-		* http://www.fantasyflightgames.com/ffg_content/x-wing/news/scum-and-villainy/segnors-loop.png
-		* New image for Maneuver???
-		* Python and Javascript support???
+* Images
+	* Wave 7, 8 and Imperial Huge Ships
+	* Clean up segnor's loop maneuver images
+* Maneuvers list
+	* Wave 8 & Imperial Huge Ships
 * Localization
 	* jquery  (client side, just need to download the .js and include it)
 	* sangularJs
