@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<ships>
+	<t70xwing actions="FOCUS + TARGET_LOCK + BOOST" image="img/t70xwing.png" name="T-70 X-Wing" faction="rebel">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</t70xwing>
+	<tiefo actions="FOCUS + TARGET_LOCK + BARREL_ROLL + EVADE" image="img/tiefo.png" name="TIE/fo" faction="empire">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</tiefo>
+</ships>
