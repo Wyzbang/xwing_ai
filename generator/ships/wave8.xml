@@ -8,6 +8,14 @@
 		<difficult>
 		</difficult>
 	</ghost>
+	<phantom actions="BARREL_ROLL + FOCUS + EVADE" image="img/phantom.png" name="Phantom" faction="rebel">
+		<simple>
+		</simple>
+		<normal>
+		</normal>
+		<difficult>
+		</difficult>
+	</phantom>	
 	<tieInquisitor actions="BARREL_ROLL + TARGET_LOCK + FOCUS + EVADE" image="img/tieInquisitor.png" name="Inquisitor's TIE" faction="empire">
 		<simple>
 		</simple>
@@ -16,7 +24,7 @@
 		<difficult>
 		</difficult>
 	</tieInquisitor>
-	<mistHunter actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/mistHunter.png" name="Mist Hunter" faction="scum">
+	<mistHunter actions="TARGET_LOCK + EVADE + FOCUS" image="img/mistHunter.png" name="Mist Hunter" faction="scum">
 		<simple>
 		</simple>
 		<normal>
@@ -24,7 +32,7 @@
 		<difficult>
 		</difficult>
 	</mistHunter>
-	<punishingOne actions="BARREL_ROLL + TARGET_LOCK + BOOST + FOCUS" image="img/punishingOne.png" name="Punishing One" faction="scum">
+	<punishingOne actions="BARREL_ROLL + TARGET_LOCK + FOCUS" image="img/punishingOne.png" name="Punishing One" faction="scum">
 		<simple>
 		</simple>
 		<normal>
