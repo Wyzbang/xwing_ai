@@ -29,9 +29,11 @@ var FORWARD = 2;
 var BANK_RIGHT = 3;
 var TURN_RIGHT = 4;
 var KOIOGRAN = 5;
+var SEGNOR_LEFT = 6;
+var SEGNOR_RIGHT = 7;
 var INVALID = 99;
 
-var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran" ];
+var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "sengor-loop-left", "segnor-loop-right" ];
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -40,6 +42,7 @@ var BOOST       = 0x4;
 var FOCUS       = 0x8;
 var EVADE       = 0x10;
 var CLOAKING    = 0x20;
+var SLAM        = 0x40;
 
 var CORDINATE   = 0x1000;
 var JAM         = 0x2000;
@@ -62,6 +65,8 @@ var FOCUS_TEXT2 = 'Always use <img src="img/action_focus.png" alt="Focus">';
 var EVADE_TEXT = 'Else Choose <img src="img/action_evade.png" alt="Evade">';
 
 var CLOAKING_TEXT = 'Cloak/Decloak <img src="img/action_cloak.png" alt="Cloak">';          // TODO
+
+var SLAM_TEXT = "Slam"					// TODO
 
 // ACTION TEXT - Huge Ships
 var CORDINATE_TEXT = "CORDINATE";        // TODO
@@ -127,6 +132,22 @@ function K( distance )
     move.dir = KOIOGRAN;
     return move;
 } 
+
+function SL( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = SEGNOR_LEFT;
+    return move;
+}
+
+function SR( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = SEGNOR_RIGHT;
+    return move;
+}
 
 function invalid()
 {
@@ -409,7 +430,12 @@ function format_actions( ship )
     {
         actions += "<li>" + CLOAKING_TEXT + "</li>";
     }
-    
+   
+    if( ship.actions & SLAM )
+    {
+        actions += "<li>" + SLAM_TEXT + "</li>";
+    } 
+       
     if( ship.actions & CORDINATE )
     {
         actions += "<li>" + CORDINATE_TEXT + "</li>";
