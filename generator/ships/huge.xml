@@ -15,7 +15,7 @@
 		<difficult>
 		</difficult>
 	</corvette>
-	<raider actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Imperial Raider" faction="empire">
+	<raider actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/raider.png" name="Imperial Raider" faction="empire">
 		<simple>
 		</simple>
 		<normal>
@@ -23,7 +23,7 @@
 		<difficult>
 		</difficult>
 	</raider>
-	<carrier actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Imperial Assault Carrier" faction="empire">
+	<carrier actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/carrier.png" name="Imperial Assault Carrier" faction="empire">
 		<simple>
 		</simple>
 		<normal>
