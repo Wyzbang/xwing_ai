@@ -33,7 +33,7 @@ var SEGNOR_LEFT = 6;
 var SEGNOR_RIGHT = 7;
 var INVALID = 99;
 
-var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "sengor-loop-left", "segnor-loop-right" ];
+var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right" ];
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
