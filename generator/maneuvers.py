@@ -67,7 +67,7 @@ class Maneuver:
         """
         swap = { BL:BR, BR:BL, TL:TR, TR:TL, SLL:SLR, SLR:SLL, TRL:TRR, TRR:TRL }
         if( self.bearing in swap.keys() ):
-            self.bearing == swap[self.bearing]
+            self.bearing = swap[self.bearing]
         
 
 

@@ -155,7 +155,7 @@ function TRL( distance )
 {
     var move = {};
     move.num = distance;
-    move.dir = TALLON_RIGHT;
+    move.dir = TALLON_LEFT;
     return move;
 }
 
