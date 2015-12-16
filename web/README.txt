@@ -64,8 +64,9 @@ Change History
 12/12/2015	1.9.0	Adding Wave 6 Ships: Ig2000, M3A, StarViper
 					Adding Wave 7 Ships: Hound’s Tooth, Kihraxz Fighter, K-Wing, Tie Punisher
 					Adding Wave 8 Ships: Ghost, Inquisitor’s Tie, Mist Hunter, Punishing One
-			1.9.0.1 Added Force Awakens Ships: T-70 X-Wing, TIE/fo
+12/13/2015	1.9.0.1 Added Force Awakens Ships: T-70 X-Wing, TIE/fo
 					Disable Wave 8 ships and Imperial Huge Ship (until maneuvers are available)
+			1.9.0.2 Update Ship images
 
 
 -------
