@@ -1,31 +1,82 @@
 <?xml version="1.0" ?>
 <ships>
-	<!-- Disable Wave 8 Ships until released
-	<ghost actions="TARGET_LOCK + FOCUS + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
+	<ghost actions="FOCIS + TARGET_LOCK + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
 		<simple>
+			<maneuver>F1</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>BR2</maneuver>
 		</simple>
 		<normal>
+			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>TL1</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TL3</maneuver>
+			<maneuver>TR3</maneuver>
+			<maneuver>K5</maneuver>
 		</difficult>
 	</ghost>
-	<phantom actions="BARREL_ROLL + FOCUS + EVADE" image="img/phantom.png" name="Phantom" faction="rebel">
+	<phantom actions="FOCUS + BARREL_ROLL + EVADE" image="img/phantom.png" name="Phantom" faction="rebel">
 		<simple>
+			<maneuver>BL1</maneuver>
+			<maneuver>F1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>F2</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TL2</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>F4</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>TL1</maneuver>
+			<maneuver>TR1</maneuver>
+			<maneuver>TL3</maneuver>
+			<maneuver>TR3</maneuver>
+			<maneuver>K4</maneuver>
 		</difficult>
 	</phantom>	
-	<tieInquisitor actions="BARREL_ROLL + TARGET_LOCK + FOCUS + EVADE" image="img/tieInquisitor.png" name="Inquisitor's TIE" faction="empire">
+	<tieInquisitor actions="BARREL_ROLL + TARGET_LOCK + FOCUS + BOOST" image="img/tieInquisitor.png" name="Inquisitor's TIE" faction="empire">
 		<simple>
+			<maneuver>TL1</maneuver>
+			<maneuver>BL1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>TL1</maneuver>
+			<maneuver>F2</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>F4</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TL2</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>TL3</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>BR3</maneuver>
+			<maneuver>TR3</maneuver>
+			<maneuver>F5</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>K4</maneuver>
 		</difficult>
 	</tieInquisitor>
-	<mistHunter actions="TARGET_LOCK + EVADE + FOCUS" image="img/mistHunter.png" name="Mist Hunter" faction="scum">
+	<!-- Disable Wave 8 Ships until released
+	<mistHunter actions="FOCUS + TARGET_LOCK + EVADE" image="img/mistHunter.png" name="Mist Hunter" faction="scum">
 		<simple>
 		</simple>
 		<normal>
@@ -33,7 +84,7 @@
 		<difficult>
 		</difficult>
 	</mistHunter>
-	<punishingOne actions="BARREL_ROLL + TARGET_LOCK + FOCUS" image="img/punishingOne.png" name="Punishing One" faction="scum">
+	<punishingOne actions="FOCUS + TARGET_LOCK + BARREL_ROLL" image="img/punishingOne.png" name="Punishing One" faction="scum">
 		<simple>
 		</simple>
 		<normal>
