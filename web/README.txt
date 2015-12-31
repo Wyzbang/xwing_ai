@@ -8,7 +8,7 @@
 Standard Disclaimer
 -------------------
 
-Star Wars and all associated elements are ï¿½ 2014 Lucasfilm Ltd. & TM. All rights reserved. 
+Star Wars and all associated elements are © 2015 Lucasfilm Ltd. & TM. All rights reserved. 
 Fantasy Flight Games and the FFG logo are trademarks of Fantasy Flight Publishing, Inc.
 
 You use this software at your own risk, the authors are not responsible for any loss or damage resulting from the use of this software. If you do not agree with these terms do not use this software, simple.
