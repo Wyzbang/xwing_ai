@@ -14,7 +14,7 @@
     <target name="compile" description="compile the source " >
 		<echo message="Generating ship manuever tables" />
 		<exec dir="${src}" executable="python" failonerror="true">
-			<arg line="maneuvers.py" />
+			<arg line="generate.py" />
 		</exec>
 	</target>
 
