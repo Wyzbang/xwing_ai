@@ -19,6 +19,9 @@ from version import VERSION
 DEBUG=False
 VEBOSE=False
 
+ACTIONS = ( 'BARREL_ROLL', 'BOOST', 'CLOAKING', 'CORDINATE', 'EVADE', 'FOCUS', 'JAM', 'RECOVER', 'REINFORCE', 'SLAM', 'TARGET_LOCK' )
+FACTIONS = ( 'rebel', 'empire', 'scum' )
+
 # ******************************************************************************
 
 class XWingGenerator:
@@ -71,6 +74,32 @@ class XWingGenerator:
              
         print( "Export complete." )
 
+    
+    def validateActions( self, name, actionsString ):
+        """
+        Validate all actions are valid
+        """
+        actions = actionsString.split("+")
+        actions = [x.strip() for x in actions]
+        
+        for action in actions:
+            if not action in ACTIONS:
+                raise Exception("%s: Invalid Action: %s" % (name, action))
+        return True
+
+
+    def validateImage( self, name, image ):
+        if not os.path.isfile( "../web/" + image ):
+            raise Exception( "%s: Image does not exist: %s" % (name, image))
+
+
+    def validateFaction( self, name, faction ):
+        """
+        Validate Faction value
+        """
+        if( faction not in FACTIONS ):
+            raise Exception("%s: Invalid faction: %s" % (name, faction))
+
         
     def parse_ship_xml( self, filepath ):
         """
@@ -86,9 +115,18 @@ class XWingGenerator:
             name = s.tag
             self.ships[name] = Ship( name )
             self.ships[name].name2 = s.attrib[ 'name' ]
-            self.ships[name].image = s.attrib[ 'image' ]
-            self.ships[name].actions = s.attrib[ 'actions' ]
-            self.ships[name].faction = s.attrib[ 'faction' ]
+            
+            image = s.attrib[ 'image' ]
+            self.validateImage(name, image)
+            self.ships[name].image = image
+            
+            actions = s.attrib[ 'actions' ]
+            self.validateActions(name, actions)
+            self.ships[name].actions = actions
+            
+            faction = s.attrib[ 'faction' ]
+            self.validateFaction(name, faction)
+            self.ships[name].faction = faction
             
             simple = s.find( 'simple' )
             for man in list(simple):

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
-	<ghost actions="FOCIS + TARGET_LOCK + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
+	<ghost actions="FOCUS + TARGET_LOCK + EVADE" image="img/ghost.png" name="Ghost" faction="rebel">
 		<simple>
 			<maneuver>F1</maneuver>
 			<maneuver>BL2</maneuver>
