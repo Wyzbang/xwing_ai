@@ -1,7 +1,7 @@
 ==========================================
    Star Wars X-Wing Miniatures: Ship AI
  
-                  v1.9.0
+                  v1.9.0.2
 ==========================================
 
 -------------------
@@ -66,7 +66,9 @@ Change History
 					Adding Wave 8 Ships: Ghost, Inquisitor’s Tie, Mist Hunter, Punishing One
 12/13/2015	1.9.0.1 Added Force Awakens Ships: T-70 X-Wing, TIE/fo
 					Disable Wave 8 ships and Imperial Huge Ship (until maneuvers are available)
-			1.9.0.2 Update Ship images
+06/12/2016	1.9.0.2 Update Ship images: Mist Hunter, Phantom, Punishing One, Inquisitor's Tie
+					Added PunhishingOne Maneuvers
+					Cleaned up Segnor Loop images
 
 
 -------
