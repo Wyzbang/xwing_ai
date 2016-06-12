@@ -99,14 +99,29 @@
 			<maneuver>K4</maneuver>
 		</difficult>
 	</mistHunter>
-	<!-- 
 	<punishingOne actions="FOCUS + TARGET_LOCK + BARREL_ROLL" image="img/punishingOne.png" name="Punishing One" faction="scum">
 		<simple>
+			<maneuver>TL1</maneuver>
+			<maneuver>BL1</maneuver>
+			<maneuver>F1</maneuver>
+			<maneuver>BL2</maneuver>
+			<maneuver>TL2</maneuver>
+			<maneuver>F2</maneuver>
 		</simple>
 		<normal>
+			<maneuver>TR1</maneuver>
+			<maneuver>BR1</maneuver>
+			<maneuver>TR2</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>BL3</maneuver>
+			<maneuver>F3</maneuver>
+			<maneuver>BR2</maneuver>
+			<maneuver>F4</maneuver>
+			<maneuver>SLL2</maneuver>
 		</normal>
 		<difficult>
+			<maneuver>K4</maneuver>
+			<maneuver>SLR2</maneuver>
 		</difficult>
 	</punishingOne>
-	-->	
 </ships>

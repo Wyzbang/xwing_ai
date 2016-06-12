@@ -26,7 +26,11 @@ class Maneuver:
     
     """
     def __init__( self, bearing, speed ):
+        if( bearing not in BEARINGS ):
+            raise Exception( 'Invalid Bearing: %s' % bearing )
         self.bearing = bearing
+        if not isinstance(speed, int):
+            raise Exception( 'Invalid Speed: %s %s' % (speed, type(speed)) )
         self.speed = speed
         
     def __str__( self ):
