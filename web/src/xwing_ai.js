@@ -22,25 +22,6 @@ var CLOSING = "Closing";            // Closing
 var FAR = "Out of Range";           // Far
 var STRESSED = "Stressed";          // Stressed
 
-// MANEUVER DIRECTIONS
-var TURN_LEFT = 0;
-var BANK_LEFT = 1;
-var FORWARD = 2;
-var BANK_RIGHT = 3;
-var TURN_RIGHT = 4;
-var KOIOGRAN = 5;
-var SEGNOR_LEFT = 6;
-var SEGNOR_RIGHT = 7;
-var TALLON_LEFT = 8;
-var TALLON_RIGHT = 9;
-var REVERSE_BAK_LEFT= 10;
-var REVERSE_BANK_RIGHT = 11;
-var REVERSE= 12;
-var INVALID = 99;
-
-var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right", "tallon-roll-left",
-                 "tallon-roll-right", "reverse-bank-left", "reverse-bank-right", "reverse" ];
-
 // ACTIONS
 var TARGET_LOCK = 0x1;
 var BARREL_ROLL = 0x2;
@@ -95,118 +76,67 @@ var SHIP = {};
 // ****************************************************************************
 // Moves
 
-function F( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = FORWARD;
-    return move;
+class Maneuver {
+    constructor(name, distance) {
+        this.name = name;
+        this.num = distance;
+    }
 }
 
-function BL( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = BANK_LEFT;
-    return move;
+function F( distance ) {
+    return new Maneuver("forward", distance);
 }
 
-function BR( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = BANK_RIGHT;
-    return move;
+function BL( distance ) {
+    return new Maneuver("bank-left", distance);
 }
 
-function TL( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = TURN_LEFT;
-    return move;
+function BR( distance ) {
+    return new Maneuver("bank-right", distance);
 }
 
-function TR( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = TURN_RIGHT;
-    return move;
+function TL( distance ) {
+    return new Maneuver("turn-left", distance);
 }
 
-function K( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = KOIOGRAN;
-    return move;
+function TR( distance ) {
+    return new Maneuver("turn-right", distance);
 }
 
-function SLL( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = SEGNOR_LEFT;
-    return move;
+function K( distance ) {
+    return new Maneuver("koiogran", distance);
 }
 
-function SLR( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = SEGNOR_RIGHT;
-    return move;
+function SLL( distance ) {
+    return new Maneuver("segnor-loop-left", distance);
 }
 
-function TRL( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = TALLON_LEFT;
-    return move;
+function SLR( distance ) {
+    return new Maneuver("segnor-loop-right", distance);
 }
 
-function TRR( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = TALLON_RIGHT;
-    return move;
+function TRL( distance ) {
+    return new Maneuver("tallon-roll-left", distance);
 }
 
-function RBL( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = REVERSE_BAK_LEFT;
-    return move;
+function TRR( distance ) {
+    return new Maneuver("tallon-roll-right", distance);
 }
 
-function RBR( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = REVERSE_BANK_RIGHT;
-    return move;
+function RBL( distance ) {
+    return new Maneuver("reverse-bank-left", distance);
 }
 
-function R( distance )
-{
-    var move = {};
-    move.num = distance;
-    move.dir = REVERSE;
-    return move;
+function RBR( distance ) {
+    return new Maneuver("reverse-bank-right", distance);
 }
 
+function R( distance ) {
+    return new Maneuver("reverse", distance);
+}
 
-
-function invalid()
-{
-	var move = {};
-	move.num = 0;
-	move.dir = INVALID;
-	return move;
+function invalid() {
+	return new Maneuver("invalid", 0);
 }
 
 // ****************************************************************************
@@ -398,7 +328,7 @@ function maneuverInList( maneuver, list )
     var found = false;
     for( var i=0; i < list.length; i++ )
     {
-        if( ( list[i].num == maneuver.num ) && ( list[i].dir == maneuver.dir ) )
+        if( ( list[i].num == maneuver.num ) && ( list[i].name == maneuver.name ) )
         {
             found = true;
             break;
@@ -414,26 +344,24 @@ function format_maneuver( ship, maneuver )
     var num;
     var img;
 
-    // Koiogran is always red
-    if( maneuver.dir == INVALID )
-    {
-    	num = "<span style=color:purple>NA</span>";
-    	img = "";
-    }
-    else if ( maneuverInList( maneuver, ship.simple ) )
+    if ( maneuverInList( maneuver, ship.simple ) )
     {
         num = "<span style=color:green>" + maneuver.num + "</span>";
-        img = '<img src="img/' + MANEUVER[maneuver.dir] + '-green.png">';
+        img = '<img src="img/' + maneuver.name + '-green.png">';
     }
     else if ( maneuverInList( maneuver, ship.difficult ) )
     {
         num = "<span style=color:red>" + maneuver.num + "</span>";
-        img = '<img src="img/' + MANEUVER[maneuver.dir] + '-red.png">';
+        img = '<img src="img/' + maneuver.name + '-red.png">';
     }
-    else
+    else if ( maneuverInList( maneuver, ship.normal ) )
     {
         num = "<span>" + maneuver.num + "</span>";
-        img = '<img src="img/' + MANEUVER[maneuver.dir] + '-white.png">';
+        img = '<img src="img/' + maneuver.name + '-white.png">';
+    }
+    else {
+        num = "<span style=color:purple>NA</span>";
+        img = "";
     }
 
     return {'num': num, 'img': img };
@@ -486,6 +414,11 @@ function format_actions( ship )
     if( ship.actions & SLAM )
     {
         actions += "<li>" + SLAM_TEXT + "</li>";
+    }
+
+    if( ship.actions & ROTATE_ARC )
+    {
+        actions += "<li>" + ROTATE_ARC_TEXT + "</li>";
     }
 
     if( ship.actions & COORDINATE )
