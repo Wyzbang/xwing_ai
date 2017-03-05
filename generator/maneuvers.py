@@ -16,14 +16,17 @@ SLL = "SLL" # Segnor's Loop - Left
 SLR = "SLR" # Segnor's Loop - Right
 TRL = "TRL" # Tallon Roll - Left
 TRR = "TRR" # Tallon Roll - Right
+RBL = "RBL" # Reverse Bank Left
+R   = "R"   # Reverse
+RBR = "RBR" # Reverse Bank Left
 
-BEARINGS = [ TL, BL, F, BR, TR, K, SLL, SLR, TRL, TRR ]
+BEARINGS = [ TL, BL, F, BR, TR, K, SLL, SLR, TRL, TRR, RBL, R, RBR ]
 
 # ******************************************************************************
 
 class Maneuver:
     """
-    
+
     """
     def __init__( self, bearing, speed ):
         if( bearing not in BEARINGS ):
@@ -32,23 +35,23 @@ class Maneuver:
         if not isinstance(speed, int):
             raise Exception( 'Invalid Speed: %s %s' % (speed, type(speed)) )
         self.speed = speed
-        
+
     def __str__( self ):
         return "%s(%d)" % (self.bearing, self.speed)
-    
+
     def __repr__( self ):
         return self.__str__()
-    
+
     def __eq__( self, other ):
         return ( self.bearing == other.bearing and self.speed == other.speed )
-    
+
     def __lt__( self, other ):
-        
+
         if self.bearing == other.bearing:
-            return ( self.speed < other.speed ) 
+            return ( self.speed < other.speed )
         else:
-            return( BEARINGS.index( self.bearing ) < BEARINGS.index( other.bearing ) ) 
-            
+            return( BEARINGS.index( self.bearing ) < BEARINGS.index( other.bearing ) )
+
     def reverse( self ):
         """
         Swap left and right banks/turns

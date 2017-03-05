@@ -1,14 +1,14 @@
 ==========================================
    Star Wars X-Wing Miniatures: Ship AI
- 
-                  v1.9.0.2
+
+                  v1.10.0
 ==========================================
 
 -------------------
 Standard Disclaimer
 -------------------
 
-Star Wars and all associated elements are � 2015 Lucasfilm Ltd. & TM. All rights reserved. 
+Star Wars and all associated elements are � 2015 Lucasfilm Ltd. & TM. All rights reserved.
 Fantasy Flight Games and the FFG logo are trademarks of Fantasy Flight Publishing, Inc.
 
 You use this software at your own risk, the authors are not responsible for any loss or damage resulting from the use of this software. If you do not agree with these terms do not use this software, simple.
@@ -62,13 +62,14 @@ Change History
 					Page formatting and labels to make choices clearer
 11/16/2014	1.8.0	Adding Wave 5 Ships: YT-2400 and VT-49 Decimator
 12/12/2015	1.9.0	Adding Wave 6 Ships: Ig2000, M3A, StarViper
-					Adding Wave 7 Ships: Hound’s Tooth, Kihraxz Fighter, K-Wing, Tie Punisher
-					Adding Wave 8 Ships: Ghost, Inquisitor’s Tie, Mist Hunter, Punishing One
+  					Adding Wave 7 Ships: Hound’s Tooth, Kihraxz Fighter, K-Wing, Tie Punisher
+  					Adding Wave 8 Ships: Ghost, Inquisitor’s Tie, Mist Hunter, Punishing One
 12/13/2015	1.9.0.1 Added Force Awakens Ships: T-70 X-Wing, TIE/fo
-					Disable Wave 8 ships and Imperial Huge Ship (until maneuvers are available)
+  					Disable Wave 8 ships and Imperial Huge Ship (until maneuvers are available)
 06/12/2016	1.9.0.2 Update Ship images: Mist Hunter, Phantom, Punishing One, Inquisitor's Tie
-					Added PunhishingOne Maneuvers
-					Cleaned up Segnor Loop images
+                    Added PunhishingOne Maneuvers
+                    Cleaned up Segnor Loop images
+03/04/2017  1.10.0  Adding Wave 9 and 10 ships
 
 
 -------

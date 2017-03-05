@@ -9,27 +9,27 @@ from maneuvers import *
 # ******************************************************************************
 
 class Ship:
-    
+
     def __init__( self, name="", name2="" ):
         self.name = name
-        self.name2 = name2           
+        self.name2 = name2
         self.image = ""
         self.actions = []
         self.faction = ""
-        
+
         self.maneuvers = []
         self.simple = []
         self.normal = []
         self.difficult = []
-        
+
         self.limits = {}
-        
+
         self.closing = []
         self.away = []
         self.far = []
         self.stressed = []
-    
-        
+
+
     def getManeuvers( self ):
         """
         Return: single list of all valid moves for this ship
@@ -37,17 +37,17 @@ class Ship:
         if self.maneuvers == []:
             self.maneuvers = self.simple + self.normal + self.difficult
             self.maneuvers.sort()
-        
+
         return self.maneuvers
-    
-        
+
+
     def isValid( self, maneuver ):
         """
         Return: Boolean of if the give maneuver is valid for this ship
         """
         return ( maneuver in self.getManeuvers() )
 
-    
+
     def _gen_limits( self ):
         """
         Find the highest and lowest speed for each bearing
@@ -56,72 +56,72 @@ class Ship:
         for maneuver in self.getManeuvers():
             if maneuver.bearing not in self.limits:
                 self.limits[ maneuver.bearing ] = [5,0]
-                
+
             if maneuver.speed > self.limits[ maneuver.bearing ][1]:
                 self.limits[ maneuver.bearing ][1] = maneuver.speed
-                
+
             if maneuver.speed < self.limits[ maneuver.bearing ][0]:
                 self.limits[ maneuver.bearing ][0] = maneuver.speed
 
-                
+
     def isSimple( self, maneuver ):
         return maneuver in self.simple
-    
-    
+
+
     def isNormal( self, maneuver ):
         return maneuver in self.normal
-    
-    
+
+
     def isDifficult( self, maneuver ):
         return maneuver in self.difficult
-        
-    
+
+
     def isFast( self, maneuver ):
         if self.limits == {}:
             self._gen_limits()
-        
+
         a = self.limits[ maneuver.bearing ][1] - 1;
         if maneuver.speed >= a:
             return True
         else:
-            return False            
+            return False
 
-        
+
     def isSlow( self, maneuver ):
         if self.limits == {}:
             self._gen_limits()
-            
+
         a = self.limits[ maneuver.bearing ][0] + 1
         if maneuver.speed <= a:
             return True
         else:
             return False
 
-        
+
     def __gen_js_maneuver_list( self, target, maneuvers ):
         """
         Format the given list as java script array
-        target:  
+        target:
         maneuvers:   list of maneuvers
         """
-        code = '%s.%s = [ ' % (self.name, target ) 
+        code = '%s.%s = [ ' % (self.name, target )
         for i, maneuver in enumerate(maneuvers):
             if i < len(maneuvers) - 1:
                 code += '%s, ' % (maneuver)
             else:
                 code += "%s" % (maneuver)
-                
+
         code += ' ];'
-                
+
         return code
-    
-        
+
+
     def generate_javascript( self ):
         """
         Export ship to javascript code
         """
         code = []
-        
+
         code.append( "// ****************************************************************************" )
         code.append( "// %s" % self.name2 )
         code.append( "" )
@@ -130,13 +130,13 @@ class Ship:
         code.append( '%s.name = "%s";' % ( self.name, self.name2 ) )
         code.append( '%s.image = "%s";' % ( self.name, self.image ) )
         code.append( '%s.faction = "%s";' % ( self.name, self.faction ) )
-        
+
         code.append( self.__gen_js_maneuver_list( "simple", self.simple ) )
         code.append( self.__gen_js_maneuver_list( "normal", self.normal ) )
         code.append( self.__gen_js_maneuver_list( "difficult", self.difficult ) )
-        
+
         code.append( '%s.actions = (%s);' % ( self.name, self.actions ) )
-        
+
         # AI Tables: closing, away, far (two-dimentional arrays)
         code.append( "" )
         code.append( '%s.closing = [];' % ( self.name ) )
@@ -147,40 +147,40 @@ class Ship:
         code.append( '%s.away = [];' % ( self.name ) )
         for i, row in enumerate( self.away ):
             code.append( self.__gen_js_maneuver_list( "away[%d]" % (i), row ) )
-            
+
         code.append( "" )
         code.append( '%s.far = [];' % ( self.name ) )
         for i, row in enumerate( self.far ):
             code.append( self.__gen_js_maneuver_list( "far[%d]" % (i), row ) )
-        
+
         code.append( "" )
         code.append( '%s.stressed = [];' % ( self.name ) )
         for i, row in enumerate( self.stressed ):
             code.append( self.__gen_js_maneuver_list( "stressed[%d]" % (i), row ) )
-            
+
         code.append( "" )
         return code
-    
-    
+
+
     def dump( self ):
-        
+
         print( "Name: %s (%s)" % ( self.name, self.name2 ) )
         print( "   Image: %s" % self.image )
         print( "   Simple: %s" % self.simple )
         print( "   Normal: %s" % self.normal )
         print( "   Difficult: %s" % self.difficult )
-        
+
         print( "   All: %s" % self.maneuvers )
-        
+
         print( "   Limits: %s" % self.limits )
-        
+
         print( "   Actions: %s" % self.actions )
-        
+
         print( "   Closing: %s" % self.closing )
         print( "   Away: %s" % self.away )
         print( "   Far: %s" % self.far )
-    
-    
+
+
     def generate_row( self, commonBearing, uncommonBearing, rareBearing, speed ):
         """
         Generate a single AI table row
@@ -194,7 +194,7 @@ class Ship:
         rare = []
 
         row = []
-        
+
         for maneuver in self.getManeuvers():
             if speed == "fast" and self.isFast( maneuver ):
                 pass
@@ -205,7 +205,7 @@ class Ship:
             else:
                 # Remove any maneuvers that do not match desired speed
                 continue
-                
+
             if maneuver.bearing in commonBearing:
                 common.append( maneuver )
             elif maneuver.bearing in uncommonBearing:
@@ -219,11 +219,11 @@ class Ship:
             common.reverse()
             uncommon.reverse()
             rare.reverse()
-        
+
         if len(common) == 0:
             print( "WARNING: No common maneuvers for %s in %s at %s" % (self.name, speed, self.label) )
             return []
-                
+
         if len(uncommon) == 0 and len(rare) == 0:
             numCommon = 10
             numUncommon = 0
@@ -253,7 +253,7 @@ class Ship:
             else:
                 index = ( i % len(uncommon) )
             row.append( uncommon[index] )
-        
+
         for i in range( numRare ):
             if len(rareBearing) > 1:
                 a = 2 * i
@@ -262,14 +262,14 @@ class Ship:
             else:
                 index = ( i % len(rare) )
             row.append( rare[index] )
-        
+
 
         # Sort slowest or fastest first
         row.sort()
-            
+
         return row
-        
-    
+
+
     def reverse_row( self, row ):
         """
         Swap left and right banks/turns
@@ -279,18 +279,18 @@ class Ship:
             new = copy.copy( maneuver )
             new.reverse()
             new_row.append( new )
-                
+
         return new_row
-        
-        
+
+
     def generate_tables( self ):
         """
         Generate a AI tables
         """
-        if( len(self.getManeuvers()) == 0 ): 
+        if( len(self.getManeuvers()) == 0 ):
             print( "WARNING: No maneuvers available for %s" % self.name )
             return
-        
+
         # 0, N,  12  o'clock
         #   closing: F*, K, BR, BL       short
         #      away: F                   long
@@ -300,7 +300,7 @@ class Ship:
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
         self.stressed.append( self.generate_row( [F], [], [BR, BL], "stressed" ) )
-        
+
         # 1, NE, 1-2 o'clock
         #   closing: F, BR*, TR
         #      away: BR, TR
@@ -310,13 +310,13 @@ class Ship:
         self.away.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.far.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.stressed.append( self.generate_row( [BR], [TR], [F], "stressed" ) )
-        
+
         # 2, E,  3   o'clock
         #   closing: TR, K
         #      away: BR, TR
         #       far: TR
         self.label = "3 o'clock"
-        if self.name in [ "lambda" ]:
+        if self.name in [ "lambda", "uwing", "upsilon" ]:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [], [], "fast" ) )
@@ -331,13 +331,13 @@ class Ship:
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
-        
+
         # 3, SE, 4-5 o'clock
         #   closing: BR, TR, K
         #      away: TR, K
         #       far: TR
         self.label = "4-5 o'clock"
-        if self.name in [ "lambda" ]:
+        if self.name in [ "lambda", "uwing", "upsilon" ]:
             self.closing.append( self.generate_row( [BR], [TR], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [TR], [], "fast" ) )
@@ -352,20 +352,20 @@ class Ship:
             self.away.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
-                
+
         # 4, S,  6   o'clock
         #   closing: F, K*, TL, TR
         #      away: K*, TR, TL
         #       far: K, TR*, TL*
         self.label = "6 o'clock"
-        if self.name in [ "lambda", "houndstooth", "kwing" ]:
-            # Special case as this ship does not support Koiogran Turn 
+        if self.name in [ "lambda", "houndstooth", "kwing", "uwing", "upsilon" ]:
+            # Special case as this ship does not support Koiogran Turn
             self.closing.append( self.generate_row( [BL,BR], [TL,TR,F], [], "fast" ) )
             self.away.append( self.generate_row( [BL,BR], [TL,TR], [], "fast" ) )
             self.far.append( self.generate_row( [TL, TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BL, BR], [], [], "stressed" ) )
         elif self.name in [ "decimator", "hwk290" ]:
-            # Special case as this ship does not support Koiogran Turn 
+            # Special case as this ship does not support Koiogran Turn
             self.closing.append( self.generate_row( [TL,TR], [F], [], "fast" ) )
             self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
             self.far.append( self.generate_row( [TL, TR], [], [], "fast" ) )
@@ -380,7 +380,7 @@ class Ship:
             self.away.append( self.generate_row( [TRL, TRR, SLL, SLR, K], [TR, TL], [], "fast" ) )
             self.far.append( self.generate_row( [TL, TR], [], [TRL, TRR, SLL, SLR, K], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
-                
+
         # 5, SW, 7-8   o'clock: Reverse of #3
         self.closing.append( self.reverse_row( self.closing[3] ) )
         self.away.append( self.reverse_row( self.away[3] ) )

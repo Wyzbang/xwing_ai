@@ -33,9 +33,13 @@ var SEGNOR_LEFT = 6;
 var SEGNOR_RIGHT = 7;
 var TALLON_LEFT = 8;
 var TALLON_RIGHT = 9;
+var REVERSE_BAK_LEFT= 10;
+var REVERSE_BANK_RIGHT = 11;
+var REVERSE= 12;
 var INVALID = 99;
 
-var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right", "tallon-roll-left", "tallon-roll-right" ];
+var MANEUVER = [ "turn-left", "bank-left", "forward", "bank-right", "turn-right", "koiogran", "segnor-loop-left", "segnor-loop-right", "tallon-roll-left",
+                 "tallon-roll-right", "reverse-bank-left", "reverse-bank-right", "reverse" ];
 
 // ACTIONS
 var TARGET_LOCK = 0x1;
@@ -45,8 +49,9 @@ var FOCUS       = 0x8;
 var EVADE       = 0x10;
 var CLOAKING    = 0x20;
 var SLAM        = 0x40;
+var ROTATE_ARC  = 0x80;
 
-var CORDINATE   = 0x1000;
+var COORDINATE   = 0x1000;
 var JAM         = 0x2000;
 var RECOVER     = 0x4000;
 var REINFORCE   = 0x8000;
@@ -70,8 +75,11 @@ var CLOAKING_TEXT = 'Cloak/Decloak <img src="img/action_cloak.png" alt="Cloak">'
 
 var SLAM_TEXT = "Slam"					// TODO
 
+var ROTATE_ARC = "Rotate Arc"			// TODO
+
+
 // ACTION TEXT - Huge Ships
-var CORDINATE_TEXT = "CORDINATE";        // TODO
+var COORDINATE_TEXT = "COORDINATE";      // TODO
 
 var JAM_TEXT = "JAM";                    // TODO
 
@@ -93,7 +101,7 @@ function F( distance )
     move.num = distance;
     move.dir = FORWARD;
     return move;
-} 
+}
 
 function BL( distance )
 {
@@ -101,7 +109,7 @@ function BL( distance )
     move.num = distance;
     move.dir = BANK_LEFT;
     return move;
-} 
+}
 
 function BR( distance )
 {
@@ -109,7 +117,7 @@ function BR( distance )
     move.num = distance;
     move.dir = BANK_RIGHT;
     return move;
-} 
+}
 
 function TL( distance )
 {
@@ -117,7 +125,7 @@ function TL( distance )
     move.num = distance;
     move.dir = TURN_LEFT;
     return move;
-} 
+}
 
 function TR( distance )
 {
@@ -125,7 +133,7 @@ function TR( distance )
     move.num = distance;
     move.dir = TURN_RIGHT;
     return move;
-} 
+}
 
 function K( distance )
 {
@@ -133,7 +141,7 @@ function K( distance )
     move.num = distance;
     move.dir = KOIOGRAN;
     return move;
-} 
+}
 
 function SLL( distance )
 {
@@ -167,6 +175,32 @@ function TRR( distance )
     return move;
 }
 
+function RBL( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = REVERSE_BAK_LEFT;
+    return move;
+}
+
+function RBR( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = REVERSE_BANK_RIGHT;
+    return move;
+}
+
+function R( distance )
+{
+    var move = {};
+    move.num = distance;
+    move.dir = REVERSE;
+    return move;
+}
+
+
+
 function invalid()
 {
 	var move = {};
@@ -183,36 +217,36 @@ function display_ship_choice( faction, funct )
     var data = "";
     var idx=0;
     var shown=0;
-    
+
     data += '<form action="demo_form.asp" name="ship_buttons">';
 
     data += '<b>Faction:</b><br>';
 
     data += '<label>\n';
-    data += '    <div title="Empire">' 
+    data += '    <div title="Empire">'
     data += '       <input type="radio" onclick="display_ship_choice(\'empire\', \'' + funct + '\')" hidden >'
     data += '       <img class="faction_button" src="img/empire.png" />'
     data += '    </div>'
     data += '</label>\n';
-    
+
     data += '<label>\n';
-    data += '    <div title="Rebels">' 
+    data += '    <div title="Rebels">'
     data += '       <input type="radio" onclick="display_ship_choice(\'rebel\', \'' + funct + '\')" hidden >'
     data += '        <img class="faction_button" src="img/rebel.png" />'
     data += '    </div>'
     data += '</label>\n';
 
     data += '<br>\n';
-    
+
     data += '<label>\n';
-    data += '    <div title="Scum">' 
+    data += '    <div title="Scum">'
     data += '       <input type="radio" onclick="display_ship_choice(\'scum\', \'' + funct + '\')" hidden >'
     data += '        <img class="faction_button" src="img/scum.png" />'
     data += '    </div>'
     data += '</label>\n';
-    
+
     data += '<b>AI Ship:</b><br>';
-    
+
     for( idx=0; idx < ships.length; idx++ )
     {
         // only add buttons for ships for the selected faction
@@ -224,35 +258,35 @@ function display_ship_choice( faction, funct )
                 var fn = window[funct];
                 fn(idx);
             }
-            
+
             shown++;
             funct_args = funct + "(" + idx + ")";
-    
+
             data += '<label>\n';
-            data += '    <div title="' + ships[idx].name + '">' 
+            data += '    <div title="' + ships[idx].name + '">'
             data += '       <input type="radio" onclick="' + funct_args + '" hidden />'
             data += '       <img class="ship_button" src="' + ships[idx].image + '" />'
             data += '    </div>'
             data += '</label>\n';
-    
+
             if( shown % 2 == 0 )
             {
                 data += '<br>\n'
             }
         }
     }
-        
+
     data += '<br>\n';
     data += '</form>\n';
     document.getElementById( "ships" ).innerHTML = data;
-    
+
     // Set faction specific target images
     for( var idx=0; idx < 8; idx++ ) {
     	var target = "target" + idx
     	var image  = "img/" + faction + idx + ".png"
         document.getElementById(target).src = image;
     }
-    
+
 }
 
 function gen_maneuver_table( name, table )
@@ -285,20 +319,20 @@ function display_ship( ship_id )
     	var error = "<div><p>Unable to get ship(" + ship_id + ")</div>";
     	document.getElementById( "table" ).innerHTML( error );
     	return;
-    } 
-    
+    }
+
     // image
     ship = '<img src="' + SHIP.image + '" alt="' + SHIP.name + '"><br>' + SHIP.name;
-    
+
     actions =  format_actions( SHIP );
-    
+
     // Tables (closing, away, etc.)
     var tables = "";
     tables += gen_maneuver_table( CLOSING, SHIP.closing )
     tables += gen_maneuver_table( AWAY, SHIP.away )
     tables += gen_maneuver_table( FAR, SHIP.far )
     tables += gen_maneuver_table( STRESSED, SHIP.stressed )
-    
+
     document.getElementById( "version" ).innerHTML = VERSION;
     document.getElementById( "ship").innerHTML = ship;
     document.getElementById( "actions" ).innerHTML = actions;
@@ -322,11 +356,11 @@ function set_ship( ship_id )
     }
 
     set_version();
-    
+
     // Update index html elements for the selected ship
    	document.getElementById('ship_image').src = SHIP.image;
    	document.getElementById('ship_name').innerHTML = "<br>" + SHIP.name;
-    
+
     // Clear any previous maneuvers shown
     document.getElementById('closing_num').innerHTML = "<p></p>";
     document.getElementById('closing_img').innerHTML = "<p></p>";
@@ -336,7 +370,7 @@ function set_ship( ship_id )
     document.getElementById('far_img').innerHTML = "<p></p>";
     document.getElementById('stressed_num').innerHTML = "<p></p>";
     document.getElementById('stressed_img').innerHTML = "<p></p>";
-    
+
     document.getElementById('selection').innerHTML = "<p>Press a direction</p>";
     document.getElementById('actions-text').innerHTML = format_actions( SHIP );
 }
@@ -370,7 +404,7 @@ function maneuverInList( maneuver, list )
             break;
         }
     }
-    
+
     return found;
 }
 
@@ -379,7 +413,7 @@ function format_maneuver( ship, maneuver )
 {
     var num;
     var img;
-    
+
     // Koiogran is always red
     if( maneuver.dir == INVALID )
     {
@@ -401,7 +435,7 @@ function format_maneuver( ship, maneuver )
         num = "<span>" + maneuver.num + "</span>";
         img = '<img src="img/' + MANEUVER[maneuver.dir] + '-white.png">';
     }
-    
+
     return {'num': num, 'img': img };
 }
 
@@ -409,24 +443,24 @@ function format_maneuver( ship, maneuver )
 function format_actions( ship )
 {
     var actions = "<ol>";
-    
+
     if( ship.actions & TARGET_LOCK )
     {
         actions += "<li>" + TARGET_LOCK_TEXT + "</li>";
     }
-    
+
     if( ship.actions & BARREL_ROLL )
     {
         actions += "<li>" + BARREL_ROLL_TEXT1 + "</li>";
         actions += "<li>" + BARREL_ROLL_TEXT2 + "</li>";
     }
-    
+
     if( ship.actions & BOOST )
     {
         actions += "<li>" + BOOST_TEXT1 + "</li>";
         actions += "<li>" + BOOST_TEXT2 + "</li>";
     }
-    
+
     if( ship.actions & FOCUS )
     {
         if( ship.actions & EVADE )
@@ -438,44 +472,44 @@ function format_actions( ship )
             actions += "<li>" + FOCUS_TEXT2 + "</li>";
         }
     }
-    
+
     if( ship.actions & EVADE )
     {
         actions += "<li>" + EVADE_TEXT + "</li>";
     }
-    
+
     if( ship.actions & CLOAKING )
     {
         actions += "<li>" + CLOAKING_TEXT + "</li>";
     }
-   
+
     if( ship.actions & SLAM )
     {
         actions += "<li>" + SLAM_TEXT + "</li>";
-    } 
-       
-    if( ship.actions & CORDINATE )
-    {
-        actions += "<li>" + CORDINATE_TEXT + "</li>";
     }
-    
+
+    if( ship.actions & COORDINATE )
+    {
+        actions += "<li>" + COORDINATE_TEXT + "</li>";
+    }
+
     if( ship.actions & JAM )
     {
         actions += "<li>" + JAM_TEXT + "</li>";
     }
-    
+
     if( ship.actions & RECOVER )
     {
         actions += "<li>" + RECOVER_TEXT + "</li>";
     }
-    
+
     if( ship.actions & REINFORCE )
     {
         actions += "<li>" + REINFORCE_TEXT + "</li>";
     }
-    
+
     actions += "</ol>";
-    
+
     return actions;
 }
 
@@ -505,23 +539,23 @@ function movement( direction )
     var selection = "<p>";
     selection += "at " + DIRECTION[direction] + " o'clock</p>";
     document.getElementById('selection').innerHTML = selection;
-    
+
     // Select the maneuver randonly from appropriate ship table
     maneuver = pick( SHIP.closing[direction] );
     formatted = format_maneuver( SHIP, maneuver );
     document.getElementById( "closing_num" ).innerHTML = formatted.num;
     document.getElementById( "closing_img" ).innerHTML = formatted.img;
-    
+
     maneuver = pick( SHIP.away[direction] );
     formatted = format_maneuver( SHIP, maneuver );
     document.getElementById( "away_num" ).innerHTML = formatted.num;
     document.getElementById( "away_img" ).innerHTML = formatted.img;
-    
+
     maneuver = pick( SHIP.far[direction] );
     formatted = format_maneuver( SHIP, maneuver );
     document.getElementById( "far_num" ).innerHTML = formatted.num;
     document.getElementById( "far_img" ).innerHTML = formatted.img;
-    
+
     maneuver = pick( SHIP.stressed[direction] );
     formatted = format_maneuver( SHIP, maneuver );
     document.getElementById( "stressed_num" ).innerHTML = formatted.num;

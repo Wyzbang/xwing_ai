@@ -9,7 +9,7 @@
     <property name="dist" location="dist"/>
     <property name="zip" location="${dist}/xwing_ai.zip"/>
 
-	<target name="default" depends="compile,dist" />
+    <target name="default" depends="compile,dist" />
 
     <target name="compile" description="compile the source " >
 		<echo message="Generating ship manuever tables" />

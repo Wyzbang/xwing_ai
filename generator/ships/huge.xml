@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
-	<corvette actions="CORDINATE + RECOVER + REINFORCE + TARGET_LOCK" image="img/corvette.png" name="CR90 Corvette" faction="rebel">
+	<corvette actions="COORDINATE + RECOVER + REINFORCE + TARGET_LOCK" image="img/corvette.png" name="CR90 Corvette" faction="rebel">
 		<simple>
 		</simple>
 		<normal>
@@ -16,7 +16,7 @@
 		</difficult>
 	</corvette>
 	<!--
-	<raider actions="RECOVER + REINFORCE + CORDINATE + TARGET_LOCK" image="img/raider.png" name="Imperial Raider" faction="empire">
+	<raider actions="RECOVER + REINFORCE + COORDINATE + TARGET_LOCK" image="img/raider.png" name="Imperial Raider" faction="empire">
 		<simple>
 		</simple>
 		<normal>
@@ -24,7 +24,7 @@
 		<difficult>
 		</difficult>
 	</raider>
-	<carrier actions="RECOVER + REINFORCE + CORDINATE + TARGET_LOCK" image="img/carrier.png" name="Imperial Assault Carrier" faction="empire">
+	<carrier actions="RECOVER + REINFORCE + COORDINATE + TARGET_LOCK" image="img/carrier.png" name="Imperial Assault Carrier" faction="empire">
 		<simple>
 		</simple>
 		<normal>
@@ -33,7 +33,7 @@
 		</difficult>
 	</carrier>
 	 -->
-	<transport actions="CORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport" faction="rebel">
+	<transport actions="COORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport" faction="rebel">
 		<simple>
 		</simple>
 		<normal>
