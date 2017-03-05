@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
-	<arc170 actions="FOCUS + TARGET_LOCK" image="img/arc170.png" name="ARC-170" faction="rebel">
+	<arc170 actions="FOCUS + TARGET_LOCK" image="img/ship_arc170.png" name="ARC-170" faction="rebel">
 		<simple>
 			<maneuver>BL1</maneuver>
 			<maneuver>F1</maneuver>
@@ -23,7 +23,7 @@
 			<maneuver>K4</maneuver>
 		</difficult>
 	</arc170>
-	<tiesf actions="FOCUS + TARGET_LOCK + BARREL_ROLL" image="img/tiesf.png" name="Special Forces TIE" faction="empire">
+	<tiesf actions="FOCUS + TARGET_LOCK + BARREL_ROLL" image="img/ship_tiesf.png" name="Special Forces TIE" faction="empire">
 		<simple>
 			<maneuver>BL1</maneuver>
 			<maneuver>F1</maneuver>
@@ -49,7 +49,7 @@
 			<maneuver>SLR3</maneuver>
 		</difficult>
 	</tiesf>
-	<protectorate actions="FOCUS + TARGET_LOCK + BARREL_ROLL + BOOST" image="img/protectorate.png" name="Protectorate" faction="scum">
+	<protectorate actions="FOCUS + TARGET_LOCK + BARREL_ROLL + BOOST" image="img/ship_protectorate.png" name="Protectorate" faction="scum">
 		<simple>
 			<maneuver>TL2</maneuver>
 			<maneuver>BL2</maneuver>
@@ -74,7 +74,7 @@
 			<maneuver>TRR2</maneuver>
 		</difficult>
 	</protectorate>
-	<shadowCaster actions="FOCUS + TARGET_LOCK + EVADE + ROTATE_ARC" image="img/shadowCaster.png" name="Shadow Caster" faction="scum">
+	<shadowCaster actions="FOCUS + TARGET_LOCK + EVADE + ROTATE_ARC" image="img/ship_lancer.png" name="Shadow Caster" faction="scum">
 		<simple>
 			<maneuver>F2</maneuver>
 			<maneuver>TL2</maneuver>

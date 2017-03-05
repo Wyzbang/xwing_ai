@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ships>
-	<uwing actions="FOCUS + TARGET_LOCK" image="img/uwing.png" name="U-Wing" faction="rebel">
+	<uwing actions="FOCUS + TARGET_LOCK" image="img/ship_uwing.png" name="U-Wing" faction="rebel">
 		<simple>
 			<maneuver>BL1</maneuver>
 			<maneuver>F1</maneuver>
@@ -21,7 +21,7 @@
 			<maneuver>F0</maneuver>
 		</difficult>
 	</uwing>
-	<tieStriker actions="FOCUS + BARREL_ROLL + FOCUS" image="img/tieStriker.png" name="TIE Striker" faction="empire">
+	<tieStriker actions="FOCUS + BARREL_ROLL + FOCUS" image="img/ship_tieStriker.png" name="TIE Striker" faction="empire">
 		<simple>
 			<maneuver>BL1</maneuver>
 			<maneuver>F1</maneuver>
@@ -45,7 +45,7 @@
 			<maneuver>SLR2</maneuver>
 		</difficult>
 	</tieStriker>
-	<quadjumper actions="BARREL_ROLL + FOCUS" image="img/quadjumper.png" name="Quadjumper" faction="scum">
+	<quadjumper actions="BARREL_ROLL + FOCUS" image="img/ship_quadjumper.png" name="Quadjumper" faction="scum">
 		<simple>
 			<maneuver>BL2</maneuver>
 			<maneuver>F2</maneuver>
@@ -69,7 +69,7 @@
 			<maneuver>RBR1</maneuver>
 		</difficult>
 	</quadjumper>
-	<upsilon actions="FOCUS + TARGET_LOCK + COORDINATE" image="img/upsilon.png" name="Upsilon-class Shuttle" faction="empire">
+	<upsilon actions="FOCUS + TARGET_LOCK + COORDINATE" image="img/ship_upsilon.png" name="Upsilon-class Shuttle" faction="empire">
 		<simple>
 			<maneuver>F1</maneuver>
 			<maneuver>BL2</maneuver>
