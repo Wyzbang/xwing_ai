@@ -54,9 +54,9 @@ var EVADE_TEXT = 'Else Choose <img src="img/action_evade.png" alt="Evade">';
 
 var CLOAKING_TEXT = 'Cloak/Decloak <img src="img/action_cloak.png" alt="Cloak">';          // TODO
 
-var SLAM_TEXT = "Slam"					// TODO
+var SLAM_TEXT = "Slam";					// TODO
 
-var ROTATE_ARC = "Rotate Arc"			// TODO
+var ROTATE_ARC_TEXT = "Rotate Arc"; 	// TODO
 
 
 // ACTION TEXT - Huge Ships
