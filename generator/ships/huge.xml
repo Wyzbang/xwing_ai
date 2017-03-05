@@ -15,11 +15,18 @@
 		<difficult>
 		</difficult>
 	</corvette>
-	<!--
 	<raider actions="RECOVER + REINFORCE + COORDINATE + TARGET_LOCK" image="img/raider.png" name="Imperial Raider" faction="empire">
 		<simple>
 		</simple>
 		<normal>
+            <maneuver>BL1</maneuver>
+            <maneuver>F1</maneuver>
+            <maneuver>BR1</maneuver>
+            <maneuver>BL2</maneuver>
+            <maneuver>F2</maneuver>
+            <maneuver>BR2</maneuver>
+            <maneuver>F3</maneuver>
+            <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
 		</difficult>
@@ -28,11 +35,18 @@
 		<simple>
 		</simple>
 		<normal>
+            <maneuver>BL1</maneuver>
+            <maneuver>F1</maneuver>
+            <maneuver>BR1</maneuver>
+            <maneuver>BL2</maneuver>
+            <maneuver>F2</maneuver>
+            <maneuver>BR2</maneuver>
+            <maneuver>F3</maneuver>
+            <maneuver>F4</maneuver>
 		</normal>
 		<difficult>
 		</difficult>
 	</carrier>
-	 -->
 	<transport actions="COORDINATE + JAM + RECOVER + REINFORCE" image="img/transport.png" name="Rebel Transport" faction="rebel">
 		<simple>
 		</simple>

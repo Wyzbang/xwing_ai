@@ -321,7 +321,7 @@ class Ship:
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
-        elif self.name in [ "corvette", "transport" ]:
+        elif self.name in [ "corvette", "transport", "carrier", "raider" ]:
             self.closing.append( self.generate_row( [BR], [F], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
@@ -342,7 +342,7 @@ class Ship:
             self.away.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [TR], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [TR], [], "stressed" ) )
-        elif self.name in [ "corvette", "transport" ]:
+        elif self.name in [ "corvette", "transport", "carrier", "raider" ]:
             self.closing.append( self.generate_row( [BR], [F], [], "slow" ) )
             self.away.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
@@ -370,7 +370,7 @@ class Ship:
             self.away.append( self.generate_row( [TL,TR], [], [], "fast" ) )
             self.far.append( self.generate_row( [TL, TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TL, TR], [], [], "stressed" ) )
-        elif self.name in [ "corvette", "transport" ]:
+        elif self.name in [ "corvette", "transport", "carrier", "raider" ]:
             self.closing.append( self.generate_row( [BL, BR], [], [], "slow" ) )
             self.away.append( self.generate_row( [BL, BR], [], [], "fast" ) )
             self.far.append( self.generate_row( [BL, BR], [], [], "fast" ) )

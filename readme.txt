@@ -7,22 +7,14 @@ Adding a new ships
 2. Add node to generator/<filename>.xml
 3. Run "ant compile"
 
-
 Distribute:
 1. Run "ant dist"
 2. File is saved to dist/xwing_ai.zip
 
-
 TODO:
-* Images
-	* Wave 7, 8 and Imperial Huge Ships
-	* Clean up segnor's loop maneuver images
-* Maneuvers list
-	* Wave 8 & Imperial Huge Ships
+* Images for Wave 9 and 10
+* Images for Reverse maneuvers
+* Add Reverse maneuvers to generator
 * Localization
 	* jquery  (client side, just need to download the .js and include it)
 	* sangularJs
-
-
-
-
