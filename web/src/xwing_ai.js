@@ -280,13 +280,6 @@ function display_ship_choice( faction, funct )
     data += '</form>\n';
     document.getElementById( "ships" ).innerHTML = data;
 
-    // Set faction specific target images
-    for( var idx=0; idx < 8; idx++ ) {
-    	var target = "target" + idx
-    	var image  = "img/" + faction + idx + ".png"
-        document.getElementById(target).src = image;
-    }
-
 }
 
 function gen_maneuver_table( name, table )
@@ -360,6 +353,13 @@ function set_ship( ship_id )
     // Update index html elements for the selected ship
    	document.getElementById('ship_image').src = SHIP.image;
    	document.getElementById('ship_name').innerHTML = "<br>" + SHIP.name;
+
+    // Set faction specific target images
+    for( var idx=0; idx < 8; idx++ ) {
+        var target = "target" + idx
+        var image  = "img/" + SHIP.faction + idx + ".png"
+        document.getElementById(target).src = image;
+    }
 
     // Clear any previous maneuvers shown
     document.getElementById('closing_num').innerHTML = "<p></p>";
