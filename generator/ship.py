@@ -296,7 +296,7 @@ class Ship:
         #      away: F                   long
         #       far: F*, BL, BR
         self.label = "12 o'clock"
-        self.closing.append( self.generate_row( [F], [TRL, TRR, SLL, SLR, K], [BR, BL], "slow" ) )
+        self.closing.append( self.generate_row( [F, R], [TRL, TRR, SLL, SLR, K, RBL, RBR], [BR, BL], "slow" ) )
         self.away.append( self.generate_row( [F], [], [], "fast" ) )
         self.far.append( self.generate_row( [F], [], [BR, BL], "fast" ) )
         self.stressed.append( self.generate_row( [F], [], [BR, BL], "stressed" ) )
@@ -306,7 +306,7 @@ class Ship:
         #      away: BR, TR
         #       far: BR, TR
         self.label = "1-2 o'clock"
-        self.closing.append( self.generate_row( [BR], [TR], [F], "slow" ) )
+        self.closing.append( self.generate_row( [BR], [TR, R, RBL], [F], "slow" ) )
         self.away.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.far.append( self.generate_row( [BR], [], [TR], "fast" ) )
         self.stressed.append( self.generate_row( [BR], [TR], [F], "stressed" ) )
@@ -327,7 +327,7 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [], [TRL, TRR, SLL, SLR, K], "slow" ) )
+            self.closing.append( self.generate_row( [TR], [RBL], [TRL, TRR, SLL, SLR, K], "slow" ) )
             self.away.append( self.generate_row( [TR], [BR], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
@@ -348,7 +348,7 @@ class Ship:
             self.far.append( self.generate_row( [BR], [F], [], "fast" ) )
             self.stressed.append( self.generate_row( [BR], [F], [], "stressed" ) )
         else:
-            self.closing.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K], [BR], "slow" ) )
+            self.closing.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K, RBR], [BR], "slow" ) )
             self.away.append( self.generate_row( [TR], [TRL, TRR, SLL, SLR, K], [], "fast" ) )
             self.far.append( self.generate_row( [TR], [], [], "fast" ) )
             self.stressed.append( self.generate_row( [TR], [], [], "stressed" ) )
